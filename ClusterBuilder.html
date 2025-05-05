@@ -14,7 +14,6 @@
 <!-- v12 - 20250403 - LL - added instructions -->
 <!-- v13 - 20250423 - LL - updated model appliance to config -->
 <!-- v14 - 20250430 - LL - update anti-spoofing default to 'true' -->
-<!-- v15 - 20250505 - added Gateway/Cluster toggle and gateway input form -->
 
 <html lang="en">
 <head>
@@ -146,8 +145,219 @@
     <label><input type="radio" name="buildType" value="gateway"> Gateway</label>
 
     <div id="cluster-section" class="section">
-        <!-- Existing Cluster Form -->
-<form><!-- cluster form not found --></form></div>
+        
+    <h1>Cluster Builder Input Form <span class="version">v14</span></h1>
+    <div class="nav">
+        <!-- Navigation buttons to switch between sections -->
+        <button onclick="showSection('cluster-config')">1 - Cluster Build</button>
+        <button onclick="showSection('sic-validation')">2 - Members: SIC/Interfaces</button>
+        <button onclick="showSection('instructions')">3 - Instructions</button>
+        <!-- <button onclick="showSection('configure-interfaces')">3 - Cluster Interface Update</button> -->
+    </div>
+    <div class="section active" id="cluster-config">
+        <h2>*** This form is to be used to create Checkpoint Firewall Clusters ***</h2>
+        <!-- Input fields for cluster configuration -->
+        <label for="cluster-name">Cluster Name:</label>
+        <input type="text" id="cluster-name" name="cluster-name"><br>
+        <label for="version">Version:</label>
+        <select id="version" name="version">
+            <option value="R81.10">R81.10</option>
+            <option value="R81.20">R81.20</option>
+        </select><br>
+        <label for="ip-address">IP Address:</label>
+        <input type="text" id="ip-address" name="ip-address"><br>
+         <label for="ip-mask-length">IP Mask Length:</label>
+        <input type="text" id="ip-mask-length" name="ip-mask-length"><br>
+        <label for="hardware">Hardware:</label>
+        <select id="hardware" name="hardware">
+            <option value="CloudGuard IaaS">CloudGuard IaaS</option>
+            <option value="'16000 Appliance'">16000 Appliance</option>
+            <option value="'29000 Appliance'">29000 Appliance</option>
+        </select><br>
+        <label for="engineer-name">Created by (Engineer Name):</label>
+        <input type="text" id="engineer-name" name="engineer-name"><br>
+        <h3>Cluster Settings</h3>
+        <label for="use-virtual-mac">Use Virtual MAC: (DO NOT select for CloudGuard)</label>
+        <input type="checkbox" id="use-virtual-mac" name="use-virtual-mac"><br>
+        <h2>Member 1 Configuration</h2>
+        <!-- Input fields for Member 1 configuration -->
+        <label for="member1-name">Name:</label>
+        <input type="text" id="member1-name" name="member1-name"><br>
+        <label for="member1-mgmt-name">Mgmt Interface Name:</label>
+        <select id="member1-mgmt-name" name="member1-mgmt-name">
+            <option value="Mgmt">Mgmt</option>
+            <option value="eth0">eth0</option>
+        </select><br>
+        <label for="member1-mgmt-ipv4">Mgmt IPv4 Address:</label>
+        <input type="text" id="member1-mgmt-ipv4" name="member1-mgmt-ipv4" oninput="document.getElementById('member1-ipv4').value = this.value;"><br>
+        <label for="member1-mgmt-mask">Mgmt Network Mask Length:</label>
+        <input type="text" id="member1-mgmt-mask" name="member1-mgmt-mask"><br>
+<!--        <label for="member1-topology">Topology:</label>
+        <select id="member1-topology" name="member1-topology">
+            <option value="internal">internal</option>
+            <option value="external">external</option>
+        </select> -->
+		<br>
+        <h2>Member 2 Configuration</h2>
+        <!-- Input fields for Member 2 configuration -->
+        <label for="member2-name">Name:</label>
+        <input type="text" id="member2-name" name="member2-name"><br>
+        <label for="member2-mgmt-name">Mgmt Interface Name:</label>
+        <select id="member2-mgmt-name" name="member2-mgmt-name">
+            <option value="Mgmt">Mgmt</option>
+            <option value="eth0">eth0</option>
+        </select><br>
+        <label for="member2-mgmt-ipv4">Mgmt IPv4 Address:</label>
+        <input type="text" id="member2-mgmt-ipv4" name="member2-mgmt-ipv4" oninput="document.getElementById('member2-ipv4').value = this.value;"><br>
+        <label for="member2-mgmt-mask">Mgmt Network Mask Length:</label>
+        <input type="text" id="member2-mgmt-mask" name="member2-mgmt-mask"><br>
+<!--        <label for="member2-topology">Topology:</label>
+        <select id="member2-topology" name="member2-topology">
+            <option value="internal">internal</option>
+            <option value="external">external</option>
+        </select> -->
+		<br>
+
+<!--        <h2>Logging Configuration</h2> -->
+        <!-- Container for dynamically added logging server input fields -->
+<!--        <div id="logging-servers">
+            <div class="dynamic-logging">
+                <label for="logging-server-1">Logging Server 1:</label>
+                <input type="text" id="logging-server-1" name="logging-server-1">
+                <label for="backup-server-1">Backup Server:</label>
+                <input type="checkbox" id="backup-server-1" name="backup-server-1">
+            </div>
+        </div>
+
+        <button type="button" onclick="addLoggingServer()">Add Logging Server</button>
+-->	
+
+
+        <h2>Generate/Copy Configuration</h2>
+        <!-- Button to generate the configuration string -->
+        <button type="button" onclick="generateString()">Generate String</button>
+        <pre id="config-output"></pre>
+    </div>
+    <div class="section" id="sic-validation">
+        <h2>Members: SIC/Interfaces</h2>
+        <!-- Buttons to generate SIC commands and get interfaces -->
+        <button type="button" onclick="generateSicCommand()">Generate SIC Commands</button>
+        <button type="button" onclick="getInterfaces()">Get Interfaces</button>
+        <pre id="sic-command-output"></pre>
+    </div>
+    <div class="section" id="instructions"> 
+        <h2>** This is purely informational to assist with follow up tasks after the simple-cluster has been created **</h2>
+        <!-- Overview instructions -->
+		<h4>1. Cluster Build</h4>
+			<blockquote>
+			- Provide simple cluster mgmt info<br>
+			- Generate 1 liner <br>
+			- Login to Smart Console <br>
+			- Open command prompt <br>
+			- Apply 1-liner to the respective domain <br>
+			</blockquote>
+		<br>
+		<h4>2. SIC/Interfaces</h4>
+			<blockquote>
+			- Click [Generate SIC Commands]<br>
+			- copy/paste commands into command prompt<br>
+			</blockquote>
+
+		<h4>3. Get Interfaces</h4>
+			<blockquote>
+			- Click [Get Interfaces]<br>
+			- copy/paste command into command prompt<br>
+			</blockquote>
+
+		<section>
+		<h4>follow up tasks:</h4>
+		<blockquote>
+		 <h4>- Cluster Interface Updates</h4>
+			 - dbl-click cluster<br>
+			 - go to network management<br>
+			 
+			 <h4>SYNC:</h4>
+			 - change network type on Sync interface to "Sync"<br>
+
+			 <h4>ETH1-01:</h4>
+			 - change network type on eth1-01 to "cluster" <br>
+			 - enter virtual IP/mask <br>
+			 - change topology settings on eth1-01 to external<br>
+
+			 <h4>ETH1-02:</h4>
+			 - change network type on eth1-02 to "cluster" <br>
+			 - enter virtual IP/mask <br>
+			 - leave topology settings on eth1-02 to internal <br>
+			 - click OK <br>
+
+		 <h4>- Logs</h4>
+			 - Select Logs<br>
+			 - Select Primary log servers from list<br>
+			 - Select Backup log servers from list<br>
+			 - click OK<br>
+		</section>
+		</div>
+<!--        <h2>3 - Cluster Interface Update</h2> -->
+        <!-- Input fields for cluster interface update -->
+<!--        <label for="cluster-name-interfaces">Cluster Name:</label>
+        <input type="text" id="cluster-name-interfaces" name="cluster-name-interfaces"><br>
+        <label for="enable-ipv6">Enable IPv6:</label>
+        <input type="checkbox" id="enable-ipv6" name="enable-ipv6" onclick="toggleIPv6Config()"><br>
+        <h3>Interface 2 Configuration</h3>
+        <label for="interface2-name">Interface 2 Name:</label>
+        <select id="interface2-name" name="interface2-name">
+            <option value="eth1-01">eth1-01</option>
+            <option value="eth1-02">eth1-02</option>
+            <option value="eth1">eth1</option>
+            <option value="eth2">eth2</option>
+        </select><br>
+        <label for="interface2-ipv4-address">Interface 2 IPv4 Address:</label>
+        <input type="text" id="interface2-ipv4-address" name="interface2-ipv4-address"><br>
+        <label for="interface2-ipv4-net-mask">Interface 2 IPv4 Net Mask:</label>
+        <input type="text" id="interface2-ipv4-net-mask" name="interface2-ipv4-net-mask"><br>
+        <div class="ipv6-config">
+            <label for="interface2-ipv6-address">Interface 2 IPv6 Address:</label>
+            <input type="text" id="interface2-ipv6-address" name="interface2-ipv6-address"><br>
+            <label for="interface2-ipv6-net-mask">Interface 2 IPv6 Net Mask:</label>
+            <input type="text" id="interface2-ipv6-net-mask" name="interface2-ipv6-net-mask"><br>
+        </div>
+        <label for="interface2-topology">Interface 2 Topology:</label>
+        <select id="interface2-topology" name="interface2-topology">
+            <option value="internal">internal</option>
+            <option value="external">external</option>
+        </select><br>
+        <h3>Interface 3 Configuration</h3>
+        <label for="interface3-name">Interface 3 Name:</label>
+        <select id="interface3-name" name="interface3-name">
+            <option value="eth1-01">eth1-01</option>
+            <option value="eth1-02">eth1-02</option>
+            <option value="eth1">eth1</option>
+            <option value="eth2">eth2</option>
+        </select><br>
+        <label for="interface3-ipv4-address">Interface 3 IPv4 Address:</label>
+        <input type="text" id="interface3-ipv4-address" name="interface3-ipv4-address"><br>
+        <label for="interface3-ipv4-net-mask">Interface 3 IPv4 Net Mask:</label>
+        <input type="text" id="interface3-ipv4-net-mask" name="interface3-ipv4-net-mask"><br>
+        <div class="ipv6-config">
+            <label for="interface3-ipv6-address">Interface 3 IPv6 Address:</label>
+            <input type="text" id="interface3-ipv6-address" name="interface3-ipv6-address"><br>
+            <label for="interface3-ipv6-net-mask">Interface 3 IPv6 Net Mask:</label>
+            <input type="text" id="interface3-ipv6-net-mask" name="interface3-ipv6-net-mask"><br>
+        </div>
+        <label for="interface3-topology">Interface 3 Topology:</label>
+        <select id="interface3-topology" name="interface3-topology">
+            <option value="internal">internal</option>
+            <option value="external">external</option>
+        </select><br>
+-->
+        <!-- Button to generate the interface configuration command -->
+<!--        <button type="button" onclick="generateInterfaceCommand()">Generate Command</button>
+        <pre id="interface-command-output"></pre>
+    </div>
+-->
+
+    </div>
+
     <div id="gateway-section" class="section" style="display:none;">
         <h3>Gateway Configuration</h3>
         <form>
