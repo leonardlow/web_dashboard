@@ -1,220 +1,25 @@
-<!DOCTYPE html>
 
-<!-- v01 - 20250303 - LL -->
-<!-- v02 - 20250305 - LL -->
-<!-- v03 - 20250307 - LL -->
-<!-- v04 - 20250318 - LL -->
-<!-- v05 - 20250320 - LL -->
-<!-- v06 - 20250321 - LL -->
-<!-- v07 - 20250325 - LL -->
-<!-- v08 - 20250328 - LL -->
-<!-- v09 - 20250402 - LL - removed logging feature -->
-<!-- v10 - 20250402 - LL - removed cluster interface feature -->
-<!-- v11 - 20250403 - LL - removed topology selection. hardcoded instead -->
-<!-- v12 - 20250403 - LL - added instructions -->
-<!-- v13 - 20250423 - LL - updated model appliance to config -->
-<!-- v14 - 20250430 - LL - update anti-spoofing default to 'true' -->
-
-<html lang="en">
-<head><style>
-    body {
-      font-family: Arial, sans-serif;
-      padding: 20px;
-    }
-    h1 {
-      text-align: center;
-    }
-    .section {
-      margin-bottom: 40px;
-    }
-    .section h2 {
-      border-bottom: 2px solid #ccc;
-      padding-bottom: 10px;
-    }
-    .bookmarks {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-    }
-    .bookmark {
-      border: 1px solid #ccc;
-      padding: 10px;
-      width: 200px;
-      text-align: center;
-      background-color: #fff;
-    }
-
-    /* Category Colors */
-    .search         { background-color: #e7feff; } /* Bubbles */
-    .intake         { background-color: #f0f8ff; } /* Light blue */
-    .pronghorn      { background-color: #a1caf1; } /* Baby blue */
-    .tools          { background-color: #e6e6fa; } /* Light lavender */
-    .fault-mgmt     { background-color: #f0f8ff; } /* Baby blue */
-    .smartlog       { background-color: #fa70bf; } /* Magenta */
-    .smartconsole   { background-color: #ed9bfc; } /* Magenta-ish */
-    .stock-price    { display: flex; gap: 20px; background-color: #808080; padding: 20px; flex-wrap: wrap; }
-
-    .tradingview-widget-container {
-      width: 180px;
-      height: 130px;
-      cursor: pointer;
-      text-align: center;
-      background-color: #fff;
-      padding: 10px;
-      border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    }
-
-    .stock-details {
-      flex: 1;
-      min-width: 400px;
-      height: 500px;
-    }
-
-    iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
-    .tradingview-widget-container:hover {
-      background-color: #dddddd;
-      border-radius: 8px;
-      transition: background-color 0.3s ease;
-    }
-
-    #loader {
-      display: none;
-      text-align: center;
-      padding: 20px;
-      color: white;
-      font-weight: bold;
-    }  
-  </style>
-
+<head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cluster Builder Input Form</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 20px; }
-        .section { display: none; margin-bottom: 20px; }
-        .section.active { display: block; }
-        .nav { margin-bottom: 20px; }
-        .nav button { margin-right: 10px; }
-        .dynamic-logging { margin-top: 10px; }
-		.version {
-			font-size: 0.67em; /* Adjust the size as needed */
-			display: inline-block;
-			margin-left: 10px; /* Optional: Add some space between the title and version */
-		}
-        pre { white-space: pre-wrap; word-wrap: break-word; }
-        .ipv6-config { display: none; }
-
-    </style>
-    <script>
-        // Function to show a specific section based on the button clicked
-        function showSection(sectionId) {
-            const sections = document.querySelectorAll('.section');
-            sections.forEach(section => section.classList.remove('active'));
-            document.getElementById(sectionId).classList.add('active');
-        }
-
-
-        // Function to dynamically add logging server input fields
-<!--        function addLoggingServer() { -->
-<!--            const container = document.getElementById('logging-servers'); -->
-<!--            const index = container.children.length + 1; -->
-<!--            const div = document.createElement('div'); -->
-<!--            div.className = 'dynamic-logging'; -->
-<!--            div.innerHTML = ` -->
-<!--                <label for="logging-server-${index}">Logging Server ${index}:</label> -->
-<!--                <input type="text" id="logging-server-${index}" name="logging-server-${index}"> -->
-<!--                <label for="backup-server-${index}">Backup Server:</label> -->
-<!--               <input type="checkbox" id="backup-server-${index}" name="backup-server-${index}"> -->
-<!--            `; -->
-<!--            container.appendChild(div); -->
-        		
-
-        // Function to toggle the display of IPv6 configuration fields
-        function toggleIPv6Config() {
-            const ipv6Checkbox = document.getElementById('enable-ipv6');
-            const ipv6Config = document.querySelectorAll('.ipv6-config');
-            ipv6Config.forEach(config => {
-                config.style.display = ipv6Checkbox.checked ? 'block' : 'none';
-            });
-        }
-
-        // Function to generate the cluster configuration string
-        function generateString() {
-            const clusterName = document.getElementById('cluster-name').value;
-            const version = document.getElementById('version').value;
-            const ipAddress = document.getElementById('ip-address').value;
-            const ipMaskLength = document.getElementById('ip-mask-length').value;
-            const hardware = document.getElementById('hardware').value;
-            const engineerName = document.getElementById('engineer-name').value;
-            const useVirtualMac = document.getElementById('use-virtual-mac').checked ? 'true' : 'false';
-            const member1Name = document.getElementById('member1-name').value;
-            const member1MgmtName = document.getElementById('member1-mgmt-name').value;
-            const member1MgmtIpv4 = document.getElementById('member1-mgmt-ipv4').value;
-            const member1MgmtMask = document.getElementById('member1-mgmt-mask').value;
-<!--            const member1Topology = document.getElementById('member1-topology').value; -->
-            const member2Name = document.getElementById('member2-name').value;
-            const member2MgmtName = document.getElementById('member2-mgmt-name').value;
-            const member2MgmtIpv4 = document.getElementById('member2-mgmt-ipv4').value;
-            const member2MgmtMask = document.getElementById('member2-mgmt-mask').value;
-<!--            const member2Topology = document.getElementById('member2-topology').value; -->
-
-            const configString = `add simple-cluster name ${clusterName} version ${version} ip-address ${ipAddress} os-name Gaia hardware ${hardware} cluster-mode cluster-xl-ha firewall true vpn false ips true anti-bot false anti-virus false application-control false url-filtering false interfaces.1.name Mgmt interfaces.1.ip-address ${ipAddress} interfaces.1.mask-length ${ipMaskLength} interfaces.1.interface-type private interfaces.1.topology internal interfaces.1.anti-spoofing true members.1.name ${member1Name} members.1.one-time-password vpn123 members.1.ipv4-address ${member1MgmtIpv4} members.1.interfaces.1.name ${member1MgmtName} members.1.interfaces.1.ipv4-address ${member1MgmtIpv4} members.1.interfaces.1.ipv4-mask-length ${member1MgmtMask} members.1.interfaces.1.topology internal members.2.name ${member2Name} members.2.one-time-password vpn123 members.2.ipv4-address ${member2MgmtIpv4} members.2.interfaces.1.name ${member2MgmtName} members.2.interfaces.1.ipv4-address ${member2MgmtIpv4} members.2.interfaces.1.ipv4-mask-length ${member2MgmtMask} members.2.interfaces.1.topology internal cluster-settings.track-changes-of-cluster-members log cluster-settings.state-synchronization.enabled true cluster-settings.state-synchronization.delayed true cluster-settings.state-synchronization.delayed-seconds 3 cluster-settings.use-virtual-mac ${useVirtualMac} comments "pending integration - ${engineerName}"`;
-            document.getElementById('config-output').textContent = configString.trim();
-        }
-
-        // Function to generate SIC commands for cluster members
-        function generateSicCommand() {
-            const member1Name = document.getElementById('member1-name').value;
-            const member2Name = document.getElementById('member2-name').value;
-            const sicCommand1 = `test-sic-status name "${member1Name}"`;
-            const sicCommand2 = `test-sic-status name "${member2Name}"`;
-            document.getElementById('sic-command-output').textContent = `${sicCommand1}\n${sicCommand2}`;
-        }
-
-        // Function to generate interface configuration command
-        function generateInterfaceCommand() {
-            const clusterName = document.getElementById('cluster-name-interfaces').value;
-            const interface2Name = document.getElementById('interface2-name').value;
-            const interface2Ipv4Address = document.getElementById('interface2-ipv4-address').value;
-            const interface2Ipv4NetMask = document.getElementById('interface2-ipv4-net-mask').value;
-            const interface2Ipv6Address = document.getElementById('interface2-ipv6-address').value;
-            const interface2Ipv6NetMask = document.getElementById('interface2-ipv6-net-mask').value;
-            const interface2Topology = document.getElementById('interface2-topology').value;
-            const interface3Name = document.getElementById('interface3-name').value;
-            const interface3Ipv4Address = document.getElementById('interface3-ipv4-address').value;
-            const interface3Ipv4NetMask = document.getElementById('interface3-ipv4-net-mask').value;
-            const interface3Ipv6Address = document.getElementById('interface3-ipv6-address').value;
-            const interface3Ipv6NetMask = document.getElementById('interface3-ipv6-net-mask').value;
-            const interface3Topology = document.getElementById('interface3-topology').value;
-            const enableIPv6 = document.getElementById('enable-ipv6').checked;
-            let command = `set simple-cluster name ${clusterName} interfaces.2.name ${interface2Name} interfaces.2.ipv4-address ${interface2Ipv4Address} interfaces.2.ipv4-net-mask ${interface2Ipv4NetMask} interfaces.2.topology ${interface2Topology} interfaces.3.name ${interface3Name} interfaces.3.ipv4-address ${interface3Ipv4Address} interfaces.3.ipv4-net-mask ${interface3Ipv4NetMask} interfaces.3.topology ${interface3Topology}`;
-            if (enableIPv6) {
-                command += ` interfaces.2.ipv6-address ${interface2Ipv6Address} interfaces.2.ipv6-net-mask ${interface2Ipv6NetMask} interfaces.3.ipv6-address ${interface3Ipv6Address} interfaces.3.ipv6-net-mask ${interface3Ipv6NetMask}`;
-            }
-            document.getElementById('interface-command-output').textContent = command.trim();
-        }
-
-        // Function to get interfaces for cluster members
-        function getInterfaces() {
-            const clusterName = document.getElementById('cluster-name').value;
-            const member1Name = document.getElementById('member1-name').value; 
-            const member2Name = document.getElementById('member2-name').value;
-            const getInterfacesCommand0 = `get-interfaces target-name "${clusterName}" with-topology false`;
-            const getInterfacesCommand1 = `get-interfaces target-name "${member1Name}" with-topology false`;
-            const getInterfacesCommand2 = `get-interfaces target-name "${member2Name}" with-topology false`;
-            document.getElementById('sic-command-output').textContent = `${getInterfacesCommand0}`;
-			<!-- {getInterfacesCommand1}\n${getInterfacesCommand2}`; -->
-        }
-    </script>
+    <title>Cluster/Gateway Builder</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body>
-    <h2>Select Type</h2>
+<body class="bg-gray-100 min-h-screen text-gray-800">
+    <div class="max-w-4xl mx-auto px-4 py-8">
+        <h1 class="text-3xl font-bold text-center text-blue-700 mb-6">Cluster/Gateway Builder</h1>
+
+        <div class="bg-white rounded-lg shadow-md p-6 space-y-6">
+            <div>
+                <h2 class="text-xl font-semibold mb-4">Choose Build Type</h2>
+                <div class="flex space-x-4">
+                    <label><input type="radio" name="buildType" value="cluster" checked class="mr-2">Cluster</label>
+                    <label><input type="radio" name="buildType" value="gateway" class="mr-2">Gateway</label>
+                </div>
+            </div>
+
+            <div id="cluster-section" class="space-y-4">
+<h2>Select Type</h2>
     <label><input type="radio" name="buildType" value="cluster" checked> Cluster</label>
     <label><input type="radio" name="buildType" value="gateway"> Gateway</label>
 
@@ -458,7 +263,12 @@
         <label>Generated Command:</label><br>
         <textarea id="gateway-command-output" rows="6" cols="100" readonly></textarea>
 
-        <script>
+        
+
+        </form>
+    </div>
+
+    <script>
         function generateGatewayCommand() {
             const name = document.querySelector('[name="gw-name"]').value.trim();
             const ip = document.querySelector('[name="gw-ip"]').value.trim();
@@ -487,33 +297,8 @@
             document.getElementById("gateway-command-output").value = command;
         }
         </script>
-
-        </form>
+            </div>
+        </div>
     </div>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const clusterSection = document.getElementById("cluster-section");
-            const gatewaySection = document.getElementById("gateway-section");
-            const radios = document.getElementsByName("buildType");
-
-            function toggleSections() {
-                if (radios[0].checked) {
-                    clusterSection.style.display = "block";
-                    gatewaySection.style.display = "none";
-                } else {
-                    clusterSection.style.display = "none";
-                    gatewaySection.style.display = "block";
-                }
-            }
-
-            radios.forEach(radio => {
-                radio.addEventListener("change", toggleSections);
-            });
-
-            toggleSections();
-        });
-    </script>
 </body>
 </html>
-
