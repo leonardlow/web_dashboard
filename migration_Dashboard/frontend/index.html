@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Firewall Migration Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav>
+        <button onclick="showOldPair()">Old Pair</button>
+        <button onclick="showNewPair()">New Pair</button>
+    </nav>
+    <div id="content">
+        be displayed here -->
+    </div>
+    <div id="input-form">
+        <h2>Enter Firewall Information</h2>
+        <form id="firewall-form">
+            <label for="old_ipv4">Old Firewall IPv4:</label>
+            <input type="text" id="old_ipv4" name="old_ipv4"><br><br>
+            <label for="old_ipv6">Old Firewall IPv6:</label>
+            <input type="text" id="old_ipv6" name="old_ipv6"><br><br>
+            <label for="new_ipv4">New Firewall IPv4:</label>
+            <input type="text" id="new_ipv4" name="new_ipv4"><br><br>
+            <label for="new_ipv6">New Firewall IPv6:</label>
+            <input type="text" id="new_ipv6" name="new_ipv6"><br><br>
+            <button type="button" onclick="submitForm()">Submit</button>
+        </form>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

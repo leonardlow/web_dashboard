@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.log
+
+# Flask
+instance/
+*.db
+*.sqlite3
+.env
+
+# Front-end
+node_modules/
+*.map
+
+# Backup & System
+*.bak
+*.tmp
+*.swp
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDEs
+.vscode/
+*.code-workspace
+.idea/
