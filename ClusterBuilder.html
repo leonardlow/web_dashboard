@@ -14,6 +14,7 @@
 <!-- v12 - 20250403 - LL - added instructions -->
 <!-- v13 - 20250423 - LL - updated model appliance to config -->
 <!-- v14 - 20250430 - LL - update anti-spoofing default to 'true' -->
+<!-- v15 - 20250505 - added Gateway/Cluster toggle and gateway input form -->
 
 <html lang="en">
 <head>
@@ -139,6 +140,34 @@
     </script>
 </head>
 <body>
+    <h2>Select Type</h2>
+    <label><input type="radio" name="buildType" value="cluster" checked> Cluster</label>
+    <label><input type="radio" name="buildType" value="gateway"> Gateway</label>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const clusterSection = document.getElementById("cluster-section");
+            const gatewaySection = document.getElementById("gateway-section");
+            const radios = document.getElementsByName("buildType");
+
+            function toggleSections() {
+                if (radios[0].checked) {
+                    clusterSection.style.display = "block";
+                    gatewaySection.style.display = "none";
+                } else {
+                    clusterSection.style.display = "none";
+                    gatewaySection.style.display = "block";
+                }
+            }
+
+            radios.forEach(radio => {
+                radio.addEventListener("change", toggleSections);
+            });
+
+            toggleSections(); // Initial call
+        });
+    </script>
+
     <h1>Cluster Builder Input Form <span class="version">v14</span></h1>
     <div class="nav">
         <!-- Navigation buttons to switch between sections -->
@@ -348,5 +377,19 @@
         <pre id="interface-command-output"></pre>
     </div>
 -->
+
+<div id="gateway-section" class="section">
+    <h3>Gateway Configuration</h3>
+    <label>Name: <input type="text" id="gw-name"></label><br>
+    <label>IP Address: <input type="text" id="gw-ip"></label><br>
+    <label>Send Logs To Server: <input type="text" id="gw-primary-log-server"></label><br>
+    <label>Send Logs To Backup Server: <input type="text" id="gw-backup-log-server"></label><br>
+    <label>Free Disk Space Threshold (stop logging): <input type="number" id="gw-stop-logging-thresh"></label><br>
+    <label>Free Disk Space Threshold (alert): <input type="number" id="gw-alert-thresh"></label><br>
+    <label>Free Disk Space Threshold (delete): <input type="number" id="gw-delete-thresh"></label><br>
+    <label>OS Name: <input type="text" id="gw-os-name" value="Gaia"></label><br>
+    <label>Version: <input type="text" id="gw-version" value="R81.10"></label><br>
+</div>
+
 </body>
 </html>
