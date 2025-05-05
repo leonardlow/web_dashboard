@@ -365,11 +365,55 @@
             <label>IP Address: <input type="text" name="gw-ip"></label><br>
             <label>Send Logs To Server: <input type="text" name="gw-primary-log-server"></label><br>
             <label>Send Logs To Backup Server: <input type="text" name="gw-backup-log-server"></label><br>
-            <label>Stop Logging Threshold (%): <input type="number" name="gw-stop-thresh"></label><br>
-            <label>Alert Threshold (%): <input type="number" name="gw-alert-thresh"></label><br>
-            <label>Delete Threshold (%): <input type="number" name="gw-delete-thresh"></label><br>
-            <label>OS Name: <input type="text" name="gw-os" value="Gaia"></label><br>
-            <label>Version: <input type="text" name="gw-version" value="R81.10"></label><br>
+            <input type="hidden" name="gw-stop-thresh" value="10">
+
+            <input type="hidden" name="gw-alert-thresh" value="11">
+
+            <input type="hidden" name="gw-delete-thresh" value="20">
+
+            <input type="hidden" name="gw-os" value="Gaia">
+
+            <label>Version:
+    <select name="gw-version">
+        <option value="R81.10">R81.10</option>
+        <option value="R81.20">R81.20</option>
+    </select></label><br>
+        
+        <button type="button" onclick="generateGatewayCommand()">Generate Command</button>
+        <br><br>
+        <label>Generated Command:</label><br>
+        <textarea id="gateway-command-output" rows="6" cols="100" readonly></textarea>
+
+        <script>
+        function generateGatewayCommand() {
+            const name = document.querySelector('[name="gw-name"]').value.trim();
+            const ip = document.querySelector('[name="gw-ip"]').value.trim();
+            const logPrimary = document.querySelector('[name="gw-primary-log-server"]').value.trim();
+            const logBackup = document.querySelector('[name="gw-backup-log-server"]').value.trim();
+            const stopThresh = document.querySelector('[name="gw-stop-thresh"]').value.trim();
+            const alertThresh = document.querySelector('[name="gw-alert-thresh"]').value.trim();
+            const deleteThresh = document.querySelector('[name="gw-delete-thresh"]').value.trim();
+            const os = document.querySelector('[name="gw-os"]').value.trim();
+            const version = document.querySelector('[name="gw-version"]').value.trim();
+
+            let command = `add simple-gateway name ${name} ip-address ${ip} ips true`;
+            command += ` send-logs-to-server ${logPrimary}`;
+            command += ` send-logs-to-backup-server ${logBackup}`;
+            command += ` logs-settings.free-disk-space-metrics percent`;
+            command += ` logs-settings.forward-logs-to-log-server true`;
+            command += ` logs-settings.rotate-log-on-schedule true`;
+            command += ` logs-settings.stop-logging-when-free-disk-space-below true`;
+            command += ` logs-settings.stop-logging-when-free-disk-space-below-threshold ${stopThresh}`;
+            command += ` logs-settings.alert-when-free-disk-space-below true`;
+            command += ` logs-settings.alert-when-free-disk-space-below-threshold ${alertThresh}`;
+            command += ` logs-settings.delete-when-free-disk-space-below true`;
+            command += ` logs-settings.delete-when-free-disk-space-below-threshold ${deleteThresh}`;
+            command += ` os-name ${os} version ${version}`;
+
+            document.getElementById("gateway-command-output").value = command;
+        }
+        </script>
+
         </form>
     </div>
 
