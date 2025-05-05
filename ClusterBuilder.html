@@ -16,7 +16,81 @@
 <!-- v14 - 20250430 - LL - update anti-spoofing default to 'true' -->
 
 <html lang="en">
-<head>
+<head><style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+    }
+    .section {
+      margin-bottom: 40px;
+    }
+    .section h2 {
+      border-bottom: 2px solid #ccc;
+      padding-bottom: 10px;
+    }
+    .bookmarks {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .bookmark {
+      border: 1px solid #ccc;
+      padding: 10px;
+      width: 200px;
+      text-align: center;
+      background-color: #fff;
+    }
+
+    /* Category Colors */
+    .search         { background-color: #e7feff; } /* Bubbles */
+    .intake         { background-color: #f0f8ff; } /* Light blue */
+    .pronghorn      { background-color: #a1caf1; } /* Baby blue */
+    .tools          { background-color: #e6e6fa; } /* Light lavender */
+    .fault-mgmt     { background-color: #f0f8ff; } /* Baby blue */
+    .smartlog       { background-color: #fa70bf; } /* Magenta */
+    .smartconsole   { background-color: #ed9bfc; } /* Magenta-ish */
+    .stock-price    { display: flex; gap: 20px; background-color: #808080; padding: 20px; flex-wrap: wrap; }
+
+    .tradingview-widget-container {
+      width: 180px;
+      height: 130px;
+      cursor: pointer;
+      text-align: center;
+      background-color: #fff;
+      padding: 10px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .stock-details {
+      flex: 1;
+      min-width: 400px;
+      height: 500px;
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    .tradingview-widget-container:hover {
+      background-color: #dddddd;
+      border-radius: 8px;
+      transition: background-color 0.3s ease;
+    }
+
+    #loader {
+      display: none;
+      text-align: center;
+      padding: 20px;
+      color: white;
+      font-weight: bold;
+    }  
+  </style>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cluster Builder Input Form</title>
@@ -144,7 +218,7 @@
     <label><input type="radio" name="buildType" value="cluster" checked> Cluster</label>
     <label><input type="radio" name="buildType" value="gateway"> Gateway</label>
 
-    <div id="cluster-section" class="section">
+    <div id="cluster-section" class="section bookmark tools">
         
     <h1>Cluster Builder Input Form <span class="version">v14</span></h1>
     <div class="nav">
@@ -358,7 +432,7 @@
 
     </div>
 
-    <div id="gateway-section" class="section" style="display:none;">
+    <div id="gateway-section" class="section bookmark tools" style="display:none;">
         <h3>Gateway Configuration</h3>
         <form>
             <label>Name: <input type="text" name="gw-name"></label><br>
