@@ -14,6 +14,9 @@
 <!-- v12 - 20250403 - LL - added instructions -->
 <!-- v13 - 20250423 - LL - updated model appliance to config -->
 <!-- v14 - 20250430 - LL - update anti-spoofing default to 'true' -->
+<!-- v15 - 20250505 - LL - added gateway creation (for maestro) -->
+<!-- v15.1 - 20250506 - LL - fixed gateway script placement + layout alignment -->
+
 
 <html lang="en">
 <head>
@@ -191,8 +194,8 @@ button {
 </head>
 <body>
 <div class="centered-container">
-    <img src="images/clusterBuild.png" alt="Cluster Builder" style="height: 200px;"> <span class="version">v15</span>
-<div class="nav">
+    <img src="images/clusterBuild.png" alt="Cluster Builder" style="height: 200px;"> <span class="version">v15.1</span>
+	<div class="nav">
         <!-- Navigation buttons to switch between sections -->
         <button onclick="showSection('gateway-section')">0 - Gateway Build</button>
 		<button onclick="showSection('cluster-config')">1 - Cluster Build</button>
@@ -402,78 +405,76 @@ button {
     </div>
 -->
 </div>
-<div class="section active" id="gateway-section">
-<div class="centered-container">
-    <h2>Gateway Build</h2>
-    <label>Gateway Name:</label>
-    <input type="text" id="gw-name"><br>
+	<div class="section active" id="gateway-section">
+		<div class="centered-container">
+			<h2>Gateway Build</h2>
+			<label>Gateway Name:</label>
+			<input type="text" id="gw-name"><br>
 
-    <label>IP Address:</label>
-    <input type="text" id="gw-ip"><br>
+			<label>IP Address:</label>
+			<input type="text" id="gw-ip"><br>
 
-    <label>Version:</label>
-    <select id="gw-version">
-        <option value="R81.10">R81.10</option>
-        <option value="R81.20">R81.20</option>
-    </select><br>
+			<label>Version:</label>
+			<select id="gw-version">
+				<option value="R81.10">R81.10</option>
+				<option value="R81.20">R81.20</option>
+			</select><br>
 
-    <input type="hidden" id="gw-stop-thresh" value="10">
-    <input type="hidden" id="gw-alert-thresh" value="11">
-    <input type="hidden" id="gw-delete-thresh" value="20">
-    <input type="hidden" id="gw-os" value="Gaia">
+			<input type="hidden" id="gw-stop-thresh" value="10">
+			<input type="hidden" id="gw-alert-thresh" value="11">
+			<input type="hidden" id="gw-delete-thresh" value="20">
+			<input type="hidden" id="gw-os" value="Gaia">
 
-    <label>Engineer Name:</label>
-    <input type="text" id="gw-engineer-name"><br>
+			<label>Engineer Name:</label>
+			<input type="text" id="gw-engineer-name"><br>
 
-    <hr style="margin: 20px 0;">
-    <button onclick="generateGatewayCommand()">Generate Gateway Command</button><br><br>
-    <textarea id="gateway-command-output" rows="5" cols="100" readonly></textarea><br>
-    <button onclick="copyGatewayCommand()">Copy to Clipboard</button>
-</div>
+			<hr style="margin: 20px 0;">
+			<button onclick="generateGatewayCommand()">Generate Gateway Command</button><br><br>
+			<textarea id="gateway-command-output" rows="5" cols="100" readonly></textarea><br>
+			<button onclick="copyGatewayCommand()">Copy to Clipboard</button>
+		</div>
+
+	</div>
+	<script>
+
+		function generateGatewayCommand() {
+			const name = document.getElementById('gw-name').value.trim();
+			const ip = document.getElementById('gw-ip').value.trim();
+			const version = document.getElementById('gw-version').value.trim();
+			const stopThresh = document.getElementById('gw-stop-thresh').value.trim();
+			const alertThresh = document.getElementById('gw-alert-thresh').value.trim();
+			const deleteThresh = document.getElementById('gw-delete-thresh').value.trim();
+			const os = document.getElementById('gw-os').value.trim();
+			const engineer = document.getElementById('gw-engineer-name').value.trim();
+
+			const command =
+				`add simple-gateway name ${name} ip-address ${ip} ips true version ${version} ` +
+				`one-time-password vpn123 comments "pending integration - ${engineer}" ` +
+				`logs-settings.free-disk-space-metrics percent ` +
+				`logs-settings.forward-logs-to-log-server true ` +
+				`logs-settings.rotate-log-on-schedule true ` +
+				`logs-settings.stop-logging-when-free-disk-space-below true ` +
+				`logs-settings.stop-logging-when-free-disk-space-below-threshold ${stopThresh} ` +
+				`logs-settings.alert-when-free-disk-space-below true ` +
+				`logs-settings.alert-when-free-disk-space-below-threshold ${alertThresh} ` +
+				`logs-settings.delete-when-free-disk-space-below true ` +
+				`logs-settings.delete-when-free-disk-space-below-threshold ${deleteThresh} ` +
+				`os-name ${os}`;
+
+			document.getElementById("gateway-command-output").value = command;
+		}
+
+		function copyGatewayCommand() {
+			const textarea = document.getElementById("gateway-command-output");
+			textarea.select();
+			textarea.setSelectionRange(0, 99999);
+			document.execCommand("copy");
+			alert("Gateway command copied to clipboard!");
+		}
 
 
+	</script>
 
-
-<script>
-
-function generateGatewayCommand() {
-    const name = document.getElementById('gw-name').value.trim();
-    const ip = document.getElementById('gw-ip').value.trim();
-    const version = document.getElementById('gw-version').value.trim();
-    const stopThresh = document.getElementById('gw-stop-thresh').value.trim();
-    const alertThresh = document.getElementById('gw-alert-thresh').value.trim();
-    const deleteThresh = document.getElementById('gw-delete-thresh').value.trim();
-    const os = document.getElementById('gw-os').value.trim();
-    const engineer = document.getElementById('gw-engineer-name').value.trim();
-
-    const command =
-        `add simple-gateway name ${name} ip-address ${ip} ips true version ${version} ` +
-        `one-time-password vpn123 comments "pending integration - ${engineer}" ` +
-        `logs-settings.free-disk-space-metrics percent ` +
-        `logs-settings.forward-logs-to-log-server true ` +
-        `logs-settings.rotate-log-on-schedule true ` +
-        `logs-settings.stop-logging-when-free-disk-space-below true ` +
-        `logs-settings.stop-logging-when-free-disk-space-below-threshold ${stopThresh} ` +
-        `logs-settings.alert-when-free-disk-space-below true ` +
-        `logs-settings.alert-when-free-disk-space-below-threshold ${alertThresh} ` +
-        `logs-settings.delete-when-free-disk-space-below true ` +
-        `logs-settings.delete-when-free-disk-space-below-threshold ${deleteThresh} ` +
-        `os-name ${os}`;
-
-    document.getElementById("gateway-command-output").value = command;
-}
-
-function copyGatewayCommand() {
-    const textarea = document.getElementById("gateway-command-output");
-    textarea.select();
-    textarea.setSelectionRange(0, 99999);
-    document.execCommand("copy");
-    alert("Gateway command copied to clipboard!");
-}
-
-</div>
-</script>
-</div>
 </body>
 
 </html>
