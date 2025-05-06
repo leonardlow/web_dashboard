@@ -17,10 +17,43 @@
 
 <html lang="en">
 <head>
+    
+    <link rel="icon" type="image/png" href="images/cpfw_favicon.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cluster Builder Input Form</title>
-    <style>
+    
+<style>
+label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+input[type="text"], select, textarea {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    padding: 6px;
+    margin-bottom: 10px;
+    width: 100%;
+    max-width: 500px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+button {
+    margin-top: 10px;
+    padding: 6px 12px;
+}
+</style>
+
+<style>
+.centered-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+</style>
+
+<style>
         body { font-family: Arial, sans-serif; margin: 20px; }
         .section { display: none; margin-bottom: 20px; }
         .section.active { display: block; }
@@ -35,7 +68,25 @@
         pre { white-space: pre-wrap; word-wrap: break-word; }
         .ipv6-config { display: none; }
 
-    </style>
+    
+<style>
+input[type="text"], select, textarea {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    padding: 6px;
+    margin-bottom: 10px;
+    width: 100%;
+    max-width: 500px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+button {
+    margin-top: 10px;
+    padding: 6px 12px;
+}
+</style>
+</style>
     <script>
         // Function to show a specific section based on the button clicked
         function showSection(sectionId) {
@@ -139,8 +190,9 @@
     </script>
 </head>
 <body>
-    <h1>Cluster Builder Input Form <span class="version">v15</span></h1>
-    <div class="nav">
+<div class="centered-container">
+    <img src="images/clusterBuild.png" alt="Cluster Builder" style="height: 200px;"> <span class="version">v15</span>
+<div class="nav">
         <!-- Navigation buttons to switch between sections -->
         <button onclick="showSection('gateway-section')">0 - Gateway Build</button>
 		<button onclick="showSection('cluster-config')">1 - Cluster Build</button>
@@ -351,6 +403,7 @@
 -->
 </div>
 <div class="section active" id="gateway-section">
+<div class="centered-container">
     <h2>Gateway Build</h2>
     <label>Gateway Name:</label>
     <input type="text" id="gw-name"><br>
@@ -376,6 +429,9 @@
     <button onclick="generateGatewayCommand()">Generate Gateway Command</button><br><br>
     <textarea id="gateway-command-output" rows="5" cols="100" readonly></textarea><br>
     <button onclick="copyGatewayCommand()">Copy to Clipboard</button>
+</div>
+
+
 
 
 <script>
@@ -417,7 +473,7 @@ function copyGatewayCommand() {
 
 </div>
 </script>
-
+</div>
 </body>
 
 </html>
