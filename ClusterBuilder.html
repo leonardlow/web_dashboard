@@ -16,81 +16,7 @@
 <!-- v14 - 20250430 - LL - update anti-spoofing default to 'true' -->
 
 <html lang="en">
-<head><style>
-    body {
-      font-family: Arial, sans-serif;
-      padding: 20px;
-    }
-    h1 {
-      text-align: center;
-    }
-    .section {
-      margin-bottom: 40px;
-    }
-    .section h2 {
-      border-bottom: 2px solid #ccc;
-      padding-bottom: 10px;
-    }
-    .bookmarks {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-    }
-    .bookmark {
-      border: 1px solid #ccc;
-      padding: 10px;
-      width: 200px;
-      text-align: center;
-      background-color: #fff;
-    }
-
-    /* Category Colors */
-    .search         { background-color: #e7feff; } /* Bubbles */
-    .intake         { background-color: #f0f8ff; } /* Light blue */
-    .pronghorn      { background-color: #a1caf1; } /* Baby blue */
-    .tools          { background-color: #e6e6fa; } /* Light lavender */
-    .fault-mgmt     { background-color: #f0f8ff; } /* Baby blue */
-    .smartlog       { background-color: #fa70bf; } /* Magenta */
-    .smartconsole   { background-color: #ed9bfc; } /* Magenta-ish */
-    .stock-price    { display: flex; gap: 20px; background-color: #808080; padding: 20px; flex-wrap: wrap; }
-
-    .tradingview-widget-container {
-      width: 180px;
-      height: 130px;
-      cursor: pointer;
-      text-align: center;
-      background-color: #fff;
-      padding: 10px;
-      border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    }
-
-    .stock-details {
-      flex: 1;
-      min-width: 400px;
-      height: 500px;
-    }
-
-    iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
-    .tradingview-widget-container:hover {
-      background-color: #dddddd;
-      border-radius: 8px;
-      transition: background-color 0.3s ease;
-    }
-
-    #loader {
-      display: none;
-      text-align: center;
-      padding: 20px;
-      color: white;
-      font-weight: bold;
-    }  
-  </style>
-
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cluster Builder Input Form</title>
@@ -212,23 +138,17 @@
         }
     </script>
 </head>
-
 <body>
-    <h2>Select Type</h2>
-    <label><input type="radio" name="buildType" value="cluster" checked> Cluster</label>
-    <label><input type="radio" name="buildType" value="gateway"> Gateway</label>
-
-    <div id="cluster-section" class="section bookmark tools">
-        
-    <h1>Cluster Builder Input Form <span class="version">v14</span></h1>
+    <h1>Cluster Builder Input Form <span class="version">v15</span></h1>
     <div class="nav">
         <!-- Navigation buttons to switch between sections -->
-        <button onclick="showSection('cluster-config')">1 - Cluster Build</button>
+        <button onclick="showSection('gateway-section')">0 - Gateway Build</button>
+		<button onclick="showSection('cluster-config')">1 - Cluster Build</button>
         <button onclick="showSection('sic-validation')">2 - Members: SIC/Interfaces</button>
         <button onclick="showSection('instructions')">3 - Instructions</button>
         <!-- <button onclick="showSection('configure-interfaces')">3 - Cluster Interface Update</button> -->
     </div>
-    <div class="section active" id="cluster-config">
+    <div class="section" id="cluster-config">
         <h2>*** This form is to be used to create Checkpoint Firewall Clusters ***</h2>
         <!-- Input fields for cluster configuration -->
         <label for="cluster-name">Cluster Name:</label>
@@ -429,91 +349,75 @@
         <pre id="interface-command-output"></pre>
     </div>
 -->
+</div>
+<div class="section active" id="gateway-section">
+    <h2>Gateway Build</h2>
+    <label>Gateway Name:</label>
+    <input type="text" id="gw-name"><br>
 
-    </div>
+    <label>IP Address:</label>
+    <input type="text" id="gw-ip"><br>
 
-    <div id="gateway-section" class="section bookmark tools" style="display:none;">
-        <h3>Gateway Configuration</h3>
-        <form>
-            <label>Name: <input type="text" name="gw-name"></label><br>
-            <label>IP Address: <input type="text" name="gw-ip"></label><br>
-            <label>Send Logs To Server: <input type="text" name="gw-primary-log-server"></label><br>
-            <label>Send Logs To Backup Server: <input type="text" name="gw-backup-log-server"></label><br>
-            <input type="hidden" name="gw-stop-thresh" value="10">
-
-            <input type="hidden" name="gw-alert-thresh" value="11">
-
-            <input type="hidden" name="gw-delete-thresh" value="20">
-
-            <input type="hidden" name="gw-os" value="Gaia">
-
-            <label>Version:
-    <select name="gw-version">
+    <label>Version:</label>
+    <select id="gw-version">
         <option value="R81.10">R81.10</option>
         <option value="R81.20">R81.20</option>
-    </select></label><br>
-        
-        <button type="button" onclick="generateGatewayCommand()">Generate Command</button>
-        <br><br>
-        <label>Generated Command:</label><br>
-        <textarea id="gateway-command-output" rows="6" cols="100" readonly></textarea>
+    </select><br>
 
-        <script>
-        function generateGatewayCommand() {
-            const name = document.querySelector('[name="gw-name"]').value.trim();
-            const ip = document.querySelector('[name="gw-ip"]').value.trim();
-            const logPrimary = document.querySelector('[name="gw-primary-log-server"]').value.trim();
-            const logBackup = document.querySelector('[name="gw-backup-log-server"]').value.trim();
-            const stopThresh = document.querySelector('[name="gw-stop-thresh"]').value.trim();
-            const alertThresh = document.querySelector('[name="gw-alert-thresh"]').value.trim();
-            const deleteThresh = document.querySelector('[name="gw-delete-thresh"]').value.trim();
-            const os = document.querySelector('[name="gw-os"]').value.trim();
-            const version = document.querySelector('[name="gw-version"]').value.trim();
+    <input type="hidden" id="gw-stop-thresh" value="10">
+    <input type="hidden" id="gw-alert-thresh" value="11">
+    <input type="hidden" id="gw-delete-thresh" value="20">
+    <input type="hidden" id="gw-os" value="Gaia">
 
-            let command = `add simple-gateway name ${name} ip-address ${ip} ips true`;
-            command += ` send-logs-to-server ${logPrimary}`;
-            command += ` send-logs-to-backup-server ${logBackup}`;
-            command += ` logs-settings.free-disk-space-metrics percent`;
-            command += ` logs-settings.forward-logs-to-log-server true`;
-            command += ` logs-settings.rotate-log-on-schedule true`;
-            command += ` logs-settings.stop-logging-when-free-disk-space-below true`;
-            command += ` logs-settings.stop-logging-when-free-disk-space-below-threshold ${stopThresh}`;
-            command += ` logs-settings.alert-when-free-disk-space-below true`;
-            command += ` logs-settings.alert-when-free-disk-space-below-threshold ${alertThresh}`;
-            command += ` logs-settings.delete-when-free-disk-space-below true`;
-            command += ` logs-settings.delete-when-free-disk-space-below-threshold ${deleteThresh}`;
-            command += ` os-name ${os} version ${version}`;
+    <label>Engineer Name:</label>
+    <input type="text" id="gw-engineer-name"><br>
 
-            document.getElementById("gateway-command-output").value = command;
-        }
-        </script>
+    <hr style="margin: 20px 0;">
+    <button onclick="generateGatewayCommand()">Generate Gateway Command</button><br><br>
+    <textarea id="gateway-command-output" rows="5" cols="100" readonly></textarea><br>
+    <button onclick="copyGatewayCommand()">Copy to Clipboard</button>
 
-        </form>
-    </div>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const clusterSection = document.getElementById("cluster-section");
-            const gatewaySection = document.getElementById("gateway-section");
-            const radios = document.getElementsByName("buildType");
+<script>
 
-            function toggleSections() {
-                if (radios[0].checked) {
-                    clusterSection.style.display = "block";
-                    gatewaySection.style.display = "none";
-                } else {
-                    clusterSection.style.display = "none";
-                    gatewaySection.style.display = "block";
-                }
-            }
+function generateGatewayCommand() {
+    const name = document.getElementById('gw-name').value.trim();
+    const ip = document.getElementById('gw-ip').value.trim();
+    const version = document.getElementById('gw-version').value.trim();
+    const stopThresh = document.getElementById('gw-stop-thresh').value.trim();
+    const alertThresh = document.getElementById('gw-alert-thresh').value.trim();
+    const deleteThresh = document.getElementById('gw-delete-thresh').value.trim();
+    const os = document.getElementById('gw-os').value.trim();
+    const engineer = document.getElementById('gw-engineer-name').value.trim();
 
-            radios.forEach(radio => {
-                radio.addEventListener("change", toggleSections);
-            });
+    const command =
+        `add simple-gateway name ${name} ip-address ${ip} ips true version ${version} ` +
+        `one-time-password vpn123 comments "pending integration - ${engineer}" ` +
+        `logs-settings.free-disk-space-metrics percent ` +
+        `logs-settings.forward-logs-to-log-server true ` +
+        `logs-settings.rotate-log-on-schedule true ` +
+        `logs-settings.stop-logging-when-free-disk-space-below true ` +
+        `logs-settings.stop-logging-when-free-disk-space-below-threshold ${stopThresh} ` +
+        `logs-settings.alert-when-free-disk-space-below true ` +
+        `logs-settings.alert-when-free-disk-space-below-threshold ${alertThresh} ` +
+        `logs-settings.delete-when-free-disk-space-below true ` +
+        `logs-settings.delete-when-free-disk-space-below-threshold ${deleteThresh} ` +
+        `os-name ${os}`;
 
-            toggleSections();
-        });
-    </script>
+    document.getElementById("gateway-command-output").value = command;
+}
+
+function copyGatewayCommand() {
+    const textarea = document.getElementById("gateway-command-output");
+    textarea.select();
+    textarea.setSelectionRange(0, 99999);
+    document.execCommand("copy");
+    alert("Gateway command copied to clipboard!");
+}
+
+</div>
+</script>
+
 </body>
-</html>
 
+</html>
