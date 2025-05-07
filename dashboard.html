@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Bookmarks Dashboard</title>
+  <link rel="icon" href="images/hae.png">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+    }
+    .section {
+      margin-bottom: 40px;
+    }
+    .section h2 {
+      border-bottom: 2px solid #ccc;
+      padding-bottom: 10px;
+    }
+    .bookmarks {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .bookmark {
+      border: 1px solid #ccc;
+      padding: 10px;
+      width: 200px;
+      text-align: center;
+      background-color: #fff;
+    }
+
+    /* Category Colors */
+    .search         { background-color: #e7feff; } /* Bubbles */
+    .intake         { background-color: #f0f8ff; } /* Light blue */
+    .pronghorn      { background-color: #a1caf1; } /* Baby blue */
+    .tools          { background-color: #e6e6fa; } /* Light lavender */
+    .fault-mgmt     { background-color: #f0f8ff; } /* Baby blue */
+    .smartlog       { background-color: #fa70bf; } /* Magenta */
+    .smartconsole   { background-color: #ed9bfc; } /* Magenta-ish */
+    .stock-price    { display: flex; gap: 20px; background-color: #808080; padding: 20px; flex-wrap: wrap; }
+
+    .tradingview-widget-container {
+      width: 180px;
+      height: 130px;
+      cursor: pointer;
+      text-align: center;
+      background-color: #fff;
+      padding: 10px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .stock-details {
+      flex: 1;
+      min-width: 400px;
+      height: 500px;
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    .tradingview-widget-container:hover {
+      background-color: #dddddd;
+      border-radius: 8px;
+      transition: background-color 0.3s ease;
+    }
+
+    #loader {
+      display: none;
+      text-align: center;
+      padding: 20px;
+      color: white;
+      font-weight: bold;
+    }  
+  </style>
+</head>
+<body>
+  <h1>LL's Dashboard <br>
+    <img src="images/hae.png" alt="Dashboard Logo">
+  </h1>
+
+	<!-- Group 7 -->
+	<!-- Search Section -->
+	<div class="section search">
+	  <h2>Search</h2>
+
+	  <form action="https://www.google.com/search" method="get" target="_blank">
+		<input type="text" name="q" placeholder="Search Google..." required>
+		<button type="submit">Search</button>
+	  </form><br>
+	  
+    <div class="bookmarks">
+	  <div class="bookmark">
+        <a href="https://copilot.cloud.microsoft/" target="_blank">
+		 <img src="images/copilot.jpg" alt="copilot" title="Let's get some">
+		</a>
+      </div>
+
+	  <div class="bookmark">
+        <a href="https://chatgpt.com" target="_blank">
+		 <img src="images/c_gpt.jpg" alt="copilot" title="Let's get some more">
+		</a>
+      </div>
+
+	  <div class="bookmark">
+        <a href="https://lucid.app" target="_blank">
+		 <img src="images/Lucid.jpg" alt="Lucid Charts" title="Lucid Charts">
+		</a>
+      </div>
+	  
+	  <div class="bookmark">
+	    <a href="http://127.0.0.1:5000" target="_blank">
+		 <img src="images/get.jpg" alt="Get Info" title="Collect FW Data">
+		</a>
+	  </div>
+
+	  <div class="bookmark">
+	    <a href="file:///C:\Users\llowjr\OneDrive - T-Mobile USA\WEB\" target="_blank">Web Folder</a>
+	  </div>
+
+	  <div class="bookmark">
+	    <a href="file:///C:\Checkpoint Build" target="_blank">CP Build Scripts</a>
+	  </div>
+	</div>
+
+
+
+  <!-- Group 1 -->
+  <div class="section intake">
+    <h2>Intakes</h2>
+    <div class="bookmarks">
+      <div class="bookmark">
+        <a href="https://leonardlow.github.io/web_dashboard/ClusterBuilder.html" target="_blank">
+		<img src="images/clusterBuild2.png" alt="Cluster Build" title="Cluster Build">
+		</a>
+      </div>	
+	
+      <div class="bookmark">
+        <a href="https://tess.service-now.com/now/nav/ui/classic/params/target/com.glideapp.servicecatalog_cat_item_view.do%3Fv%3D1%26sysparm_id%3D49b451571b75a9105cb65284604bcb1a" target="_blank">DC Intake</a>
+      </div>
+
+      <div class="bookmark">
+        <a href="https://compass.t-mobile.com/compass?id=sc_cat_item&sys_id=32d84ca41b6b4610563a55f5604bcb65&sysparm_category=4df3f88387e155506515bbb9cebb3528" target="_blank">Decom (Velocity)</a>
+      </div>
+
+      <div class="bookmark">
+        <a href="https://networktechnology.atlassian.net/servicedesk/customer/portal/50/group/142/create/606" target="_blank">GigaMon Taps</a>
+      </div>
+	  
+      <div class="bookmark">
+        <a href="https://magentamop-prd.px-prdd106.tke.t-mobile.com/mop-list" target="_blank">
+		<img src="images/mmop.jpg" alt="MMOP" title="Magenta MOP">
+		</a>
+      </div>
+
+      <div class="bookmark">
+        <a href="https://techapps.t-mobile.com/pier" target="_blank">
+		<img src="images/pier.jpg" alt="pier" title="PIER">
+		</a>
+      </div>
+
+      <div class="bookmark">
+        <a href="https://www.netserv.sequoyah.com/Account/Login.aspx?ReturnUrl=%2f" target="_blank">
+		<img src="images/sequoyah.jpg" alt="seq" title="Sequoyah">
+		</a>
+      </div>
+
+      <div class="bookmark">
+        <a href="https://tess.service-now.com/now/sow/home" target="_blank">
+		<img src="images/snow.jpg" alt="snow" title="SNow">
+		</a>
+      </div>
+      <!-- Add more hobby bookmarks here -->
+
+    </div>
+  </div>
+  <!-- Group 2 -->
+  <div class="section pronghorn">
+    <h2>Pronghorn</h2>
+    <div class="bookmarks">
+
+      <div class="bookmark">
+        <a href="https://pronghorn.internal.t-mobile.com/app-epif/" target="_blank">
+		<img src="images/epif.jpg" alt="epif" title="ePIF.">
+		</a>
+      </div>
+
+      <div class="bookmark">
+        <a href="https://pronghorn.internal.t-mobile.com/equipment-builder/#/" target="_blank">
+		<img src="images/eai.jpg" alt="eai" title="Eqpt Builder">
+		</a>
+      </div>
+
+      <div class="bookmark">
+        <a href="https://pronghorn.internal.t-mobile.com/Trailblazer/" target="_blank">
+		<img src="images/eai.jpg" alt="eai" title="TRAILBLAZER">
+		</a>
+      </div>
+
+      <div class="bookmark">
+        <a href="https://pronghorn.internal.t-mobile.com/NetworkViewer/" target="_blank">
+		<img src="images/eai.jpg" alt="eai" title="NET VIEWER">
+		</a>
+      </div>
+
+      <div class="bookmark">
+        <a href="https://pronghorn.internal.t-mobile.com/dns-ui/" target="_blank">
+		<img src="images/DNSAutomation.jpg" alt="DNS" title="DNS Automation">
+		</a>
+      </div>
+
+      <div class="bookmark">
+        <a href="https://pronghorn.internal.t-mobile.com/ipam-ui/" target="_blank">
+		<img src="images/IPAMAutomation.jpg" alt="IPAM" title="IPAM Automation">
+		</a>
+      </div>
+
+      <div class="bookmark">
+        <a href="https://pronghorn.internal.t-mobile.com/" target="_blank">
+		<img src="images/pronghorn.jpg" alt="PRONGHORM" title="PRONGHORN">
+		</a>
+      </div>
+
+
+      <!-- Add more personal bookmarks here -->
+    </div>
+  </div>
+  <!-- Group 3 -->
+  <div class="section tools">
+    <h2>Tools</h2>
+    <div class="bookmarks">
+
+      <div class="bookmark">
+        <a href="https://pronghorn.internal.t-mobile.com/app-device-onboarding/views/#/work-history" target="_blank">
+		 <img src="images/adlm.jpg" alt="adlm" title="ADLM">
+		</a>
+      </div>
+
+      <div class="bookmark">
+        <a href="https://techapps.t-mobile.com/argos#/PnT" target="_blank">
+		<img src="images/argos.jpg" alt="argos" title="ARGOS">
+		</a>
+      </div>
+
+      <div class="bookmark">
+        <a href="https://compass.t-mobile.com/compass?id=tmo_sc_cat_item&sys_id=5724a9836f077100fd9277f16a3ee489" target="_blank">
+		 <img src="images/compass.jpg" alt="compass" title="Group Access Rqst"> 
+		</a>
+      </div>
+
+	  <div class="bookmark">
+        <a href="https://tess.service-now.com/now/nav/ui/classic/params/target/cmdb_ci_list.do%3Fsysparm_view%3Dcmdb_default_view%26sysparm_userpref.cmdb_ci_list.view%3Dcmdb_default_view%26sysparm_userpref.cmdb_ci.view%3Dcmdb_default_view%26sysparm_query%3D%26sysparm_fixed_query%3D" target="_blank">
+		<img src="images/cmdb.jpg" alt="cmdb" title="CMDB Lookup">
+		</a>
+      </div>
+
+      <div class="bookmark">
+        <a href="https://oneeai.t-mobile.com:8443/oss-core-ui/app/login.jsp" target="_blank">
+		<img src="images/eai.jpg" alt="eai" title="E.A.I.">
+		</a>
+      </div>
+
+      <div class="bookmark">
+        <a href="https://grafana-prod.sipp.eng.t-mobile.com/d/f198742c-dfc8-456d-88ab-b66d9aa62461/firewall-health-check-sevone-data-test?orgId=1&from=now-7d&to=now&var-Devicename=FWTPOL0504&showCategory=Override%202" target="_blank">
+		<img src="images/grafana.jpg" alt="grafana" title="FW Dashboard">
+		</a>
+      </div>      
+
+	  <div class="bookmark">
+        <a href="https://ibxipam.gsm1900.org/ui/" target="_blank">
+		<img src="images/infoblox.jpg" alt="infoblox" title="INFOBLOX">
+		</a>
+      </div>
+
+	  <div class="bookmark">
+        <a href="https://ip-sec-tools.t-mobile.com/#" target="_blank">
+		<img src="images/ipsecTools.jpg" alt="ipsec" title="IPSEC Tools">
+		</a>
+      </div>	
+
+      <div class="bookmark">
+        <a href="https://techapps.t-mobile.com/mast#/appd/bulkupload" target="_blank">
+ 		<img src="images/mast.jpg" alt="MAST" title="MAST">
+		</a>
+     </div>
+
+      <div class="bookmark">
+        <a href="https://nessie.t-mobile.com/" target="_blank">
+		<img src="images/nessie.jpg" alt="nessie" title="NESSIE">
+		</a>
+      </div>
+
+
+       <div class="bookmark">
+        <a href="https://techapps.t-mobile.com/nest" target="_blank">
+		<img src="images/nest.jpg" alt="nest" title="NEST">
+		</a>
+      </div>
+
+      <div class="bookmark">
+        <a href="https://confluencesw.t-mobile.com/pages/viewpage.action?spaceKey=VA&title=Orca+Quick+Start+Guide" target="_blank">
+		<img src="images/orca2.jpg" alt="ORCA" title="ORCA-vfw's">
+		</a>
+      </div>
+
+      <!-- Add more hobby bookmarks here -->
+    </div>
+  </div>
+  
+  <!-- Group 4 -->
+  <div class="section f_mgmt">
+    <h2>Fault Management</h2>
+	
+    <div class="bookmarks">
+      <div class="bookmark">
+        <a href="https://ppollhpna00108.unix.gsm1900.org/index.jsp" target="_blank">
+		<img src="images/otna.jpg" alt="otna" title="OTNA">
+		</a>
+      </div>
+
+      <div class="bookmark">
+        <a href="https://prdplnnmx0016.unix.gsm1900.org/nnm/" target="_blank">
+		<img src="images/nnmi.jpg" alt="nnmi" title="NNMI">
+		</a>
+      </div>
+
+      <div class="bookmark">
+        <a href="https://netbrain.t-mobile.com/login.html#/" target="_blank">
+		<img src="images/netbrain.jpg" alt="NETBRAIN" title="NETBRAIN">
+		</a>
+      </div>
+
+      <div class="bookmark">
+        <a href="https://sevone.t-mobile.com/#login" target="_blank">
+		<img src="images/sevone.jpg" alt="sevone" title="SEVONE">
+		</a>
+      </div>
+
+      <div class="bookmark">
+        <a href="https://techapps.t-mobile.com/oneconsole" target="_blank">
+ 		<img src="images/oneconsole.jpg" alt="oneconsole" title="OneConsole">
+		</a>
+     </div>
+
+      <div class="bookmark">
+        <a href="https://splunk-ss.t-mobile.com:8000/en-US/app/search/fw_dashboard_details?form.field2.earliest=-24h%40h&form.field2.latest=now" target="_blank">
+		<img src="images/splunk.jpg" alt="splunk" title="splunk">
+		</a>
+      </div>
+
+      <!-- Add more work bookmarks here -->
+    </div>
+  </div>
+
+
+  <!-- Group 5 -->
+  <!-- SmartLog -->
+  <div class="section smartLog">
+    <h2>Checkpoint Smartview (Logs)</h2>
+ 
+    <div class="bookmarks">
+	  <div class="bookmark">
+	    <a href="https://CPMPOL11.mgmt/smartview" target="_blank">CPM11</a>
+	  </div>
+
+	  <div class="bookmark">
+	    <a href="https://CPMPOL12.mgmt/smartview" target="_blank">CPM12</a>
+	  </div>
+  	
+	  <div class="bookmark">
+		<a href="https://CPMPOL13.mgmt/smartview" target="_blank">CPM13</a>
+	  </div> 
+    <!-- Add more work bookmarks here -->
+
+	</div>
+  </div>
+
+<!-- Group 6 -->
+<!-- SmartConsole -->
+				  
+<div class="section smartConsole">
+  <h2>Checkpoint Smartview (Console)</h2>
+				  
+  <div class="bookmarks">
+    <div class="bookmark">
+      <a href="https://CPMPOL11/smartconsole" target="_blank">CPM11 SmartConsole</a>
+    </div>
+	
+    <div class="bookmark">
+      <a href="https://CPMPOL12/smartconsole" target="_blank">CPM12 SmartConsole</a>
+    </div>
+	
+    <div class="bookmark">
+      <a href="https://CPMPOL13/smartconsole" target="_blank">CPM13 SmartConsole</a>
+    </div>
+	
+    <div class="bookmark">
+      <a href="https://cpmpol12.t-mobile.lab/cgi-bin/home.tcl" target="_blank">LAB CPM12 SmartConsole</a>
+    </div>
+    <!-- Add more work bookmarks here -->
+
+  </div>
+</div>
+
+
+  <!-- Example of modified Stock Price Section with iframe embed -->
+  <div class="section stock-price">
+  <h2>Daily Stock Prices</h2>
+  <div class="bookmarks">
+  <div class="tradingview-widget-container" onclick="loadStock('AAPL')">
+    <div class="tradingview-widget-container__widget"></div>
+    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+    {
+      "symbol": "NASDAQ:AAPL",
+      "width": 180,
+      "height": 130,
+      "locale": "en",
+      "dateRange": "1D",
+      "colorTheme": "light",
+      "isTransparent": false,
+      "autosize": false,
+      "largeChartUrl": ""
+    }
+    </script>
+  </div>
+   <div class="tradingview-widget-container" onclick="loadStock('AMZN')">
+    <div class="tradingview-widget-container__widget"></div>
+    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+    {
+      "symbol": "NASDAQ:AMZN",
+      "width": 180,
+      "height": 130,
+      "locale": "en",
+      "dateRange": "1D",
+      "colorTheme": "light",
+      "isTransparent": false,
+      "autosize": false,
+      "largeChartUrl": ""
+    }
+    </script>
+  </div> 
+   <div class="tradingview-widget-container" onclick="loadStock('DIS')">
+    <div class="tradingview-widget-container__widget"></div>
+    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+    {
+      "symbol": "NYSE:DIS",
+      "width": 180,
+      "height": 130,
+      "locale": "en",
+      "dateRange": "1D",
+      "colorTheme": "light",
+      "isTransparent": false,
+      "autosize": false,
+      "largeChartUrl": ""
+    }
+    </script>
+  </div>
+  <div class="tradingview-widget-container" onclick="loadStock('GOOGL')">
+    <div class="tradingview-widget-container__widget"></div>
+    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+    {
+      "symbol": "NASDAQ:GOOGL",
+      "width": 180,
+      "height": 130,
+      "locale": "en",
+      "dateRange": "1D",
+      "colorTheme": "light",
+      "isTransparent": false,
+      "autosize": false,
+      "largeChartUrl": ""
+    }
+    </script>
+  </div>
+  <div class="tradingview-widget-container" onclick="loadStock('PLTR')">
+    <div class="tradingview-widget-container__widget"></div>
+    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+    {
+      "symbol": "NASDAQ:PLTR",
+      "width": 180,
+      "height": 130,
+      "locale": "en",
+      "dateRange": "1D",
+      "colorTheme": "light",
+      "isTransparent": false,
+      "autosize": false,
+      "largeChartUrl": ""
+    }
+    </script>
+  </div>  
+  <div class="tradingview-widget-container" onclick="loadStock('TMUS')">
+    <div class="tradingview-widget-container__widget"></div>
+    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+    {
+      "symbol": "NASDAQ:TMUS",
+      "width": 180,
+      "height": 130,
+      "locale": "en",
+      "dateRange": "1D",
+      "colorTheme": "light",
+      "isTransparent": false,
+      "autosize": false,
+      "largeChartUrl": ""
+    }
+    </script>
+  </div>
+  <div class="tradingview-widget-container" onclick="loadStock('TSLA')">
+    <div class="tradingview-widget-container__widget"></div>
+    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+    {
+      "symbol": "NASDAQ:TSLA",
+      "width": 180,
+      "height": 130,
+      "locale": "en",
+      "dateRange": "1D",
+      "colorTheme": "light",
+      "isTransparent": false,
+      "autosize": false,
+      "largeChartUrl": ""
+    }
+    </script>
+  </div>
+
+</div>
+    
+  </div>
+  <div class="stock-details">
+      <div id="loader">Loading stock data...</div>
+      <div id="tv_chart_container"></div>
+    </div>
+      
+    </div>
+  </div>
+
+  <script type="text/javascript">
+  function loadStock(symbol) {
+    document.getElementById('loader').style.display = 'block';
+    const container = document.getElementById('tv_chart_container');
+    container.innerHTML = '';
+
+    new TradingView.widget({
+      "container_id": "tv_chart_container",
+      "symbol": symbol,
+      "interval": "D",
+      "timezone": "Etc/UTC",
+      "theme": "light",
+      "style": "1",
+      "locale": "en",
+      "toolbar_bg": "#f1f3f6",
+      "enable_publishing": false,
+      "hide_top_toolbar": false,
+      "save_image": false,
+      "studies": [],
+      "show_popup_button": true,
+      "popup_width": "1000",
+      "popup_height": "650",
+      "width": "100%",
+      "height": 500
+    });
+
+    setTimeout(() => document.getElementById('loader').style.display = 'none', 1500);
+  }
+</script>
+<script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+</body>
+</html>
