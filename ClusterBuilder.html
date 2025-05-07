@@ -1,0 +1,267 @@
+<!-- v01 - 20250303 - LL -->
+<!-- v02 - 20250305 - LL -->
+<!-- v03 - 20250307 - LL -->
+<!-- v04 - 20250318 - LL -->
+<!-- v05 - 20250320 - LL -->
+<!-- v06 - 20250321 - LL -->
+<!-- v07 - 20250325 - LL -->
+<!-- v08 - 20250328 - LL -->
+<!-- v09 - 20250402 - LL - removed logging feature -->
+<!-- v10 - 20250402 - LL - removed cluster interface feature -->
+<!-- v11 - 20250403 - LL - removed topology selection. hardcoded instead -->
+<!-- v12 - 20250403 - LL - added instructions -->
+<!-- v13 - 20250423 - LL - updated model appliance to config -->
+<!-- v14 - 20250430 - LL - update anti-spoofing default to 'true' -->
+<!-- v15 - 20250505 - LL - added gateway creation (for maestro) -->
+<!-- v15.1 - 20250506 - LL - fixed gateway script placement + layout alignment -->
+<!-- v15.2 - 20250507 - LL - updated Get Interfaces logic to support both gateway and cluster -->
+<!-- v16 - 20250507 - LL - updated with simpler interface for gateway/cluster creation -->
+<!-- v16.1 - 20250507 - LL - updated error checking ip addresses -->
+<!-- v16.2 - 20250507 - LL - updated error checking mask-length -->
+<!-- v16.3.2 - 2025-05-08 - LL - fixed variable declarations in cluster command, restored full functionality -->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cluster Builder</title>
+  <link rel="icon" type="image/png" href="images/cpfw_favicon.png">
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; text-align: center; }
+    .section { display: none; max-width: 800px; margin: 0 auto; text-align: left; }
+    .visible { display: block; }
+    label { display: block; margin-top: 10px; font-weight: bold; }
+    input[type="text"], select, textarea {
+      width: 100%; max-width: 500px; padding: 6px; margin-bottom: 10px;
+      border: 1px solid #ccc; border-radius: 4px; font-size: 14px;
+    }
+    button { padding: 8px 16px; margin: 10px 5px; }
+    pre { background: #f4f4f4; padding: 10px; border-radius: 4px; }
+  
+pre {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+</style>
+</head>
+<body>
+
+  <img src="images/clusterBuild.png" alt="Cluster Builder" style="height: 200px;"> <span class="version">v16.3.2</span><br><br>
+  
+  <div id="home" class="visible">
+    <button onclick="startGatewayBuild()">Gateway Build</button>
+    <button onclick="startClusterBuild()">Cluster Build</button>
+  </div>
+
+  <div id="gateway-form" class="section">
+    <h2>Gateway Build</h2>
+    <label>Gateway Name:</label>
+    <input type="text" id="gw-name">
+    <label>IP Address:</label>
+    <input type="text" id="gw-ip">
+    <label>Version:</label>
+    <select id="gw-version">
+      <option value="R81.10">R81.10</option>
+      <option value="R81.20">R81.20</option>
+    </select>
+    <label>Engineer Name:</label>
+    <input type="text" id="gw-engineer-name">
+    <br><button onclick="generateGatewayCommand()">Generate Gateway Command</button>
+  </div>
+
+  
+<div id="cluster-form" class="section">
+  <label for="cluster-name">Cluster Name:</label>
+  <input type="text" id="cluster-name">
+  <label for="cluster-ip">IP Address:</label>
+<input type="text" id="cluster-ip">
+<label for="cluster-mask">Mask Length:</label>
+<select id="cluster-mask">
+  <option value="32">/32</option>
+  <option value="30">/30</option>
+  <option value="29">/29</option>
+  <option value="28">/28</option>
+  <option value="27">/27</option>
+  <option value="26">/26</option>
+  <option value="25">/25</option>
+  <option value="24" selected>/24</option>
+</select>
+  <label for="cluster-version">Version:</label>
+  <select id="cluster-version">
+    <option value="R81.10">R81.10</option>
+    <option value="R81.20">R81.20</option>
+  </select>
+  <label for="cluster-engineer-name">Created by (Engineer Name):</label>
+  <input type="text" id="cluster-engineer-name">
+
+  <h3>Cluster Settings</h3>
+  <label for="use-virtual-mac">Use Virtual MAC: (DO NOT select for CloudGuard)</label>
+  <input type="checkbox" id="use-virtual-mac">
+
+  <h2>Member 1 Configuration</h2>
+  <label for="member1-name">Name:</label>
+  <input type="text" id="member1-name">
+  <label for="member1-mgmt-name">Mgmt Interface Name:</label>
+  <select id="member1-mgmt-name">
+    <option value="Mgmt">Mgmt</option>
+    <option value="eth0">eth0</option>
+  </select>
+  <label for="member1-mgmt-ipv4">Mgmt IPv4 Address:</label>
+  <input type="text" id="member1-mgmt-ipv4">
+  <label for="member1-mgmt-mask">Mgmt Network Mask Length:</label>
+<select id="member1-mgmt-mask">
+  <option value="32">/32</option>
+  <option value="30">/30</option>
+  <option value="29">/29</option>
+  <option value="28">/28</option>
+  <option value="27">/27</option>
+  <option value="26">/26</option>
+  <option value="25">/25</option>
+  <option value="24" selected>/24</option>
+</select>
+
+  <h2>Member 2 Configuration</h2>
+  <label for="member2-name">Name:</label>
+  <input type="text" id="member2-name">
+  <label for="member2-mgmt-name">Mgmt Interface Name:</label>
+  <select id="member2-mgmt-name">
+    <option value="Mgmt">Mgmt</option>
+    <option value="eth0">eth0</option>
+  </select>
+  <label for="member2-mgmt-ipv4">Mgmt IPv4 Address:</label>
+  <input type="text" id="member2-mgmt-ipv4">
+  <label for="member2-mgmt-mask">Mgmt Network Mask Length:</label>
+<select id="member2-mgmt-mask">
+  <option value="32">/32</option>
+  <option value="30">/30</option>
+  <option value="29">/29</option>
+  <option value="28">/28</option>
+  <option value="27">/27</option>
+  <option value="26">/26</option>
+  <option value="25">/25</option>
+  <option value="24" selected>/24</option>
+</select>
+
+  <br><button onclick="generateClusterCommand()">Generate Cluster Command</button>
+</div>
+
+
+  <div id="results" class="section">
+    <h2>Results</h2>
+    <h3>Cluster/Gateway Command</h3>
+    <pre id="result-command"></pre>
+    <h3>SIC/Status Command</h3>
+    <pre id="result-sic"></pre>
+    <h3>Get Interfaces Command</h3>
+    <pre id="result-interfaces"></pre>
+    <br><button onclick="goHome()">Back</button>
+  </div>
+
+  <script>
+
+function isValidIPv4(ip) {
+  const parts = ip.trim().split(".");
+  return (
+    parts.length === 4 &&
+    parts.every(p => /^\d+$/.test(p) && Number(p) >= 0 && Number(p) <= 255)
+  );
+}
+
+    function hideAll() {
+      document.querySelectorAll('.section').forEach(sec => sec.classList.remove('visible'));
+      document.getElementById('result-command').textContent = '';
+      document.getElementById('result-sic').textContent = '';
+      document.getElementById('result-interfaces').textContent = '';
+    }
+
+    function startGatewayBuild() {
+      hideAll();
+      document.getElementById('gateway-form').classList.add('visible');
+    }
+
+    
+function startClusterBuild() {
+  hideAll();
+  document.getElementById('cluster-form').classList.add('visible');
+}
+
+
+    
+function generateGatewayCommand() {
+  const name = document.getElementById('gw-name').value.trim();
+  const ip = document.getElementById('gw-ip').value.trim();
+  const version = document.getElementById('gw-version').value;
+  const engineer = document.getElementById('gw-engineer-name').value.trim();
+
+  if (!name || !ip || !engineer) {
+    alert("Please fill in all required Gateway fields.");
+    return;
+  }
+  if (!isValidIPv4(ip)) {
+    alert("Invalid Gateway IP address.");
+    return;
+  }
+
+  const command = `add simple-gateway name ${name} ip-address ${ip} ips true version ${version} one-time-password vpn123 comments "pending integration - ${engineer}"`;
+      const sic = `test-sic-status name "${name}"`;
+      const interfaces = `get-interfaces target-name "${name}" with-topology false`;
+
+      hideAll();
+      document.getElementById('results').classList.add('visible');
+      document.getElementById('result-command').textContent = command;
+      document.getElementById('result-sic').textContent = sic;
+      document.getElementById('result-interfaces').textContent = interfaces;
+    }
+
+    
+
+function generateClusterCommand() {
+  const clusterName = document.getElementById('cluster-name').value;
+  const ipAddress = document.getElementById('cluster-ip').value;
+  const engineerName = document.getElementById('cluster-engineer-name').value;
+  const member1MgmtIpv4 = document.getElementById('member1-mgmt-ipv4').value;
+  const member2MgmtIpv4 = document.getElementById('member2-mgmt-ipv4').value;
+
+  if (!clusterName || !ipAddress || !engineerName) {
+    alert("Please fill in all required Cluster fields.");
+    return;
+  }
+  if (!isValidIPv4(ipAddress) || !isValidIPv4(member1MgmtIpv4) || !isValidIPv4(member2MgmtIpv4)) {
+    alert("One or more Cluster IP addresses are invalid.");
+    return;
+  }
+
+  
+  const version = document.getElementById('cluster-version').value;
+  const member1Name = document.getElementById('member1-name').value;
+  const member2Name = document.getElementById('member2-name').value;
+  const member1MgmtName = document.getElementById('member1-mgmt-name').value;
+  const member2MgmtName = document.getElementById('member2-mgmt-name').value;
+  const member1MgmtMask = document.getElementById('member1-mgmt-mask').value;
+  const member2MgmtMask = document.getElementById('member2-mgmt-mask').value;
+  const useVirtualMac = document.getElementById('use-virtual-mac').checked ? 'true' : 'false';
+
+  const command = `add simple-cluster name ${clusterName} version ${version} ip-address ${ipAddress} os-name Gaia hardware Cluster cluster-mode cluster-xl-ha firewall true vpn false ips true anti-bot false anti-virus false application-control false url-filtering false interfaces.1.name Mgmt interfaces.1.ip-address ${ipAddress} interfaces.1.mask-length 32 interfaces.1.interface-type private interfaces.1.topology internal interfaces.1.anti-spoofing true members.1.name ${member1Name} members.1.one-time-password vpn123 members.1.ipv4-address ${member1MgmtIpv4} members.1.interfaces.1.name ${member1MgmtName} members.1.interfaces.1.ipv4-address ${member1MgmtIpv4} members.1.interfaces.1.ipv4-mask-length ${member1MgmtMask} members.1.interfaces.1.topology internal members.2.name ${member2Name} members.2.one-time-password vpn123 members.2.ipv4-address ${member2MgmtIpv4} members.2.interfaces.1.name ${member2MgmtName} members.2.interfaces.1.ipv4-address ${member2MgmtIpv4} members.2.interfaces.1.ipv4-mask-length ${member2MgmtMask} members.2.interfaces.1.topology internal cluster-settings.track-changes-of-cluster-members log cluster-settings.state-synchronization.enabled true cluster-settings.state-synchronization.delayed true cluster-settings.state-synchronization.delayed-seconds 3 cluster-settings.use-virtual-mac ${useVirtualMac} comments "pending integration - ${engineerName}"`;
+
+  const sic = `test-sic-status name "${member1Name}"
+test-sic-status name "${member2Name}"`;
+  const interfaces = `get-interfaces target-name "${clusterName}" with-topology false`;
+
+  hideAll();
+  document.getElementById('results').classList.add('visible');
+  document.getElementById('result-command').textContent = command;
+  document.getElementById('result-sic').textContent = sic;
+  document.getElementById('result-interfaces').textContent = interfaces;
+}
+
+
+    function goHome() {
+      hideAll();
+      document.getElementById('home').classList.add('visible');
+    }
+  </script>
+</body>
+</html>
