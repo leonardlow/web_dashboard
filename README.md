@@ -25,3 +25,9 @@
   - Get Interfaces command
 - Word-wrapped output display for improved readability
 - Included logo and version marker at the top
+
+### v16.3.2 - 2025-05-08
+- Fixed missing variable declarations in `generateClusterCommand()`
+- Restored cluster build functionality and output generation
+- Confirmed correct toggle behavior and validation
+- Stable version for future enhancements
