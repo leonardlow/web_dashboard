@@ -18,6 +18,7 @@
 <!-- v16 - 20250507 - LL - updated with simpler interface for gateway/cluster creation -->
 <!-- v16.1 - 20250507 - LL - updated error checking ip addresses -->
 <!-- v16.2 - 20250507 - LL - updated error checking mask-length -->
+<!-- v16.3.2 - 2025-05-08 - LL - fixed variable declarations in cluster command, restored full functionality -->
 <!-- v17 - 20250513 - LL - fixed drop down list for mask-length -->
 
 
@@ -49,7 +50,11 @@ pre {
 </head>
 <body>
 
+<<<<<<< HEAD
   <img src="images/clusterBuild.png" alt="Cluster Builder" style="height: 200px;"> <span class="version">v17</span><br><br>
+=======
+  <img src="images/clusterBuild.png" alt="Cluster Builder" style="height: 200px;"> <span class="version">v16.3.2</span><br><br>
+>>>>>>> 69ebbc7e16d650d9ba81bbd140d265f717d9ed56
   
   <div id="home" class="visible">
     <button onclick="startGatewayBuild()">Gateway Build</button>
@@ -80,7 +85,10 @@ pre {
 <input type="text" id="cluster-ip">
 <label for="cluster-mask">Mask Length:</label>
 <select id="cluster-mask">
+<<<<<<< HEAD
   <option value="" disabled selected hidden>Please select mask-length</option>
+=======
+>>>>>>> 69ebbc7e16d650d9ba81bbd140d265f717d9ed56
   <option value="32">/32</option>
   <option value="30">/30</option>
   <option value="29">/29</option>
@@ -88,7 +96,11 @@ pre {
   <option value="27">/27</option>
   <option value="26">/26</option>
   <option value="25">/25</option>
+<<<<<<< HEAD
   <option value="24">/24</option>
+=======
+  <option value="24" selected>/24</option>
+>>>>>>> 69ebbc7e16d650d9ba81bbd140d265f717d9ed56
 </select>
   <label for="cluster-version">Version:</label>
   <select id="cluster-version">
@@ -114,7 +126,10 @@ pre {
   <input type="text" id="member1-mgmt-ipv4">
   <label for="member1-mgmt-mask">Mgmt Network Mask Length:</label>
 <select id="member1-mgmt-mask">
+<<<<<<< HEAD
   <option value="" disabled selected hidden>Please select mask-length</option>
+=======
+>>>>>>> 69ebbc7e16d650d9ba81bbd140d265f717d9ed56
   <option value="32">/32</option>
   <option value="30">/30</option>
   <option value="29">/29</option>
@@ -122,7 +137,11 @@ pre {
   <option value="27">/27</option>
   <option value="26">/26</option>
   <option value="25">/25</option>
+<<<<<<< HEAD
   <option value="24">/24</option>
+=======
+  <option value="24" selected>/24</option>
+>>>>>>> 69ebbc7e16d650d9ba81bbd140d265f717d9ed56
 </select>
 
   <h2>Member 2 Configuration</h2>
@@ -137,7 +156,10 @@ pre {
   <input type="text" id="member2-mgmt-ipv4">
   <label for="member2-mgmt-mask">Mgmt Network Mask Length:</label>
 <select id="member2-mgmt-mask">
+<<<<<<< HEAD
   <option value="" disabled selected hidden>Please select mask-length</option>
+=======
+>>>>>>> 69ebbc7e16d650d9ba81bbd140d265f717d9ed56
   <option value="32">/32</option>
   <option value="30">/30</option>
   <option value="29">/29</option>
@@ -145,7 +167,11 @@ pre {
   <option value="27">/27</option>
   <option value="26">/26</option>
   <option value="25">/25</option>
+<<<<<<< HEAD
   <option value="24">/24</option>
+=======
+  <option value="24" selected>/24</option>
+>>>>>>> 69ebbc7e16d650d9ba81bbd140d265f717d9ed56
 </select>
 
   <br><button onclick="generateClusterCommand()">Generate Cluster Command</button>
