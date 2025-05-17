@@ -1,0 +1,197 @@
+echo "Start hpna_checks v_2024.10.18"
+echo "Start asg dxl stat"
+asg dxl stat
+echo "End asg dxl stat"
+echo "Start cat FWDIR/boot/boot.conf"
+cat $FWDIR/boot/boot.conf
+echo "End cat FWDIR/boot/boot.conf"
+echo "Start cat FWDIR/boot/mq.conf"
+cat $FWDIR/boot/mq.conf
+echo "End cat FWDIR/boot/mq.conf"
+echo "Start cat FWDIR/conf/alert.conf"
+cat $FWDIR/conf/alert.conf
+echo "End cat FWDIR/conf/alert.conf"
+echo "Start cat /config/active"
+cat /config/active
+echo "End cat /config/active"
+echo "Start cat /etc/bashrc"
+cat /etc/bashrc
+echo "End cat /etc/bashrc"
+echo "Start cat /etc/cli.sh"
+cat /etc/cli.sh
+echo "End cat /etc/cli.sh"
+echo "Start cat /etc/profile"
+cat /etc/profile
+echo "End cat /etc/profile"
+echo "Start cat /etc/security/pam_env.conf"
+cat /etc/security/pam_env.conf
+echo "End cat /etc/security/pam_env.conf"
+echo "Start cat /etc/sudoers"
+cat /etc/sudoers
+echo "End cat /etc/sudoers"
+echo "Start cat /opt/CPshared/5.0/tmp/.CPprofile.csh"
+cat /opt/CPshared/5.0/tmp/.CPprofile.csh
+echo "End cat /opt/CPshared/5.0/tmp/.CPprofile.csh"
+echo "Start cat /opt/CPshared/5.0/tmp/.CPprofile.sh"
+cat /opt/CPshared/5.0/tmp/.CPprofile.sh
+echo "End cat /opt/CPshared/5.0/tmp/.CPprofile.sh"
+echo "Start cat /opt/CPsuite-R76/fw1/conf/asg_log_servers.conf"
+cat /opt/CPsuite-R76/fw1/conf/asg_log_servers.conf
+echo "End cat /opt/CPsuite-R76/fw1/conf/asg_log_servers.conf"
+echo "Start cat /opt/CPsuite-R77/fw1/conf/cpha_bond_ls_config.conf"
+cat /opt/CPsuite-R77/fw1/conf/cpha_bond_ls_config.conf
+echo "End cat /opt/CPsuite-R77/fw1/conf/cpha_bond_ls_config.conf"
+echo "Start clish -c "show snapshots""
+clish -c "show snapshots"
+echo "End clish -c "show snapshots""
+echo "Start clish -c 'show snapshots'"
+clish -c 'show snapshots'
+echo "End clish -c 'show snapshots'"
+echo "Start crontab -l -u admin"
+crontab -l -u admin
+echo "End crontab -l -u admin"
+echo "Start crontab -l -u hpna"
+crontab -l -u hpna
+echo "End crontab -l -u hpna"
+echo "Start for i in cat fwkern.conf"
+for i in `cat $FWDIR/boot/modules/fwkern.conf | awk -F "=" '{print $1}'`; do fw ctl get int $i; done
+echo "End for i in cat fwkern.conf"
+echo "Start fw tab -t connections | head -3 | tail -1"
+fw tab -t connections | head -3 | tail -1
+echo "End fw tab -t connections | head -3 | tail -1"
+echo "Start fw tab -t no_fold_services_ports"
+fw tab -t no_fold_services_ports
+echo "End fw tab -t no_fold_services_ports"
+echo "Start fw tab -t no_hide_services_ports"
+fw tab -t no_hide_services_ports
+echo "End fw tab -t no_hide_services_ports"
+echo "Start fwaccel stat"
+fwaccel stat
+echo "End fwaccel stat"
+echo "Start lvdisplay"
+lvdisplay
+echo "End lvdisplay"
+echo "Start md5sum /home/admin/fw_backup.sh"
+md5sum /home/admin/fw_backup.sh
+echo "End md5sum /home/admin/fw_backup.sh"
+echo "Start md5sum /home/admin/fw_health_check.sh"
+md5sum /home/admin/fw_health_check.sh
+echo "End md5sum /home/admin/fw_health_check.sh"
+echo "Start md5sum /home/admin/hpna_checks"
+md5sum /home/admin/hpna_checks
+echo "End md5sum /home/admin/hpna_checks"
+echo "Start script /home/admin/hpna_checks"
+head -1 /home/admin/hpna_checks; md5sum /home/admin/hpna_checks; ls -al /home/admin/hpna_checks | awk '{print $1}'
+echo "End script /home/admin/hpna_checks"
+echo "Start md5sum thresholds.conf"
+md5sum `find /var/opt/ -name thresholds.conf`
+echo "End md5sum thresholds.conf"
+echo "Start mount"
+mount
+echo "End mount"
+echo "Start ntpstat"
+ntpstat
+echo "End ntpstat"
+echo "Start raid_diagnostic"
+raid_diagnostic
+echo "End raid_diagnostic"
+echo "Start uptime"
+uptime
+echo "End uptime"
+echo "Start vsx stat -v"
+vsx stat -v
+echo "End vsx stat -v"
+echo "Start g_all cat /etc/cpshell/log_rotation.conf"
+g_all cat /etc/cpshell/log_rotation.conf
+echo "End g_all cat /etc/cpshell/log_rotation.conf"
+echo "Start cat FWDIR/scripts/prescan_accel_offload_pms"
+cat $FWDIR/scripts/prescan_accel_offload_pms
+echo "End cat FWDIR/scripts/prescan_accel_offload_pms"
+echo "Start cat MDS_FWDIR/conf/cpmServerSettings.props"
+cat $MDS_FWDIR/conf/cpmServerSettings.props
+echo "End cat MDS_FWDIR/conf/cpmServerSettings.props"
+echo "Start cat CPDIR/conf/CpSetupInfo_resourceProfiles.conf"
+cat $CPDIR/conf/CpSetupInfo_resourceProfiles.conf
+echo "End CPDIR/conf/CpSetupInfo_resourceProfiles.conf"
+echo "Start asg_syslog print"
+asg_syslog print
+echo "End asg_syslog_print"
+echo "Start log_indexer_custom_settings.conf"
+cat $INDEXERDIR/log_indexer_custom_settings.conf
+echo "End log_indexer_custom_settings.conf"
+echo "Start g_all fw ctl affinity -l -n cpd"
+g_all fw ctl affinity -l -n cpd
+echo "End g_all fw ctl affinity -l -n cpd"
+echo "Start dynamic_system_env"
+cat $MDS_FWDIR/conf/dynamic_system_env
+echo "End dynamic_system_env"
+echo "Start md5sum userDefinedSettings.conf"
+md5sum /etc/snmp/userDefinedSettings.conf
+echo "End md5sum userDefinedSettings.conf"
+echo "Start RAD_QUERIES_NUMBER_PER_CONNECTION"
+grep RAD_QUERIES_NUMBER_PER_CONNECTION $CPDIR/registry/HKLM_registry.data
+echo "End RAD_QUERIES_NUMBER_PER_CONNECTION"
+echo "Start archive_collector.conf"
+cat $FWDIR/conf/archive_collector.conf
+echo "End archive_collector.conf"
+echo "Start asg_pingable_hosts"
+asg_pingable_hosts status
+echo "End asg_pingable_hosts"
+echo "Start cat /etc/rc.local"
+cat /etc/rc.local
+echo "End cat /etc/rc.local"
+echo "Start DNS recursion check"
+ping proxy-nmnet -c 1
+echo "End DNS recursion check"
+echo "Start cat FWDIR/conf/f2fq.conf"
+cat $FWDIR/conf/f2fq.conf
+echo "End cat FWDIR/conf/f2fq.conf"
+echo "Start fwkern.conf for str"
+for i in `cat $FWDIR/boot/modules/fwkern.conf | awk -F "=" '{print $1}'`; do fw ctl get str $i; done
+echo "End fwkern.conf for str"
+echo "Start show configuration proxy"
+clish -c "show configuration proxy"
+echo "End show configuration proxy"
+echo "Start smartconsole Proxy set check"
+cat $FWDIR/state/local/FW1/local.set | grep -A2 "use_proxy" | grep "val" | awk '{print $NF}' | tr -d '()' | head -1
+cat $FWDIR/state/local/FW1/local.set | grep -A30 "use_proxy" | grep -A2 "proxy_address" | grep "val" | awk '{print $NF}' | tr -d '()' | head -1
+cat $FWDIR/state/local/FW1/local.set | grep -A30 "use_proxy" | grep -A2 "proxy_port" | grep "val" | awk '{print $NF}' | tr -d '()' | head -1
+echo "End smartconsole Proxy set check"
+echo "Start cat FWDIR/bin/fwstart"
+cat $FWDIR/bin/fwstart
+echo "End cat FWDIR/bin/fwstart"
+echo "Start simkern.conf"
+for i in `cat $PPKDIR/conf/simkern.conf | awk -F "=" '{print $1}'`; do fw ctl get int $i -a 2>&1 | grep PPAK; done
+echo "End simkern.conf"
+echo "Start asset.xml"
+md5sum /etc/asset.xml | awk '{print $1}'
+echo "End asset.xml"
+echo "Start md5sum /usr/bin/mdps_xlate"
+md5sum /usr/bin/mdps_xlate
+echo "End md5sum /usr/bin/mdps_xlate"
+echo "Start md5sum mq_common.py"
+md5sum $FWDIR/scripts/mq_mng/mq_common.py
+echo "End md5sum mq_common.py"
+echo "Start distutil"
+distutil stat
+echo "End distutil"
+echo "Start perf_lib.tcl"
+md5sum /opt/CPsmo-R81.10/bin/perf_lib.tcl
+ls -al /opt/CPsmo-R81.10/bin/perf_lib.tcl
+echo "End perf_lib.tcl"
+echo "Start dynamic_balancing"
+dynamic_balancing -p
+echo "End dynamic_balancing"
+echo "Start fwkern.conf for ppak int"
+for i in `cat $FWDIR/boot/modules/fwkern.conf | awk -F "=" '{print $1}'`; do fw ctl get int $i -a 2>&1 | grep PPAK; done
+echo "End fwkern.conf for ppak int"
+echo "Start cat fw_global_params.conf "
+cat $FWDIR/conf/fw_global_params.conf
+echo "End cat fw_global_params.conf "
+echo "Start for i in cat fw_global_params.conf "
+for i in `cat $FWDIR/conf/fw_global_params.conf | awk -F "=" '{print $1}'`; do fw ctl get int $i; done
+echo "End for i in cat fw_global_params.conf "
+echo "Start for i in cat fw_global_params.conf  for str"
+for i in `cat $FWDIR/conf/fw_global_params.conf | awk -F "=" '{print $1}'`; do fw ctl get str $i; done
+echo "End for i in cat fw_global_params.conf  for str"
+echo "End hpna_checks"

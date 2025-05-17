@@ -1,0 +1,1 @@
+*/5 * * * *     /home/admin/fw_health_check.sh cron > /var/log/tmp/fw_health_check.sh.cli 2>&1

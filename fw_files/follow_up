@@ -1,0 +1,163 @@
+#!/bin/bash
+##
+## v1 - 20210503 - LL
+## v2 - 20240830 - LL
+## v3 - 20240918 - LL
+## v4 - 20241014 - LL
+## v5 - 20250130 - LL
+## v6 - 20250514 - updated fwkern params - LL
+## v7 - 20250515 - include sudoers - LL
+
+### create runlog file
+touch /home/admin/niisd/runlog
+logFile=/home/admin/niisd/runlog
+linebrk="************************"
+
+echo "$(date)" >> $logFile
+echo "$linebrk" >> $logFile
+
+### determine model number
+model=$(clish -c 'show asset all' | grep Check | awk '{print $4}')
+echo "$model" >> $logFile
+
+### find locations
+reg=$(find / -name ckp_regedit)
+loc=$(find / -name HKLM_registry.data)
+#fwk=$(find / -name fwkern.conf | grep /opt/)
+
+###cp files to /home/admin
+cp fw_health_check.sh /home/admin/
+cp hpna_checks /home/admin/
+cp gw_chk.sh /home/admin/
+chmod 777 /home/admin/hpna_checks
+chmod 777 /home/admin/fw_health_check.sh
+chmod 777 /home/admin/gw_chk.sh
+echo "/home/admin files moved/updated" >> $logFile
+echo "$linebrk" >> $logFile
+
+###cp files pam, profile, cli.sh, sudoers, and bashrc files
+cp /etc/security/pam_env.conf /etc/security/pam_env.conf.bak
+cp pam_env.conf /etc/security/
+echo "Pam File Updated" >> $logFile
+echo "$linebrk" >> $logFile
+
+cp /etc/profile /etc/profile.bak
+cp profile /etc/
+echo "Profile File Updated" >> $logFile
+echo "$linebrk" >> $logFile
+
+cp /etc/cli.sh /etc/cli.sh.bak
+cp cli.sh /etc/
+chmod 777 /etc/cli.sh
+echo "Cli.sh Updated" >> $logFile
+echo "$linebrk" >> $logFile
+
+cp /etc/bashrc /etc/bashrc.bak
+cp bashrc /etc/
+echo "bashrc File Updated" >> $logFile
+echo "$linebrk" >> $logFile
+
+cp /etc/sudoers /etc/sudoers.bak
+cp sudoers /etc/
+echo "bashrc File Updated" >> $logFile
+echo "$linebrk" >> $logFile
+
+#echo
+#echo "BCPP Updated"
+#echo
+
+### update asset.xml file
+#cp /etc/asset.xml /etc/asset.xml.bak
+#cp asset.xml /etc/
+#echo "asset File Updated" >> $logFile
+#echo "$linebrk" >> $logFile
+
+
+###moves fwkern.conf to /var/opt/fw.boot/modules/
+#cp $fwk $fwk".bak"
+cp fwkern.conf /var/opt/fw.boot/modules/
+echo "Fwkern File Updated" >> $logFile
+#echo
+echo "$linebrk" >> $logFile
+
+### copy simkern to /$PPKDIR/con
+cp /home/admin/niisd/simkern.conf $PPKDIR/conf
+echo "Simkern File Updated" >> $logFile
+#echo
+echo "$linebrk" >> $logFile
+
+###updates userDefinedSettings
+cp /etc/snmp/userDefinedSettings.conf /etc/snmp/userDefinedSettings.conf.bak
+cp userDefinedSettings.conf /etc/snmp/userDefinedSettings.conf
+echo "UserDefinedSettings File Updated" >> $logFile
+echo "$linebrk" >> $logFile
+
+###update registry
+cp $loc $loc"_original"
+$reg -a SOFTWARE\\CheckPoint\\FW1\\$(cpprod_util CPPROD_GetCurrentVersion FW1) RAD_QUERIES_NUMBER_PER_CONNECTION 30
+echo "" >> $logFile
+echo "Registry Updated" >> $logFile
+echo "$linebrk" >> $logFile
+
+
+#/var/opt/CPshrd-R81.20/registry/HKLM_registry.data /var/opt/CPshrd-R81.20/registry/HKLM_registry.data_ORIGINAL
+#/opt/CPshrd-R81.20/bin/ckp_regedit
+
+grep --color -C 1 RAD_QUERIES_NUMBER_PER_CONNECTION $CPDIR/registry/HKLM_registry.data >> $logFile
+
+#echo
+#echo "Rad Queries Updated!"
+#echo
+echo "Rad Queries Updated" >> $logFile
+echo "$linebrk" >> $logFile
+
+###update cpprod_util settings
+cpprod_util FwSetUsFwmachine 1
+cpprod_util FwSetUsermode 1
+cpprod_util CPPROD_SetValue "FW1" "FW_ASYC_BUFFER_FOR_FWD" 4 3000 1
+cpprod_util CPPROD_SetValue "FW1" "BUFFER_RECS_FOR_FWD" 4 80000 1
+
+grep FW_ASYC_BUFFER_FOR_FWD $CPDIR/registry/HKLM_registry.data >> $logFile
+grep BUFFER_RECS_FOR_FWD $CPDIR/registry/HKLM_registry.data >> $logFile
+echo "CPPROD (buffer) settings Updated" >> $logFile
+echo "$linebrk" >> $logFile
+
+###set crontab and backup
+#var1=$(hostname| cut -c 4-6)
+#dcLoc="${var1,,}"
+#echo "crontab.hpna.$dcLoc"
+crontab -u hpna /home/admin/niisd/crontab.hpna.pol
+crontab -l -u hpna >> $logFile
+echo "Crontab settings Updated" >> $logFile
+echo "$linebrk" >> $logFile
+
+###update service contract
+cplic contract put ServiceContract.xml
+echo "CP Service Contract Applied" >> $logFile
+echo "$linebrk" >> $logFile
+
+
+### corexl settings
+cxl16="cp_conf corexl enable 32 -6 30"
+cxl29="cp_conf corexl enable 84 -6 80"
+
+if [[ $model == 16200 ]]; then
+    eval "$cxl16"
+    echo "setting corexl for model: $model" >> "$logFile"
+elif [[ $model == 29000 ]]; then
+    eval "$cxl29"
+    echo "setting corexl for model: $model" >> "$logFile"
+else
+    echo "this fw is neither a 16k or 29k"
+fi
+
+echo "Corexl Settings Applied" >> "$logFile"
+echo "$linebrk" >> "$logFile"
+
+
+### proxy settings
+set proxy address proxy-nmnet port 8008
+echo "Proxy Configured" >> $logFile
+echo "$linebrk" >> $logFile
+
+cat $logFile

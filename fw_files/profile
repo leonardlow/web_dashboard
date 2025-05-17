@@ -1,0 +1,60 @@
+# /etc/profile
+
+# System wide environment and startup programs, for login setup
+# Functions and aliases go in /etc/bashrc
+
+pathmunge () {
+	if ! echo $PATH | /bin/egrep -q "(^|:)$1($|:)" ; then
+	   if [ "$2" = "after" ] ; then
+	      PATH=$PATH:$1
+	   else
+	      PATH=$1:$PATH
+	   fi
+	fi
+}
+
+# ksh workaround
+if [ -z "$EUID" -a -x /usr/bin/id ]; then 
+	EUID=`id -u`
+	UID=`id -ru`
+fi
+
+# Path manipulation
+if [ "$EUID" = "0" ]; then
+	pathmunge /sbin
+	pathmunge /usr/sbin
+	pathmunge /usr/local/sbin
+fi
+
+# If not enabled by "um_core" then no core files by default
+if [ ! -e /etc/sysconfig/enable_cores ]; then
+	ulimit -S -c 0 > /dev/null 2>&1
+fi
+
+PAMNAME=$LOGNAME
+if [ -x /usr/bin/id ]; then
+	USER="`id -un`"
+	#LOGNAME=$USER
+	MAIL="/var/spool/mail/$USER"
+fi
+
+HOSTNAME=`/bin/hostname`
+HISTSIZE=1000
+
+if [ -z "$INPUTRC" -a ! -f "$HOME/.inputrc" ]; then
+    INPUTRC=/etc/inputrc
+fi
+
+export PATH USER LOGNAME PAMNAME MAIL HOSTNAME HISTSIZE INPUTRC
+
+for i in /etc/profile.d/*.sh ; do
+    if [ -r "$i" ]; then
+    	. $i
+    fi
+done
+
+unset i
+unset pathmunge
+if [ `id -u` = 0 ] ; then  # FW1_SCUR
+   . "/opt/uf/SecureComputing/scripts/envset"  # FW1_SCUR
+fi  # FW1_SCUR

@@ -1,0 +1,401 @@
+#!/bin/sh -f
+
+ECHO=/bin/echo
+RM=/bin/rm
+MKDIR=/bin/mkdir
+MKNOD=/usr/bin/mknod
+GREP=/bin/grep
+AWK=/bin/awk
+SED=/bin/sed
+TOUCH=/bin/touch
+PIDOF=/sbin/pidof
+TASKSET=/bin/taskset
+LN=/bin/ln
+PS=/bin/ps
+CUT=/bin/cut
+LSCPU=/bin/lscpu
+NETNS=/usr/bin/netns
+ETHTOOL=/sbin/ethtool
+KILL=/usr/bin/kill
+
+. /opt/CPshared/5.0/tmp/.CPprofile.sh
+. /etc/profile.d/mdpsenv.sh
+
+declare -a RESOURCE_CPUS
+
+mdps_plane_apply()
+{
+        if [ "$1" = "enable" ]; then
+                $MKDIR -p $CPDIR/CTX
+                $LN -s $CPDIR $CPDIR/CTX/CTX00001
+
+                $MKDIR -p /var/$CPDIR/CTX
+                $LN -s /var/$CPDIR /var/$CPDIR/CTX/CTX00001
+
+                $MKDIR -p $FWDIR/CTX
+                $LN -s $FWDIR $FWDIR/CTX/CTX00001
+
+                $MKDIR -p /var/$FWDIR/CTX
+                $LN -s /var/$FWDIR /var/$FWDIR/CTX/CTX00001
+
+                if [ $IS_SP -eq 1 ]; then
+                        $MKDIR -p $SMODIR/CTX
+                        $LN -s $SMODIR $SMODIR/CTX/CTX00001
+
+                        $MKDIR -p /var/$SMODIR/CTX
+                        $LN -s /var/$SMODIR /var/$SMODIR/CTX/CTX00001
+
+                        if [ $IS_MAESTRO -eq 0 ]; then
+                                mgmtif=$($GREP 'mdps:interface:management' /config/active | $AWK '{print $NF}')
+                                IFACE_MQ_STATE=`grep mq:$MDPS_PLANE_DATA:$mgmtif /config/active | cut -d " " -f2`
+                                if [[ ! -z "$IFACE_MQ_STATE" ]]; then
+                                        $DBSET mq:$MDPS_PLANE_DATA:${mgmtif} &
+                                        $DBSET mq:$MDPS_PLANE_MGMT:${mgmtif} $IFACE_MQ_STATE &
+                                fi
+                        fi
+                fi
+
+                $TOUCH $MDPS_MGMT_PLANE_ENABLED_FILE
+        elif [ "$1" = "disable" ]; then
+                $RM -rf $MDPS_MGMT_PLANE_ENABLED_FILE
+
+                $RM -rf /var/$FWDIR/CTX
+                $RM -rf $FWDIR/CTX
+                $RM -rf /var/$CPDIR/CTX
+                $RM -rf $CPDIR/CTX
+                if [ $IS_SP -eq 1 ]; then
+                        $RM -rf /var/$SMODIR/CTX
+                        $RM -rf $SMODIR/CTX
+
+                        if [ $IS_MAESTRO -eq 0 ]; then
+                                mgmtif=$($GREP 'mdps:interface:management' /config/active | $AWK '{print $NF}')
+                                IFACE_MQ_STATE=`grep mq:$MDPS_PLANE_MGMT:$mgmtif /config/active | cut -d " " -f2`
+                                if [[ ! -z "$IFACE_MQ_STATE" ]]; then
+                                        $DBSET mq:$MDPS_PLANE_MGMT:${mgmtif} &
+                                        $DBSET mq:$MDPS_PLANE_DATA:${mgmtif} $IFACE_MQ_STATE &
+                                fi
+                        fi
+                fi
+        fi
+}
+
+mdps_resource_common()
+{
+	common_cpunum=`$GREP -c ^processor /proc/cpuinfo`
+	common_resource_cpunum=`$GREP 'mdps:resource:cpus' /config/active | $AWK '{print $NF}'`
+	common_smt=`$LSCPU | $GREP 'Thread(s) per core' | $AWK '{print $NF}'`
+	if [ "X$common_resource_cpunum" = "X" ]; then
+		common_resource_cpunum=$((1*common_smt))
+	else
+		common_resource_cpunum=$((common_resource_cpunum*common_smt))
+	fi
+
+	commnon_is_usermode=`$CPDIR/bin/cpprod_util FwIsUSFW 2> /dev/null`
+	common_instance_num=`$GREP KERN_INSTANCE_NUM /etc/fw.boot/boot.conf | $AWK '{print $NF}'`
+	common_instance_id=$(($common_instance_num-1))
+}
+
+mdps_resource_cpus()
+{
+	if [ $# -eq 0 ]; then
+		mdps_resource_common
+	fi
+
+	instance_id=$common_instance_id
+	for ((i=0; i<$common_resource_cpunum; i++)); do
+		if [ $commnon_is_usermode -eq 1 ]; then
+			instance_pid=`$PS -e -T | $GREP fwk0_$instance_id | $AWK '{print $2}'`
+		else
+			instance_pid=`$PIDOF fw_worker_$instance_id`
+		fi
+
+		if [ ! -z $instance_pid ]; then
+			cpu=`$TASKSET -cp $instance_pid | $AWK '{print $NF}'`
+			RESOURCE_CPUS=(${RESOURCE_CPUS[@]} $cpu)
+		fi
+
+		((instance_id--))
+	done
+
+	if [ $# -eq 0 ]; then
+		$ECHO "${RESOURCE_CPUS[@]}"
+	fi
+}
+
+mdps_resource_apply()
+{
+	mdps_resource_common
+
+	if [ $common_cpunum -lt $MDPS_MGMT_RESOURCE_MIN_CPUS -o $common_instance_num -lt $MDPS_MGMT_RESOURCE_MIN_INSTANCES ]; then
+		$ECHO "MDPS: Resource separation requires at least $MDPS_MGMT_RESOURCE_MIN_CPUS CPU's and $MDPS_MGMT_RESOURCE_MIN_INSTANCES FW-Instance"
+		exit 0
+	fi
+
+	if [ $common_resource_cpunum -ge $common_instance_num ]; then
+		$ECHO "MDPS: Disabling Resource separation, Amount of CPU's configured for resource is greater than actual FW-Instance num"
+		exit 0
+	fi
+
+	if [ "$1" = "enable" ]; then
+		$FWDIR/bin/fw ctl set str fw_mdps_resource_ifname $2 1>/dev/null 2>&1
+		$FWDIR/bin/fw ctl set int kiss_kthread_allow_resched 1 1>/dev/null 2>&1
+		op="stop"
+	else
+		$FWDIR/bin/fw ctl set str fw_mdps_resource_ifname "dummy" 1>/dev/null 2>&1
+		op="start"
+	fi
+
+	instance_id=$common_instance_id
+	for (( i=0; i<$common_resource_cpunum; i++ )); do
+		$FWDIR/bin/fw ctl multik $op $instance_id 1>/dev/null 2>&1
+		((instance_id--))
+	done
+
+	if [[ `$PS -p $PPID -o comm=` == confd ]]; then
+		return
+	fi
+
+	plane=$MDPS_PLANE_DATA
+	if [ -f $MDPS_MGMT_PLANE_ENABLED_FILE ]; then
+		plane=$MDPS_PLANE_MGMT
+	fi
+
+	if [ $IS_SP -eq 0 ]; then
+		if [[ $2 = bond* ]]; then
+			$NETNS set cur $plane -c \\"cp /proc/net/bonding/$2 /tmp/mdps_$2" 1>/dev/null 2>&1
+			RESOURCE_IFACE=(`$GREP "Slave Interface" /tmp/mdps_$2 | $AWK '{print $NF}'`)
+			$RM -rf /tmp/mdps_$2
+		else
+			RESOURCE_IFACE=($2)
+		fi
+	else
+		if [ $IS_MAESTRO -eq 0 ]; then
+			RESOURCE_IFACE=($($NETNS set cur $plane -c \\"ls /sys/class/net" | $GREP Mgmt4))
+		else
+			$NETNS set cur $MDPS_PLANE_DATA -c \\"grep 'Slave Interface' /proc/net/bonding/BPEth* > /tmp/mdps_mgmt" 1>/dev/null 2>&1
+			RESOURCE_IFACE=(`$AWK '{print $NF}' /tmp/mdps_mgmt`)
+			$RM -rf /tmp/mdps_mgmt
+		fi
+	fi
+
+	if [ "$1" = "enable" ]; then
+		mdps_resource_cpus "dummy"
+
+		if [ ${#RESOURCE_CPUS[@]} -eq 0 ]; then
+			$ECHO "MDPS: No CPU's for Resource separation"
+		fi
+
+		if [ $IS_MAESTRO -eq 0 ]; then
+			if [ ${#RESOURCE_CPUS[@]} -eq 1 ]; then
+				for iface in "${RESOURCE_IFACE[@]}"; do
+					$NETNS set cur $plane -c \\"$ETHTOOL -X $iface default" 1>/dev/null 2>&1
+					$NETNS set cur $plane -c \\"$FWDIR/bin/mq_mng --set-mode off --interface $iface --dynamic_split &" 1>/dev/null 2>&1
+					$NETNS set cur $MDPS_PLANE_DATA -c \\"$FWDIR/bin/fw ctl affinity -s -i $iface -c ${RESOURCE_CPUS[*]}" 1>/dev/null 2>&1
+				done
+			else
+				for iface in "${RESOURCE_IFACE[@]}"; do
+					$NETNS set cur $plane -c \\"$ETHTOOL -X $iface default" 1>/dev/null 2>&1
+					$NETNS set cur $plane -c \\"$FWDIR/bin/mq_mng --set-mode manual --interface $iface --core ${RESOURCE_CPUS[*]} --dynamic_split &" 1>/dev/null 2>&1
+				done
+			fi
+		else
+			MAX_CPU_MASK=32
+			for iface in "${RESOURCE_IFACE[@]}"
+			do
+				QUEUE0_IRQ+=($(egrep "${iface}-0|${iface}-TxRx-0" /proc/interrupts | awk '{print $1}' | sed 's/://g'))
+			done
+			mdps_resource_maestro_apply $2 $plane
+
+			cpuid=${RESOURCE_CPUS[0]}
+			if [ "X$cpuid" != "X" ]; then
+				cpumask=$((1<<$cpuid))
+				irq_current_handler=-1
+				for irq in "${QUEUE0_IRQ[@]}"; do
+					if [[ $irq_current_handler -eq -1 ]]; then
+						irq_current_handler=`cat /proc/irq/$irq/smp_affinity_list`
+					fi
+					irq_current_handler=`cat /proc/irq/$irq/smp_affinity_list`
+					if [[ $cpuid -ge $MAX_CPU_MASK ]]; then
+						cpumask=$(($cpumask>>$MAX_CPU_MASK))
+						printf "%X,00000000" $cpumask > /proc/irq/$irq/smp_affinity
+					else
+						printf "%X" $cpumask > /proc/irq/$irq/smp_affinity
+					fi
+				done
+				mq_optimze
+			fi
+		fi
+	else
+			for iface in "${RESOURCE_IFACE[@]}"; do
+				if [ $IS_SP -eq 0 ]; then
+					$NETNS set cur $plane -c \\"$FWDIR/bin/mq_mng --set-mode auto --interface $iface --dynamic_split &" 1>/dev/null 2>&1
+				else
+					$NETNS set cur $plane -c \\"$FWDIR/bin/mq_mng --set-mode auto --interface $iface &" 1>/dev/null 2>&1
+				fi
+			done
+	fi
+}
+
+mdps_etc_apply()
+{
+	if [ ! -f $MDPS_MGMT_PLANE_CONF_FILE ]; then
+		$TOUCH $MDPS_MGMT_PLANE_CONF_FILE
+	fi
+
+	if [ "$1" = "enable" ]; then
+		if [ "$($GREP -c "$2$" $MDPS_MGMT_PLANE_CONF_FILE)" -eq 0 ]; then
+			$ECHO "$2" >> $MDPS_MGMT_PLANE_CONF_FILE
+		fi
+	elif [ "$1" = "disable" ]; then
+		$SED -i "/$2/d" $MDPS_MGMT_PLANE_CONF_FILE 1>/dev/null 2>&1
+	else
+		$ECHO "MDPS: Invalid argument '$1'"
+		exit 1
+	fi
+}
+
+mdps_apply()
+{
+	if [ ! -f $1 ]; then
+		$ECHO "MDPS: file '$1' does not exist"
+		exit 1
+	fi
+
+	plane=`$GREP 'mdps:mgmt:plane' $1 | $AWK '{print $NF}'`
+	resource=`$GREP 'mdps:mgmt:resource' $1 | $AWK '{print $NF}'`
+	mgmt=`$GREP 'mdps:interface:management' $1 | $AWK '{print $NF}'`
+
+	if [ "$plane" = "t" ]; then
+		if [ ! -f $MDPS_MGMT_PLANE_ENABLED_FILE ]; then
+			mdps_plane_apply "enable"
+		fi
+
+		mdps_deny=`$GREP "mdps:task:deny:" $1 | $AWK '{print $1}' | $CUT -d':' -f4`
+		for deny in $mdps_deny; do
+			mdps_etc_apply "enable" "mdps_deny "$deny""
+		done
+
+		mdps_address=`$GREP "mdps:task:address:" $1 | $AWK '{print $1}' | $CUT -d':' -f4`
+		for address in $mdps_address; do
+			mdps_etc_apply "enable" "mdps_address "$address""
+		done
+
+		mdps_service=`$GREP "mdps:task:service:" $1 | $AWK '{print $1}' | $CUT -d':' -f4`
+		for service in $mdps_service; do
+			mdps_etc_apply "enable" "mdps_service "$service""
+		done
+
+		mdps_process=`$GREP "mdps:task:process:" $1 | $AWK '{print $1}' | $CUT -d':' -f4`
+		for process in $mdps_process; do
+			if [ "$($GREP -c "process:$process:path" $1)" -lt 1 ]; then
+				mdps_etc_apply "enable" "mdps_process "$process""
+			fi
+		done
+
+		mdps_port_protocol=(`$GREP "mdps:task:port" $1 | $AWK '{print $1}' | $CUT -d':' --fields=4,6 --output-delimiter=" "`)
+		for (( i=0; i<${#mdps_port_protocol[*]}; i=i+2 )); do
+			mdps_etc_apply "enable" "mdps_port_protocol "${mdps_port_protocol[((i))]}" "${mdps_port_protocol[((i+1))]}""
+		done
+
+		if [ $IS_SP -eq 1 ]; then
+			$NETNS set cur $MDPS_PLANE_MGMT -c "ifconfig $mgmt up"
+			/usr/lib/smo/libcluster.sh cluster_set_ip_local_port_range
+		fi
+
+		$MKDIR /dev/net 1>/dev/null 2>&1
+		$MKNOD /dev/net/tun c 10 200 1>/dev/null 2>&1
+		$FWDIR/bin/fw ctl set int fw_mdps_routing_enabled 1 1>/dev/null 2>&1
+		$NETNS set cur $MDPS_PLANE_MGMT -c \\"$FWDIR/bin/mq_mng --reconf &" 1>/dev/null 2>&1
+	fi
+
+	if [ "$resource" = "t" -a "X$mgmt" != "X" ]; then
+		mdps_resource_apply enable $mgmt
+	fi
+}
+
+mdps_resource_maestro_apply() {
+	mgmt_interface_mac=`$NETNS set cur $2 -c "cat /sys/class/net/$1/address"`
+	mgmt_ip=`$NETNS set cur $2 -c "ifconfig | grep -A1 '$1' | tail -1 | cut -d ':' -f 2 | cut -d ' ' -f 1"`
+	RX_Rings=`$FWDIR/scripts/fwaffinity_used_cpus -r | wc -l`
+	optimize_weights $RX_Rings
+	push_fd_rules $mgmt_interface_mac $1 $mgmt_ip
+	xps_optimization
+}
+
+optimize_weights() {
+	declare -a new_rx_weights
+	Rings=$1
+	Rings=$((Rings-1))
+	for i in $(seq 0 $Rings); do
+        case "$i" in
+                0) new_rx_weights[$i]=0;;
+                *) new_rx_weights[$i]=1;;
+        esac
+	done
+
+	for interface in "${RESOURCE_IFACE[@]}"
+	do
+		$NETNS set cur $MDPS_PLANE_DATA -c "$ETHTOOL -X $interface weight ${new_rx_weights[*]}" 1>/dev/null
+	done
+}
+
+push_fd_rules() {
+	for interface in "${RESOURCE_IFACE[@]}"
+	do
+		$NETNS set cur $MDPS_PLANE_DATA -c \\"$ETHTOOL -K $interface ntuple on" 1>/dev/null
+		driver=`$NETNS set cur $MDPS_PLANE_DATA -c "$ETHTOOL -i $interface | grep driver"`
+                driver=$(echo "$driver" | awk '{print $NF}')
+		if [[ "$driver" == *"mlx"* ]]; then
+			$NETNS set cur $MDPS_PLANE_DATA -c "$ETHTOOL -N $interface flow-type ip4 dst-mac $1 action 0" 1>/dev/null
+		elif [[ "$driver" == *"i40e"* ]]; then
+			$NETNS set cur $MDPS_PLANE_DATA -c "$ETHTOOL -N $interface flow-type ip4 dst-ip $3 action 0" 1>/dev/null
+		elif [[ "$driver" == *"ixgbe"* ]]; then
+			mgmt_vlans=(1024 1025 1026 1027)
+			for vlan in ${mgmt_vlans[@]}
+			do
+				$NETNS set cur $MDPS_PLANE_DATA -c "$ETHTOOL -N $interface flow-type ip4 vlan $vlan action 0" 1>/dev/null
+			done
+		fi
+	done
+}
+
+xps_optimization() {
+	for interface in "${RESOURCE_IFACE[@]}"
+	do
+		IRQ=$(egrep "${interface}-0|${interface}-TxRx-0" /proc/interrupts | awk '{print $1}' | sed 's/://g')
+		used_core=$(cat /proc/irq/$IRQ/smp_affinity)
+		echo $used_core > /sys/class/net/$interface/queues/tx-0/xps_cpus
+	done
+}
+
+mq_optimze () {
+	new_handler=${RESOURCE_CPUS[0]}
+	cores=`$FWDIR/scripts/fwaffinity_used_cpus -r | sed "s/^${irq_current_handler}$/${new_handler}/g" | tr '\n' ' '`
+	$FWDIR/bin/mq_mng --set-mode manual --interface BPEth0 -c $cores 1>/dev/null 2>&1
+}
+
+IS_SP=`/usr/bin/is_scalable_platform.sh`
+IS_MAESTRO=`/usr/bin/is_maestro.sh`
+
+if [ $# -eq 2 -a "$2" = "plane" ]; then
+	mdps_plane_apply $1
+elif [ $# -eq 3 -a "$2" = "resource" ]; then
+	mdps_resource_apply $1 $3
+elif [ $# -eq 1 -a "$1" = "resource_cpus" ]; then
+	mdps_resource_cpus
+elif [ $# -eq 3 -a "$2" = "deny" ]; then
+	mdps_etc_apply "$1" "mdps_deny "$3""
+elif [ $# -eq 3 -a "$2" = "address" ]; then
+	mdps_etc_apply "$1" "mdps_address "$3""
+	$KILL -SIGUSR2 `$PIDOF mdpsd` 1>/dev/null 2>&1
+elif [ $# -eq 3 -a "$2" = "service" ]; then
+	mdps_etc_apply "$1" "mdps_service "$3""
+elif [ $# -eq 3 -a "$2" = "process" ]; then
+	mdps_etc_apply "$1" "mdps_process "$3""
+elif [ $# -eq 4 -a "$2" = "port_protocol" ]; then
+	mdps_etc_apply "$1" "mdps_port_protocol "$3" "$4""
+elif [ $# -eq 2 -a "$1" = "mdps" ]; then
+	mdps_apply $2
+fi
+
+exit 0

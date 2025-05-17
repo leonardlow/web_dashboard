@@ -1,0 +1,4194 @@
+<templates>
+	<template name="ST-without-Raid">
+		<sections>
+			<section name="system">
+				<property>
+					<name>Platform</name>
+					<provider>1000</provider>
+					<info>1006</info>
+				</property>
+				<property>
+					<name>Model</name>
+					<provider>1040</provider>
+					<info>1000</info>
+				</property>
+				<property>
+					<name>Serial Number</name>
+					<provider>1000</provider>
+					<info>1007</info>
+				</property>
+				<property>
+					<name>CPU Model</name>
+					<provider>1010</provider>
+					<info>1000</info>
+				</property>
+				<property>
+					<name>CPU Frequency</name>
+					<provider>1010</provider>
+					<info>1001</info>
+				</property>
+				<property>
+					<name>Number of Cores</name>
+					<provider>1010</provider>
+					<info>1002</info>
+				</property>
+				<property>
+					<name>CPU Hyperthreading</name>
+					<provider>1010</provider>
+					<info>1003</info>
+				</property>
+			</section>
+			<section name="disk">
+				<property>
+					<name>Disk Model</name>
+					<provider>1020</provider>
+					<info>11000</info>
+				</property>
+				<property>
+					<name>Disk Capacity</name>
+					<provider>1020</provider>
+					<info>11003</info>
+				</property>
+				<property>
+					<name>Total Disks size</name>
+					<provider>1020</provider>
+					<info>30000</info>
+				</property>
+			</section>
+			<section name="memory">
+				<property>
+					<name>Total Memory</name>
+					<provider>1000</provider>
+					<info>10000</info>
+				</property>
+				<property>
+					<name>Memory Slot 1 Size</name>
+					<provider>1000</provider>
+					<info>10102</info>
+				</property>
+				<property>
+					<name>Memory Slot 2 Size</name>
+					<provider>1000</provider>
+					<info>10202</info>
+				</property>
+				<property>
+					<name>Memory Slot 3 Size</name>
+					<provider>1000</provider>
+					<info>10302</info>
+				</property>
+				<property>
+					<name>Memory Slot 4 Size</name>
+					<provider>1000</provider>
+					<info>10402</info>
+				</property>
+				<property>
+					<name>Memory Slot 5 Size</name>
+					<provider>1000</provider>
+					<info>10502</info>
+				</property>
+				<property>
+					<name>Memory Slot 6 Size</name>
+					<provider>1000</provider>
+					<info>10602</info>
+				</property>
+				<property>
+					<name>Memory Slot 7 Size</name>
+					<provider>1000</provider>
+					<info>10702</info>
+				</property>
+				<property>
+					<name>Memory Slot 8 Size</name>
+					<provider>1000</provider>
+					<info>10802</info>
+				</property>
+				<property>
+					<name>Memory Slot 9 Size</name>
+					<provider>1000</provider>
+					<info>10902</info>
+				</property>
+				<property>
+					<name>Memory Slot 10 Size</name>
+					<provider>1000</provider>
+					<info>11002</info>
+				</property>
+				<property>
+					<name>Memory Slot 11 Size</name>
+					<provider>1000</provider>
+					<info>11102</info>
+				</property>
+				<property>
+					<name>Memory Slot 12 Size</name>
+					<provider>1000</provider>
+					<info>11202</info>
+				</property>
+				<property>
+						<name>Memory Slot 13 Size</name>
+						<provider>1000</provider>
+						<info>11302</info>
+				</property>
+				<property>
+						<name>Memory Slot 14 Size</name>
+						<provider>1000</provider>
+						<info>11402</info>
+				</property>
+				<property>
+						<name>Memory Slot 15 Size</name>
+						<provider>1000</provider>
+						<info>11502</info>
+				</property>
+				<property>
+						<name>Memory Slot 16 Size</name>
+						<provider>1000</provider>
+						<info>11602</info>
+				</property>
+				<property>
+						<name>Memory Slot 17 Size</name>
+						<provider>1000</provider>
+						<info>11702</info>
+				</property>
+				<property>
+						<name>Memory Slot 18 Size</name>
+						<provider>1000</provider>
+						<info>11802</info>
+				</property>
+				<property>
+						<name>Memory Slot 19 Size</name>
+						<provider>1000</provider>
+						<info>11902</info>
+				</property>
+				 <property>
+						<name>Memory Slot 20 Size</name>
+						<provider>1000</provider>
+						<info>12002</info>
+				</property>
+				<property>
+						<name>Memory Slot 21 Size</name>
+						<provider>1000</provider>
+						<info>12102</info>
+				</property>
+				<property>
+						<name>Memory Slot 22 Size</name>
+						<provider>1000</provider>
+						<info>12202</info>
+				</property>
+				<property>
+						<name>Memory Slot 23 Size</name>
+						<provider>1000</provider>
+						<info>12302</info>
+				</property>
+				<property>
+						<name>Memory Slot 24 Size</name>
+						<provider>1000</provider>
+						<info>12402</info>
+				</property>
+			</section>
+		</sections>
+	</template>
+	<template name="ST-with-Raid">
+		<sections>
+			<section name="system">
+				<property>
+					<name>Platform</name>
+					<provider>1000</provider>
+					<info>1006</info>
+				</property>
+				<property>
+					<name>Model</name>
+					<provider>1040</provider>
+					<info>1000</info>
+				</property>
+				<property>
+					<name>Serial Number</name>
+					<provider>1000</provider>
+					<info>1007</info>
+				</property>
+				<property>
+					<name>CPU Model</name>
+					<provider>1010</provider>
+					<info>1000</info>
+				</property>
+				<property>
+					<name>CPU Frequency</name>
+					<provider>1010</provider>
+					<info>1001</info>
+				</property>
+				<property>
+					<name>Number of Cores</name>
+					<provider>1010</provider>
+					<info>1002</info>
+				</property>
+				<property>
+					<name>CPU Hyperthreading</name>
+					<provider>1010</provider>
+					<info>1003</info>
+				</property>
+			</section>
+			<section name="disk">
+				<property>
+					<name>Number of disks</name>
+					<provider>1120</provider>
+					<info>1000</info>
+				</property>
+				<property>
+					<name>Disk 1 Model</name>
+					<provider>1120</provider>
+					<info>10101</info>
+				</property>
+				<property>
+					<name>Disk 1 Capacity</name>
+					<provider>1120</provider>
+					<info>10102</info>
+				</property>
+				<property>
+					<name>Disk 2 Model</name>
+					<provider>1120</provider>
+					<info>10201</info>
+				</property>
+				<property>
+					<name>Disk 2 Capacity</name>
+					<provider>1120</provider>
+					<info>10202</info>
+				</property>
+				<property>
+					<name>Disk 3 Model</name>
+					<provider>1120</provider>
+					<info>10301</info>
+				</property>
+				<property>
+					<name>Disk 3 Capacity</name>
+					<provider>1120</provider>
+					<info>10302</info>
+				</property>
+				<property>
+					<name>Disk 4 Model</name>
+					<provider>1120</provider>
+					<info>10401</info>
+				</property>
+				<property>
+					<name>Disk 4 Capacity</name>
+					<provider>1120</provider>
+					<info>10402</info>
+				</property>
+				<property>
+					<name>Disk 5 Model</name>
+					<provider>1120</provider>
+					<info>10501</info>
+				</property>
+				<property>
+					<name>Disk 5 Capacity</name>
+					<provider>1120</provider>
+					<info>10502</info>
+				</property>
+				<property>
+					<name>Disk 6 Model</name>
+					<provider>1120</provider>
+					<info>10601</info>
+				</property>
+				<property>
+					<name>Disk 6 Capacity</name>
+					<provider>1120</provider>
+					<info>10602</info>
+				</property>
+				<property>
+					<name>Disk 7 Model</name>
+					<provider>1120</provider>
+					<info>10701</info>
+				</property>
+				<property>
+					<name>Disk 7 Capacity</name>
+					<provider>1120</provider>
+					<info>10702</info>
+				</property>
+				<property>
+					<name>Disk 8 Model</name>
+					<provider>1120</provider>
+					<info>10801</info>
+				</property>
+				<property>
+					<name>Disk 8 Capacity</name>
+					<provider>1120</provider>
+					<info>10802</info>
+				</property>
+				<property>
+					<name>Disk 9 Model</name>
+					<provider>1120</provider>
+					<info>10901</info>
+				</property>
+				<property>
+					<name>Disk 9 Capacity</name>
+					<provider>1120</provider>
+					<info>10902</info>
+				</property>
+				<property>
+					<name>Disk 10 Model</name>
+					<provider>1120</provider>
+					<info>11001</info>
+				</property>
+				<property>
+					<name>Disk 10 Capacity</name>
+					<provider>1120</provider>
+					<info>11002</info>
+				</property>
+				<property>
+					<name>Disk 11 Model</name>
+					<provider>1120</provider>
+					<info>11101</info>
+				</property>
+				<property>
+					<name>Disk 11 Capacity</name>
+					<provider>1120</provider>
+					<info>11102</info>
+				</property>
+				<property>
+					<name>Disk 12 Model</name>
+					<provider>1120</provider>
+					<info>11201</info>
+				</property>
+				<property>
+					<name>Disk 12 Capacity</name>
+					<provider>1120</provider>
+					<info>11202</info>
+				</property>
+			</section>
+			<section name="memory">
+				<property>
+					<name>Total Memory</name>
+					<provider>1000</provider>
+					<info>10000</info>
+				</property>
+				<property>
+					<name>Memory Slot 1 Size</name>
+					<provider>1000</provider>
+					<info>10102</info>
+				</property>
+				<property>
+					<name>Memory Slot 2 Size</name>
+					<provider>1000</provider>
+					<info>10202</info>
+				</property>
+				<property>
+					<name>Memory Slot 3 Size</name>
+					<provider>1000</provider>
+					<info>10302</info>
+				</property>
+				<property>
+					<name>Memory Slot 4 Size</name>
+					<provider>1000</provider>
+					<info>10402</info>
+				</property>
+				<property>
+					<name>Memory Slot 5 Size</name>
+					<provider>1000</provider>
+					<info>10502</info>
+				</property>
+				<property>
+					<name>Memory Slot 6 Size</name>
+					<provider>1000</provider>
+					<info>10602</info>
+				</property>
+				<property>
+					<name>Memory Slot 7 Size</name>
+					<provider>1000</provider>
+					<info>10702</info>
+				</property>
+				<property>
+					<name>Memory Slot 8 Size</name>
+					<provider>1000</provider>
+					<info>10802</info>
+				</property>
+				<property>
+					<name>Memory Slot 9 Size</name>
+					<provider>1000</provider>
+					<info>10902</info>
+				</property>
+				<property>
+					<name>Memory Slot 10 Size</name>
+					<provider>1000</provider>
+					<info>11002</info>
+				</property>
+				<property>
+					<name>Memory Slot 11 Size</name>
+					<provider>1000</provider>
+					<info>11102</info>
+				</property>
+				<property>
+					<name>Memory Slot 12 Size</name>
+					<provider>1000</provider>
+					<info>11202</info>
+				</property>
+				<property>
+						<name>Memory Slot 13 Size</name>
+						<provider>1000</provider>
+						<info>11302</info>
+				</property>
+				<property>
+						<name>Memory Slot 14 Size</name>
+						<provider>1000</provider>
+						<info>11402</info>
+				</property>
+				<property>
+						<name>Memory Slot 15 Size</name>
+						<provider>1000</provider>
+						<info>11502</info>
+				</property>
+				<property>
+						<name>Memory Slot 16 Size</name>
+						<provider>1000</provider>
+						<info>11602</info>
+				</property>
+				<property>
+						<name>Memory Slot 17 Size</name>
+						<provider>1000</provider>
+						<info>11702</info>
+				</property>
+				<property>
+						<name>Memory Slot 18 Size</name>
+						<provider>1000</provider>
+						<info>11802</info>
+				</property>
+				<property>
+						<name>Memory Slot 19 Size</name>
+						<provider>1000</provider>
+						<info>11902</info>
+				</property>
+                                 <property>
+                                                <name>Memory Slot 20 Size</name>
+                                                <provider>1000</provider>
+                                                <info>12002</info>
+                                </property>
+                                <property>
+                                                <name>Memory Slot 21 Size</name>
+                                                <provider>1000</provider>
+                                                <info>12102</info>
+                                </property>
+                                <property>
+                                                <name>Memory Slot 22 Size</name>
+                                                <provider>1000</provider>
+                                                <info>12202</info>
+                                </property>
+                                <property>
+                                                <name>Memory Slot 23 Size</name>
+                                                <provider>1000</provider>
+                                                <info>12302</info>
+                                </property>
+                                <property>
+                                                <name>Memory Slot 24 Size</name>
+                                                <provider>1000</provider>
+                                                <info>12402</info>
+                                </property>
+			</section>
+			<section name="network">
+				<property>
+					<name>Number of line cards</name>
+					<provider>1090</provider>
+					<info>1000</info>
+				</property>
+				<property>
+					<name>Line card 1 model</name>
+					<provider>1090</provider>
+					<info>10101</info>
+				</property>
+				<property>
+					<name>Line card 1 type</name>
+					<provider>1090</provider>
+					<info>10102</info>
+				</property>
+				<property>
+					<name>Line card 2 model</name>
+					<provider>1090</provider>
+					<info>10201</info>
+				</property>
+				<property>
+					<name>Line card 2 type</name>
+					<provider>1090</provider>
+					<info>10202</info>
+				</property>
+				<property>
+					<name>Line card 3 model</name>
+					<provider>1090</provider>
+					<info>10301</info>
+				</property>
+				<property>
+					<name>Line card 3 type</name>
+					<provider>1090</provider>
+					<info>10302</info>
+				</property>
+				<property>
+					<name>SAN card model</name>
+					<provider>1090</provider>
+					<info>20101</info>
+				</property>
+				<property>
+					<name>SAN card type</name>
+					<provider>1090</provider>
+					<info>20102</info>
+				</property>
+			</section>
+			<section name="power-supply">
+                                <property>
+                                        <name>Power supply 1 name</name>
+                                        <provider>1100</provider>
+                                        <info>10011</info>
+                                </property>
+                                <property>
+                                        <name>Power supply 1 status</name>
+                                        <provider>1100</provider>
+                                        <info>10012</info>
+                                </property>
+                                <property>
+                                        <name>Power supply 2 name</name>
+                                        <provider>1100</provider>
+                                        <info>10021</info>
+                                </property>
+                                <property>
+                                        <name>Power supply 2 status</name>
+                                        <provider>1100</provider>
+                                        <info>10022</info>
+                                </property>
+                        </section>
+			<section name="lom-info">
+				<property>
+					<name>LOM Status</name>
+					<provider>1140</provider>
+					<info>1000</info>
+				</property>
+				<property>
+					<name>LOM Firmware Revision</name>
+					<provider>1140</provider>
+					<info>1001</info>
+				</property>
+			</section>
+		</sections>
+	</template>
+	<template name="ST-with-SW-Raid">
+		<sections>
+			<section name="system">
+				<property>
+					<name>Platform</name>
+					<provider>1000</provider>
+					<info>1006</info>
+				</property>
+				<property>
+					<name>Model</name>
+					<provider>1040</provider>
+					<info>1000</info>
+				</property>
+				<property>
+					<name>Serial Number</name>
+					<provider>1000</provider>
+					<info>1007</info>
+				</property>
+				<property>
+					<name>CPU Model</name>
+					<provider>1010</provider>
+					<info>1000</info>
+				</property>
+				<property>
+					<name>CPU Frequency</name>
+					<provider>1010</provider>
+					<info>1001</info>
+				</property>
+				<property>
+					<name>Number of Cores</name>
+					<provider>1010</provider>
+					<info>1002</info>
+				</property>
+				<property>
+					<name>CPU Hyperthreading</name>
+					<provider>1010</provider>
+					<info>1003</info>
+				</property>
+			</section>
+			<section name="disk">
+				<property>
+					<name>Number of disks</name>
+					<provider>1020</provider>
+					<info>1000</info>
+				</property>
+				<property>
+					<name>Disk 1 Model</name>
+					<provider>1020</provider>
+					<info>11000</info>
+				</property>
+				<property>
+					<name>Disk 1 Capacity</name>
+					<provider>1020</provider>
+					<info>11003</info>
+				</property>
+				<property>
+					<name>Disk 2 Model</name>
+					<provider>1020</provider>
+					<info>12000</info>
+				</property>
+				<property>
+					<name>Disk 2 Capacity</name>
+					<provider>1020</provider>
+					<info>12003</info>
+				</property>
+				<property>
+					<name>Total Disks size</name>
+					<provider>1020</provider>
+					<info>30000</info>
+				</property>
+			</section>
+			<section name="memory">
+				<property>
+					<name>Total Memory</name>
+					<provider>1000</provider>
+					<info>10000</info>
+				</property>
+				<property>
+					<name>Memory Slot 1 Size</name>
+					<provider>1000</provider>
+					<info>10102</info>
+				</property>
+				<property>
+					<name>Memory Slot 2 Size</name>
+					<provider>1000</provider>
+					<info>10202</info>
+				</property>
+				<property>
+					<name>Memory Slot 3 Size</name>
+					<provider>1000</provider>
+					<info>10302</info>
+				</property>
+				<property>
+					<name>Memory Slot 4 Size</name>
+					<provider>1000</provider>
+					<info>10402</info>
+				</property>
+				<property>
+					<name>Memory Slot 5 Size</name>
+					<provider>1000</provider>
+					<info>10502</info>
+				</property>
+				<property>
+					<name>Memory Slot 6 Size</name>
+					<provider>1000</provider>
+					<info>10602</info>
+				</property>
+				<property>
+					<name>Memory Slot 7 Size</name>
+					<provider>1000</provider>
+					<info>10702</info>
+				</property>
+				<property>
+					<name>Memory Slot 8 Size</name>
+					<provider>1000</provider>
+					<info>10802</info>
+				</property>
+				<property>
+					<name>Memory Slot 9 Size</name>
+					<provider>1000</provider>
+					<info>10902</info>
+				</property>
+				<property>
+					<name>Memory Slot 10 Size</name>
+					<provider>1000</provider>
+					<info>11002</info>
+				</property>
+				<property>
+					<name>Memory Slot 11 Size</name>
+					<provider>1000</provider>
+					<info>11102</info>
+				</property>
+				<property>
+					<name>Memory Slot 12 Size</name>
+					<provider>1000</provider>
+					<info>11202</info>
+				</property>
+				<property>
+						<name>Memory Slot 13 Size</name>
+						<provider>1000</provider>
+						<info>11302</info>
+				</property>
+				<property>
+						<name>Memory Slot 14 Size</name>
+						<provider>1000</provider>
+						<info>11402</info>
+				</property>
+				<property>
+						<name>Memory Slot 15 Size</name>
+						<provider>1000</provider>
+						<info>11502</info>
+				</property>
+				<property>
+						<name>Memory Slot 16 Size</name>
+						<provider>1000</provider>
+						<info>11602</info>
+				</property>
+				<property>
+						<name>Memory Slot 17 Size</name>
+						<provider>1000</provider>
+						<info>11702</info>
+				</property>
+				<property>
+						<name>Memory Slot 18 Size</name>
+						<provider>1000</provider>
+						<info>11802</info>
+				</property>
+				<property>
+						<name>Memory Slot 19 Size</name>
+						<provider>1000</provider>
+						<info>11902</info>
+				</property>
+			</section>
+			<section name="network">
+				<property>
+					<name>Number of line cards</name>
+					<provider>1090</provider>
+					<info>1000</info>
+				</property>
+				<property>
+					<name>Line card 1 model</name>
+					<provider>1090</provider>
+					<info>10101</info>
+				</property>
+				<property>
+					<name>Line card 1 type</name>
+					<provider>1090</provider>
+					<info>10102</info>
+				</property>
+				<property>
+					<name>Line card 2 model</name>
+					<provider>1090</provider>
+					<info>10201</info>
+				</property>
+				<property>
+					<name>Line card 2 type</name>
+					<provider>1090</provider>
+					<info>10202</info>
+				</property>
+				<property>
+					<name>Line card 3 model</name>
+					<provider>1090</provider>
+					<info>10301</info>
+				</property>
+				<property>
+					<name>Line card 3 type</name>
+					<provider>1090</provider>
+					<info>10302</info>
+				</property>
+			</section>
+			<section name="power-supply">
+				<property>
+					<name>Power supply 1 name</name>
+					<provider>1100</provider>
+					<info>10011</info>
+				</property>
+				<property>
+					<name>Power supply 1 status</name>
+					<provider>1100</provider>
+					<info>10012</info>
+				</property>
+				<property>
+					<name>Power supply 2 name</name>
+					<provider>1100</provider>
+					<info>10021</info>
+				</property>
+				<property>
+					<name>Power supply 2 status</name>
+					<provider>1100</provider>
+					<info>10022</info>
+				</property>
+			</section>
+			<section name="lom-info">
+				<property>
+					<name>LOM Status</name>
+					<provider>1140</provider>
+					<info>1000</info>
+				</property>
+				<property>
+					<name>LOM Firmware Revision</name>
+					<provider>1140</provider>
+					<info>1001</info>
+				</property>
+			</section>
+		</sections>
+	</template>
+	<template name="2012 Appliance">
+		<sections>
+			<section name="system">
+				<property>
+					<name>Platform</name>
+					<provider>1000</provider>
+					<info>1006</info>
+				</property>
+				<property>
+					<name>Model</name>
+					<provider>1040</provider>
+					<info>1000</info>
+				</property>
+				<property>
+					<name>Serial Number</name>
+					<provider>1000</provider>
+					<info>1007</info>
+				</property>
+				<property>
+					<name>CPU Model</name>
+					<provider>1010</provider>
+					<info>1000</info>
+				</property>
+				<property>
+					<name>CPU Frequency</name>
+					<provider>1010</provider>
+					<info>1001</info>
+				</property>
+				<property>
+					<name>Number of Cores</name>
+					<provider>1010</provider>
+					<info>1002</info>
+				</property>
+				<property>
+					<name>CPU Hyperthreading</name>
+					<provider>1010</provider>
+					<info>1003</info>
+				</property>
+			</section>
+			<section name="disk">
+				<property>
+					<name>Disk Model</name>
+					<provider>1020</provider>
+					<info>11000</info>
+				</property>
+				<property>
+					<name>Disk Capacity</name>
+					<provider>1020</provider>
+					<info>11003</info>
+				</property>
+				<property>
+					<name>Total Disks size</name>
+					<provider>1020</provider>
+					<info>30000</info>
+				</property>
+			</section>
+			<section name="memory">
+				<property>
+					<name>Total Memory</name>
+					<provider>1000</provider>
+					<info>10000</info>
+				</property>
+				<property>
+					<name>Memory Slot 1 Size</name>
+					<provider>1000</provider>
+					<info>10102</info>
+				</property>
+				<property>
+					<name>Memory Slot 2 Size</name>
+					<provider>1000</provider>
+					<info>10202</info>
+				</property>
+				<property>
+					<name>Memory Slot 3 Size</name>
+					<provider>1000</provider>
+					<info>10302</info>
+				</property>
+				<property>
+					<name>Memory Slot 4 Size</name>
+					<provider>1000</provider>
+					<info>10402</info>
+				</property>
+				<property>
+					<name>Memory Slot 5 Size</name>
+					<provider>1000</provider>
+					<info>10502</info>
+				</property>
+				<property>
+					<name>Memory Slot 6 Size</name>
+					<provider>1000</provider>
+					<info>10602</info>
+				</property>
+				<property>
+					<name>Memory Slot 7 Size</name>
+					<provider>1000</provider>
+					<info>10702</info>
+				</property>
+				<property>
+					<name>Memory Slot 8 Size</name>
+					<provider>1000</provider>
+					<info>10802</info>
+				</property>
+			</section>
+			<section name="network">
+				<property>
+					<name>Number of line cards</name>
+					<provider>1090</provider>
+					<info>1000</info>
+				</property>
+				<property>
+					<name>Line card 1 model</name>
+					<provider>1090</provider>
+					<info>10101</info>
+				</property>
+				<property>
+					<name>Line card 1 type</name>
+					<provider>1090</provider>
+					<info>10102</info>
+				</property>
+				<property>
+					<name>Line card 2 model</name>
+					<provider>1090</provider>
+					<info>10201</info>
+				</property>
+				<property>
+					<name>Line card 2 type</name>
+					<provider>1090</provider>
+					<info>10202</info>
+				</property>
+				<property>
+					<name>Line card 3 model</name>
+					<provider>1090</provider>
+					<info>10301</info>
+				</property>
+				<property>
+					<name>Line card 3 type</name>
+					<provider>1090</provider>
+					<info>10302</info>
+				</property>
+			</section>
+		</sections>
+	</template>
+	<template name="4800">
+		<sections>
+			<section name="system">
+				<property>
+					<name>Platform</name>
+					<provider>1000</provider>
+					<info>1006</info>
+				</property>
+				<property>
+					<name>Model</name>
+					<provider>1040</provider>
+					<info>1000</info>
+				</property>
+				<property>
+					<name>Serial Number</name>
+					<provider>1000</provider>
+					<info>1007</info>
+				</property>
+				<property>
+					<name>CPU Model</name>
+					<provider>1010</provider>
+					<info>1000</info>
+				</property>
+				<property>
+					<name>CPU Frequency</name>
+					<provider>1010</provider>
+					<info>1001</info>
+				</property>
+				<property>
+					<name>Number of Cores</name>
+					<provider>1010</provider>
+					<info>1002</info>
+				</property>
+				<property>
+					<name>CPU Hyperthreading</name>
+					<provider>1010</provider>
+					<info>1003</info>
+				</property>
+			</section>
+			<section name="disk">
+				<property>
+					<name>Disk Model</name>
+					<provider>1020</provider>
+					<info>11000</info>
+				</property>
+				<property>
+					<name>Disk Capacity</name>
+					<provider>1020</provider>
+					<info>11003</info>
+				</property>
+				<property>
+					<name>Total Disks size</name>
+					<provider>1020</provider>
+					<info>30000</info>
+				</property>
+			</section>
+			<section name="memory">
+				<property>
+					<name>Total Memory</name>
+					<provider>1000</provider>
+					<info>10000</info>
+				</property>
+				<property>
+					<name>Memory Slot 1 Size</name>
+					<provider>1000</provider>
+					<info>10102</info>
+				</property>
+				<property>
+					<name>Memory Slot 2 Size</name>
+					<provider>1000</provider>
+					<info>10202</info>
+				</property>
+				<property>
+					<name>Memory Slot 3 Size</name>
+					<provider>1000</provider>
+					<info>10302</info>
+				</property>
+				<property>
+					<name>Memory Slot 4 Size</name>
+					<provider>1000</provider>
+					<info>10402</info>
+				</property>
+				<property>
+					<name>Memory Slot 5 Size</name>
+					<provider>1000</provider>
+					<info>10502</info>
+				</property>
+				<property>
+					<name>Memory Slot 6 Size</name>
+					<provider>1000</provider>
+					<info>10602</info>
+				</property>
+				<property>
+					<name>Memory Slot 7 Size</name>
+					<provider>1000</provider>
+					<info>10702</info>
+				</property>
+				<property>
+					<name>Memory Slot 8 Size</name>
+					<provider>1000</provider>
+					<info>10802</info>
+				</property>
+			</section>
+			<section name="network">
+				<property>
+					<name>Number of line cards</name>
+					<provider>1090</provider>
+					<info>1000</info>
+				</property>
+				<property>
+					<name>Line card 1 model</name>
+					<provider>1090</provider>
+					<info>10101</info>
+				</property>
+				<property>
+					<name>Line card 1 type</name>
+					<provider>1090</provider>
+					<info>10102</info>
+				</property>
+			</section>
+			<section name="power-supply">
+				<property>
+					<name>Power supply 1 name</name>
+					<provider>1100</provider>
+					<info>10011</info>
+				</property>
+				<property>
+					<name>Power supply 1 status</name>
+					<provider>1100</provider>
+					<info>10012</info>
+				</property>
+				<property>
+					<name>Power supply 2 name</name>
+					<provider>1100</provider>
+					<info>10021</info>
+				</property>
+				<property>
+					<name>Power supply 2 status</name>
+					<provider>1100</provider>
+					<info>10022</info>
+				</property>
+			</section>
+			<section name="lom-info">
+				<property>
+					<name>LOM Status</name>
+					<provider>1140</provider>
+					<info>1000</info>
+				</property>
+				<property>
+					<name>LOM Firmware Revision</name>
+					<provider>1140</provider>
+					<info>1001</info>
+				</property>
+			</section>
+		</sections>
+	</template>
+	<template name="12000 Series">
+		<sections>
+			<section name="system">
+				<property>
+					<name>Platform</name>
+					<provider>1000</provider>
+					<info>1006</info>
+				</property>
+				<property>
+					<name>Model</name>
+					<provider>1040</provider>
+					<info>1000</info>
+				</property>
+				<property>
+					<name>Serial Number</name>
+					<provider>1000</provider>
+					<info>1007</info>
+				</property>
+				<property>
+					<name>CPU Model</name>
+					<provider>1010</provider>
+					<info>1000</info>
+				</property>
+				<property>
+					<name>CPU Frequency</name>
+					<provider>1010</provider>
+					<info>1001</info>
+				</property>
+				<property>
+					<name>Number of Cores</name>
+					<provider>1010</provider>
+					<info>1002</info>
+				</property>
+				<property>
+					<name>CPU Hyperthreading</name>
+					<provider>1010</provider>
+					<info>1003</info>
+				</property>
+			</section>
+			<section name="disk">
+				<property>
+					<name>Number of disks</name>
+					<provider>1020</provider>
+					<info>1000</info>
+				</property>
+				<property>
+					<name>Disk 1 Model</name>
+					<provider>1020</provider>
+					<info>11000</info>
+				</property>
+				<property>
+					<name>Disk 1 Capacity</name>
+					<provider>1020</provider>
+					<info>11003</info>
+				</property>
+				<property>
+					<name>Disk 2 Model</name>
+					<provider>1020</provider>
+					<info>12000</info>
+				</property>
+				<property>
+					<name>Disk 2 Capacity</name>
+					<provider>1020</provider>
+					<info>12003</info>
+				</property>
+				<property>
+					<name>Total Disks size</name>
+					<provider>1020</provider>
+					<info>30000</info>
+				</property>
+			</section>
+			<section name="memory">
+				<property>
+					<name>Total Memory</name>
+					<provider>1111</provider>
+					<info>10000</info>
+				</property>
+				<property>
+					<name>Memory Slot 1 Size</name>
+					<provider>1111</provider>
+					<info>10102</info>
+				</property>
+				<property>
+					<name>Memory Slot 2 Size</name>
+					<provider>1111</provider>
+					<info>10202</info>
+				</property>
+				<property>
+					<name>Memory Slot 3 Size</name>
+					<provider>1111</provider>
+					<info>10302</info>
+				</property>
+				<property>
+					<name>Memory Slot 4 Size</name>
+					<provider>1111</provider>
+					<info>10402</info>
+				</property>
+				<property>
+					<name>Memory Slot 5 Size</name>
+					<provider>1111</provider>
+					<info>10502</info>
+				</property>
+				<property>
+					<name>Memory Slot 6 Size</name>
+					<provider>1111</provider>
+					<info>10602</info>
+				</property>
+				<property>
+					<name>Memory Slot 7 Size</name>
+					<provider>1111</provider>
+					<info>10702</info>
+				</property>
+				<property>
+					<name>Memory Slot 8 Size</name>
+					<provider>1111</provider>
+					<info>10802</info>
+				</property>
+				<property>
+					<name>Memory Slot 9 Size</name>
+					<provider>1111</provider>
+					<info>10902</info>
+				</property>
+				<property>
+					<name>Memory Slot 10 Size</name>
+					<provider>1111</provider>
+					<info>11002</info>
+				</property>
+				<property>
+					<name>Memory Slot 11 Size</name>
+					<provider>1111</provider>
+					<info>11102</info>
+				</property>
+				<property>
+					<name>Memory Slot 12 Size</name>
+					<provider>1111</provider>
+					<info>11202</info>
+				</property>
+			</section>
+			<section name="network">
+				<property>
+					<name>Number of line cards</name>
+					<provider>1090</provider>
+					<info>1000</info>
+				</property>
+				<property>
+					<name>Line card 1 model</name>
+					<provider>1090</provider>
+					<info>10101</info>
+				</property>
+				<property>
+					<name>Line card 1 type</name>
+					<provider>1090</provider>
+					<info>10102</info>
+				</property>
+				<property>
+					<name>Line card 2 model</name>
+					<provider>1090</provider>
+					<info>10201</info>
+				</property>
+				<property>
+					<name>Line card 2 type</name>
+					<provider>1090</provider>
+					<info>10202</info>
+				</property>
+				<property>
+					<name>Line card 3 model</name>
+					<provider>1090</provider>
+					<info>10301</info>
+				</property>
+				<property>
+					<name>Line card 3 type</name>
+					<provider>1090</provider>
+					<info>10302</info>
+				</property>
+			</section>
+			<section name="power-supply">
+				<property>
+					<name>Power supply 1 name</name>
+					<provider>1100</provider>
+					<info>10011</info>
+				</property>
+				<property>
+					<name>Power supply 1 status</name>
+					<provider>1100</provider>
+					<info>10012</info>
+				</property>
+				<property>
+					<name>Power supply 2 name</name>
+					<provider>1100</provider>
+					<info>10021</info>
+				</property>
+				<property>
+					<name>Power supply 2 status</name>
+					<provider>1100</provider>
+					<info>10022</info>
+				</property>
+			</section>
+			<section name="lom-info">
+				<property>
+					<name>LOM Status</name>
+					<provider>1140</provider>
+					<info>1000</info>
+				</property>
+				<property>
+					<name>LOM Firmware Revision</name>
+					<provider>1140</provider>
+					<info>1001</info>
+				</property>
+			</section>
+		</sections>
+	</template>
+	<template name="12600">
+		<sections>
+			<section name="system">
+				<property>
+					<name>Platform</name>
+					<provider>1000</provider>
+					<info>1006</info>
+				</property>
+				<property>
+					<name>Model</name>
+					<provider>1040</provider>
+					<info>1000</info>
+				</property>
+				<property>
+					<name>Serial Number</name>
+					<provider>1000</provider>
+					<info>1007</info>
+				</property>
+				<property>
+					<name>CPU Model</name>
+					<provider>1010</provider>
+					<info>1000</info>
+				</property>
+				<property>
+					<name>CPU Frequency</name>
+					<provider>1010</provider>
+					<info>1001</info>
+				</property>
+				<property>
+					<name>Number of Cores</name>
+					<provider>1010</provider>
+					<info>1002</info>
+				</property>
+				<property>
+					<name>CPU Hyperthreading</name>
+					<provider>1010</provider>
+					<info>1003</info>
+				</property>
+			</section>
+			<section name="disk">
+				<property>
+					<name>Number of disks</name>
+					<provider>1050</provider>
+					<info>1000</info>
+				</property>
+				<property>
+					<name>Disk 1 Model</name>
+					<provider>1050</provider>
+					<info>11000</info>
+				</property>
+				<property>
+					<name>Disk 1 Capacity</name>
+					<provider>1050</provider>
+					<info>11003</info>
+				</property>
+				<property>
+					<name>Disk 2 Model</name>
+					<provider>1050</provider>
+					<info>12000</info>
+				</property>
+				<property>
+					<name>Disk 2 Capacity</name>
+					<provider>1050</provider>
+					<info>12003</info>
+				</property>
+			</section>
+			<section name="memory">
+				<property>
+					<name>Total Memory</name>
+					<provider>1000</provider>
+					<info>10000</info>
+				</property>
+				<property>
+					<name>Memory Slot 1 Size</name>
+					<provider>1000</provider>
+					<info>10102</info>
+				</property>
+				<property>
+					<name>Memory Slot 2 Size</name>
+					<provider>1000</provider>
+					<info>10202</info>
+				</property>
+				<property>
+					<name>Memory Slot 3 Size</name>
+					<provider>1000</provider>
+					<info>10302</info>
+				</property>
+				<property>
+					<name>Memory Slot 4 Size</name>
+					<provider>1000</provider>
+					<info>10402</info>
+				</property>
+				<property>
+					<name>Memory Slot 5 Size</name>
+					<provider>1000</provider>
+					<info>10502</info>
+				</property>
+				<property>
+					<name>Memory Slot 6 Size</name>
+					<provider>1000</provider>
+					<info>10602</info>
+				</property>
+				<property>
+					<name>Memory Slot 7 Size</name>
+					<provider>1000</provider>
+					<info>10702</info>
+				</property>
+				<property>
+					<name>Memory Slot 8 Size</name>
+					<provider>1000</provider>
+					<info>10802</info>
+				</property>
+				<property>
+					<name>Memory Slot 9 Size</name>
+					<provider>1000</provider>
+					<info>10902</info>
+				</property>
+				<property>
+					<name>Memory Slot 10 Size</name>
+					<provider>1000</provider>
+					<info>11002</info>
+				</property>
+				<property>
+					<name>Memory Slot 11 Size</name>
+					<provider>1000</provider>
+					<info>11102</info>
+				</property>
+				<property>
+					<name>Memory Slot 12 Size</name>
+					<provider>1000</provider>
+					<info>11202</info>
+				</property>
+			</section>
+			<section name="network">
+				<property>
+					<name>Number of line cards</name>
+					<provider>1090</provider>
+					<info>1000</info>
+				</property>
+				<property>
+					<name>Line card 1 model</name>
+					<provider>1090</provider>
+					<info>10101</info>
+				</property>
+				<property>
+					<name>Line card 1 type</name>
+					<provider>1090</provider>
+					<info>10102</info>
+				</property>
+				<property>
+					<name>Line card 2 model</name>
+					<provider>1090</provider>
+					<info>10201</info>
+				</property>
+				<property>
+					<name>Line card 2 type</name>
+					<provider>1090</provider>
+					<info>10202</info>
+				</property>
+				<property>
+					<name>Line card 3 model</name>
+					<provider>1090</provider>
+					<info>10301</info>
+				</property>
+				<property>
+					<name>Line card 3 type</name>
+					<provider>1090</provider>
+					<info>10302</info>
+				</property>
+			</section>
+			<section name="power-supply">
+				<property>
+					<name>Power supply 1 name</name>
+					<provider>1100</provider>
+					<info>10011</info>
+				</property>
+				<property>
+					<name>Power supply 1 status</name>
+					<provider>1100</provider>
+					<info>10012</info>
+				</property>
+				<property>
+					<name>Power supply 2 name</name>
+					<provider>1100</provider>
+					<info>10021</info>
+				</property>
+				<property>
+					<name>Power supply 2 status</name>
+					<provider>1100</provider>
+					<info>10022</info>
+				</property>
+			</section>
+			<section name="lom-info">
+				<property>
+					<name>LOM Status</name>
+					<provider>1140</provider>
+					<info>1000</info>
+				</property>
+				<property>
+					<name>LOM Firmware Revision</name>
+					<provider>1140</provider>
+					<info>1001</info>
+				</property>
+			</section>
+		</sections>
+	</template>
+	<template name="13000 Series">
+		<sections>
+			<section name="system">
+				<property>
+					<name>Platform</name>
+					<provider>1000</provider>
+					<info>1006</info>
+				</property>
+				<property>
+					<name>Model</name>
+					<provider>1040</provider>
+					<info>1000</info>
+				</property>
+				<property>
+					<name>Serial Number</name>
+					<provider>1000</provider>
+					<info>1007</info>
+				</property>
+				<property>
+					<name>CPU Model</name>
+					<provider>1010</provider>
+					<info>1000</info>
+				</property>
+				<property>
+					<name>CPU Frequency</name>
+					<provider>1010</provider>
+					<info>1001</info>
+				</property>
+				<property>
+					<name>Number of Cores</name>
+					<provider>1010</provider>
+					<info>1002</info>
+				</property>
+				<property>
+					<name>CPU Hyperthreading</name>
+					<provider>1010</provider>
+					<info>1003</info>
+				</property>
+			</section>
+			<section name="disk">
+				<property>
+					<name>Number of disks</name>
+					<provider>1020</provider>
+					<info>1000</info>
+				</property>
+				<property>
+					<name>Disk 1 Model</name>
+					<provider>1020</provider>
+					<info>11000</info>
+				</property>
+				<property>
+					<name>Disk 1 Capacity</name>
+					<provider>1020</provider>
+					<info>11003</info>
+				</property>
+				<property>
+					<name>Disk 2 Model</name>
+					<provider>1020</provider>
+					<info>12000</info>
+				</property>
+				<property>
+					<name>Disk 2 Capacity</name>
+					<provider>1020</provider>
+					<info>12003</info>
+				</property>
+				<property>
+					<name>Total Disks size</name>
+					<provider>1020</provider>
+					<info>30000</info>
+				</property>
+			</section>
+			<section name="memory">
+				<property>
+					<name>Total Memory</name>
+					<provider>1000</provider>
+					<info>10000</info>
+				</property>
+				<property>
+					<name>Memory Slot 1 Size</name>
+					<provider>1000</provider>
+					<info>10102</info>
+				</property>
+				<property>
+					<name>Memory Slot 2 Size</name>
+					<provider>1000</provider>
+					<info>10202</info>
+				</property>
+				<property>
+					<name>Memory Slot 3 Size</name>
+					<provider>1000</provider>
+					<info>10302</info>
+				</property>
+				<property>
+					<name>Memory Slot 4 Size</name>
+					<provider>1000</provider>
+					<info>10402</info>
+				</property>
+				<property>
+					<name>Memory Slot 5 Size</name>
+					<provider>1000</provider>
+					<info>10502</info>
+				</property>
+				<property>
+					<name>Memory Slot 6 Size</name>
+					<provider>1000</provider>
+					<info>10602</info>
+				</property>
+				<property>
+					<name>Memory Slot 7 Size</name>
+					<provider>1000</provider>
+					<info>10702</info>
+				</property>
+				<property>
+					<name>Memory Slot 8 Size</name>
+					<provider>1000</provider>
+					<info>10802</info>
+				</property>
+				<property>
+					<name>Memory Slot 9 Size</name>
+					<provider>1000</provider>
+					<info>10902</info>
+				</property>
+				<property>
+					<name>Memory Slot 10 Size</name>
+					<provider>1000</provider>
+					<info>11002</info>
+				</property>
+				<property>
+					<name>Memory Slot 11 Size</name>
+					<provider>1000</provider>
+					<info>11102</info>
+				</property>
+				<property>
+					<name>Memory Slot 12 Size</name>
+					<provider>1000</provider>
+					<info>11202</info>
+				</property>
+			</section>
+		    <section name="network">
+				<property>
+					<name>Number of line cards</name>
+					<provider>1090</provider>
+					<info>1000</info>
+				</property>
+				<property>
+					<name>Line card 1 model</name>
+					<provider>1090</provider>
+					<info>10101</info>
+				</property>
+				<property>
+					<name>Line card 1 type</name>
+					<provider>1090</provider>
+					<info>10102</info>
+				</property>
+				<property>
+					<name>Line card 2 model</name>
+					<provider>1090</provider>
+					<info>10201</info>
+				</property>
+				<property>
+					<name>Line card 2 type</name>
+					<provider>1090</provider>
+					<info>10202</info>
+				</property>
+				<property>
+					<name>Line card 3 model</name>
+					<provider>1090</provider>
+					<info>10301</info>
+				</property>
+				<property>
+					<name>Line card 3 type</name>
+					<provider>1090</provider>
+					<info>10302</info>
+				</property>
+			</section>
+			<section name="power-supply">
+				<property>
+					<name>Power supply 1 name</name>
+					<provider>1100</provider>
+					<info>10011</info>
+				</property>
+				<property>
+					<name>Power supply 1 status</name>
+					<provider>1100</provider>
+					<info>10012</info>
+				</property>
+				<property>
+					<name>Power supply 2 name</name>
+					<provider>1100</provider>
+					<info>10021</info>
+				</property>
+				<property>
+					<name>Power supply 2 status</name>
+					<provider>1100</provider>
+					<info>10022</info>
+				</property>
+			</section>
+			<section name="lom-info">
+				<property>
+					<name>LOM Status</name>
+					<provider>1140</provider>
+					<info>1000</info>
+				</property>
+				<property>
+					<name>LOM Firmware Revision</name>
+					<provider>1140</provider>
+					<info>1001</info>
+				</property>
+			</section>
+		</sections>
+	</template>
+	<template name="21000 Series">
+		<sections>
+			<section name="system">
+				<property>
+					<name>Platform</name>
+					<provider>1000</provider>
+					<info>1006</info>
+				</property>
+				<property>
+					<name>Model</name>
+					<provider>1040</provider>
+					<info>1000</info>
+				</property>
+				<property>
+					<name>CPU Model</name>
+					<provider>1010</provider>
+					<info>1000</info>
+				</property>
+				<property>
+					<name>CPU Frequency</name>
+					<provider>1010</provider>
+					<info>1001</info>
+				</property>
+				<property>
+					<name>Number of Cores</name>
+					<provider>1010</provider>
+					<info>1002</info>
+				</property>
+				<property>
+					<name>CPU Hyperthreading</name>
+					<provider>1010</provider>
+					<info>1003</info>
+				</property>
+				<property>
+					<name>Chassis Assembly Part Number</name>
+					<provider>1130</provider>
+					<info>1000</info>
+				</property>
+				<property>
+					<name>Chassis Serial Number</name>
+					<provider>1130</provider>
+					<info>1001</info>
+				</property>
+				<property>
+					<name>Chassis Hardware Revision</name>
+					<provider>1130</provider>
+					<info>1002</info>
+				</property>
+				<property>
+					<name>Motherboard Assembly Part Number</name>
+					<provider>1130</provider>
+					<info>1100</info>
+				</property>
+				<property>
+					<name>Motherboard Serial Number</name>
+					<provider>1130</provider>
+					<info>1101</info>
+				</property>
+				<property>
+					<name>Motherboard Hardware Revision</name>
+					<provider>1130</provider>
+					<info>1102</info>
+				</property>
+			</section>
+			<section name="power-supply">
+				<property>
+					<name>Power supply 1 name</name>
+					<provider>1100</provider>
+					<info>10011</info>
+				</property>
+				<property>
+					<name>Power supply 1 status</name>
+					<provider>1100</provider>
+					<info>10012</info>
+				</property>
+				<property>
+					<name>Power supply 2 name</name>
+					<provider>1100</provider>
+					<info>10021</info>
+				</property>
+				<property>
+					<name>Power supply 2 status</name>
+					<provider>1100</provider>
+					<info>10022</info>
+				</property>
+			</section>
+			<section name="memory">
+				<property>
+					<name>Total Memory</name>
+					<provider>1000</provider>
+					<info>10000</info>
+				</property>
+				<property>
+					<name>Memory Slot 1 Size</name>
+					<provider>1000</provider>
+					<info>10102</info>
+				</property>
+				<property>
+					<name>Memory Slot 2 Size</name>
+					<provider>1000</provider>
+					<info>10202</info>
+				</property>
+				<property>
+					<name>Memory Slot 3 Size</name>
+					<provider>1000</provider>
+					<info>10302</info>
+				</property>
+				<property>
+					<name>Memory Slot 4 Size</name>
+					<provider>1000</provider>
+					<info>10402</info>
+				</property>
+				<property>
+					<name>Memory Slot 5 Size</name>
+					<provider>1000</provider>
+					<info>10502</info>
+				</property>
+				<property>
+					<name>Memory Slot 6 Size</name>
+					<provider>1000</provider>
+					<info>10602</info>
+				</property>
+				<property>
+					<name>Memory Slot 7 Size</name>
+					<provider>1000</provider>
+					<info>10702</info>
+				</property>
+				<property>
+					<name>Memory Slot 8 Size</name>
+					<provider>1000</provider>
+					<info>10802</info>
+				</property>
+			</section>
+			<section name="network">
+				<property>
+					<name>Number of Line Cards</name>
+					<provider>1090</provider>
+					<info>1000</info>
+				</property>
+				<property>
+					<name>Line Card #1 Model</name>
+					<provider>1090</provider>
+					<info>10101</info>
+				</property>
+				<property>
+					<name>Line Card #1 Type</name>
+					<provider>1090</provider>
+					<info>10102</info>
+				</property>
+				<property>
+					<name>Line Card #1 Assembly Part Number</name>
+					<provider>1130</provider>
+					<info>1210</info>
+				</property>
+				<property>
+					<name>Line Card #1 Serial Number</name>
+					<provider>1130</provider>
+					<info>1211</info>
+				</property>
+				<property>
+					<name>Line Card #1 Hardware Revision</name>
+					<provider>1130</provider>
+					<info>1212</info>
+				</property>
+				<property>
+					<name>Line Card #2 Model</name>
+					<provider>1090</provider>
+					<info>10201</info>
+				</property>
+				<property>
+					<name>Line Card #2 Type</name>
+					<provider>1090</provider>
+					<info>10202</info>
+				</property>
+				<property>
+					<name>Line Card #2 Assembly Part Number</name>
+					<provider>1130</provider>
+					<info>1220</info>
+				</property>
+				<property>
+					<name>Line Card #2 Serial Number</name>
+					<provider>1130</provider>
+					<info>1221</info>
+				</property>
+				<property>
+					<name>Line Card #2 Hardware Revision</name>
+					<provider>1130</provider>
+					<info>1222</info>
+				</property>
+				<property>
+					<name>Line Card #3 Model</name>
+					<provider>1090</provider>
+					<info>10301</info>
+				</property>
+				<property>
+					<name>Line Card #3 Type</name>
+					<provider>1090</provider>
+					<info>10302</info>
+				</property>
+				<property>
+					<name>Line Card #3 Assembly Part Number</name>
+					<provider>1130</provider>
+					<info>1230</info>
+				</property>
+				<property>
+					<name>Line Card #3 Serial Number</name>
+					<provider>1130</provider>
+					<info>1231</info>
+				</property>
+				<property>
+					<name>Line Card #3 Hardware Revision</name>
+					<provider>1130</provider>
+					<info>1232</info>
+				</property>
+			</section>
+			<section name="disk">
+				<property>
+					<name>Number of disks</name>
+					<provider>1020</provider>
+					<info>1000</info>
+				</property>
+				<property>
+					<name>Disk 1 Model</name>
+					<provider>1020</provider>
+					<info>11000</info>
+				</property>
+				<property>
+					<name>Disk 1 Capacity</name>
+					<provider>1020</provider>
+					<info>11003</info>
+				</property>
+				<property>
+					<name>Disk 2 Model</name>
+					<provider>1020</provider>
+					<info>12000</info>
+				</property>
+				<property>
+					<name>Disk 2 Capacity</name>
+					<provider>1020</provider>
+					<info>12003</info>
+				</property>
+				<property>
+					<name>Total Disks size</name>
+					<provider>1020</provider>
+					<info>30000</info>
+				</property>
+			</section>
+			<section name="sam">
+				<property>
+					<name>Sam Present</name>
+					<provider>1030</provider>
+					<info>1000</info>
+				</property>
+				<property>
+					<name>Sam CPLD Version</name>
+					<provider>1030</provider>
+					<info>1001</info>
+				</property>
+				<property>
+					<name>Slot 1 Bib version</name>
+					<provider>1030</provider>
+					<info>1002</info>
+				</property>
+				<property>
+					<name>Slot 2 Bib version</name>
+					<provider>1030</provider>
+					<info>1010</info>
+				</property>
+				<property>
+					<name>Slot 3 Bib version</name>
+					<provider>1030</provider>
+					<info>1011</info>
+				</property>
+				<property>
+					<name>Sam Serial Number</name>
+					<provider>1030</provider>
+					<info>1012</info>
+				</property>
+				<property>
+					<name>Sam Total Memory</name>
+					<provider>1030</provider>
+					<info>1013</info>
+				</property>
+				<property>
+					<name>Slot 1 Memory</name>
+					<provider>1030</provider>
+					<info>1014</info>
+				</property>
+				<property>
+					<name>Slot 2 Memory</name>
+					<provider>1030</provider>
+					<info>1015</info>
+				</property>
+				<property>
+					<name>Slot 3 Memory</name>
+					<provider>1030</provider>
+					<info>1016</info>
+				</property>
+			</section>
+			<section name="lom-info">
+				<property>
+					<name>LOM Status</name>
+					<provider>1140</provider>
+					<info>1000</info>
+				</property>
+				<property>
+					<name>LOM Firmware Revision</name>
+					<provider>1140</provider>
+					<info>1001</info>
+				</property>
+			</section>
+		</sections>
+	</template>
+	<template name="Terminator">
+		<sections>
+			<section name="system">
+				<property>
+					<name>Platform</name>
+					<provider>1000</provider>
+					<info>1006</info>
+				</property>
+				<property>
+					<name>Model</name>
+					<provider>1040</provider>
+					<info>1000</info>
+				</property>
+				<property>
+					<name>Serial Number</name>
+					<provider>1000</provider>
+					<info>1007</info>
+				</property>
+				<property>
+					<name>CPU Model</name>
+					<provider>1010</provider>
+					<info>1000</info>
+				</property>
+				<property>
+					<name>CPU Frequency</name>
+					<provider>1010</provider>
+					<info>1001</info>
+				</property>
+				<property>
+					<name>Number of Cores</name>
+					<provider>1010</provider>
+					<info>1002</info>
+				</property>
+				<property>
+					<name>CPU Hyperthreading</name>
+					<provider>1010</provider>
+					<info>1003</info>
+				</property>
+			</section>
+			<section name="network">
+				<property>
+					<name>Number of line cards</name>
+					<provider>1090</provider>
+					<info>1000</info>
+				</property>
+				<property>
+					<name>Line card 1 model</name>
+					<provider>1090</provider>
+					<info>10101</info>
+				</property>
+				<property>
+					<name>Line card 1 type</name>
+					<provider>1090</provider>
+					<info>10102</info>
+				</property>
+				<property>
+					<name>Line card 2 model</name>
+					<provider>1090</provider>
+					<info>10201</info>
+				</property>
+				<property>
+					<name>Line card 2 type</name>
+					<provider>1090</provider>
+					<info>10202</info>
+				</property>
+				<property>
+					<name>Line card 3 model</name>
+					<provider>1090</provider>
+					<info>10301</info>
+				</property>
+				<property>
+					<name>Line card 3 type</name>
+					<provider>1090</provider>
+					<info>10302</info>
+				</property>
+			</section>
+			<section name="disk">
+				<property>
+					<name>Number of disks</name>
+					<provider>1020</provider>
+					<info>1000</info>
+				</property>
+				<property>
+					<name>Disk 1 Model</name>
+					<provider>1020</provider>
+					<info>11000</info>
+				</property>
+				<property>
+					<name>Disk 1 Capacity</name>
+					<provider>1020</provider>
+					<info>11003</info>
+				</property>
+				<property>
+					<name>Disk 2 Model</name>
+					<provider>1020</provider>
+					<info>12000</info>
+				</property>
+				<property>
+					<name>Disk 2 Capacity</name>
+					<provider>1020</provider>
+					<info>12003</info>
+				</property>
+				<property>
+					<name>Total Disks size</name>
+					<provider>1020</provider>
+					<info>30000</info>
+				</property>
+			</section>
+			<section name="memory">
+				<property>
+					<name>Total Memory</name>
+					<provider>1000</provider>
+					<info>10000</info>
+				</property>
+				<property>
+					<name>Memory Slot 1 Size</name>
+					<provider>1000</provider>
+					<info>10102</info>
+				</property>
+				<property>
+					<name>Memory Slot 2 Size</name>
+					<provider>1000</provider>
+					<info>10202</info>
+				</property>
+				<property>
+					<name>Memory Slot 3 Size</name>
+					<provider>1000</provider>
+					<info>10302</info>
+				</property>
+				<property>
+					<name>Memory Slot 4 Size</name>
+					<provider>1000</provider>
+					<info>10402</info>
+				</property>
+				<property>
+					<name>Memory Slot 5 Size</name>
+					<provider>1000</provider>
+					<info>10502</info>
+				</property>
+				<property>
+					<name>Memory Slot 6 Size</name>
+					<provider>1000</provider>
+					<info>10602</info>
+				</property>
+				<property>
+					<name>Memory Slot 7 Size</name>
+					<provider>1000</provider>
+					<info>10702</info>
+				</property>
+				<property>
+					<name>Memory Slot 8 Size</name>
+					<provider>1000</provider>
+					<info>10802</info>
+				</property>
+				<property>
+					<name>Memory Slot 9 Size</name>
+					<provider>1000</provider>
+					<info>10902</info>
+				</property>
+				<property>
+					<name>Memory Slot 10 Size</name>
+					<provider>1000</provider>
+					<info>11002</info>
+				</property>
+				<property>
+					<name>Memory Slot 11 Size</name>
+					<provider>1000</provider>
+					<info>11102</info>
+				</property>
+				<property>
+					<name>Memory Slot 12 Size</name>
+					<provider>1000</provider>
+					<info>11202</info>
+				</property>
+			</section>
+			<section name="power-supply">
+				<property>
+					<name>Power supply 1 name</name>
+					<provider>1100</provider>
+					<info>10011</info>
+				</property>
+				<property>
+					<name>Power supply 1 status</name>
+					<provider>1100</provider>
+					<info>10012</info>
+				</property>
+				<property>
+					<name>Power supply 2 name</name>
+					<provider>1100</provider>
+					<info>10021</info>
+				</property>
+				<property>
+					<name>Power supply 2 status</name>
+					<provider>1100</provider>
+					<info>10022</info>
+				</property>
+			</section>
+			<section name="lom-info">
+				<property>
+					<name>LOM Status</name>
+					<provider>1140</provider>
+					<info>1000</info>
+				</property>
+				<property>
+					<name>LOM Firmware Revision</name>
+					<provider>1140</provider>
+					<info>1001</info>
+				</property>
+			</section>
+		</sections>
+	</template>
+	<template name="TerminatorNoPs">
+		<sections>
+			<section name="system">
+				<property>
+					<name>Platform</name>
+					<provider>1000</provider>
+					<info>1006</info>
+				</property>
+				<property>
+					<name>Model</name>
+					<provider>1040</provider>
+					<info>1000</info>
+				</property>
+				<property>
+					<name>Serial Number</name>
+					<provider>1000</provider>
+					<info>1007</info>
+				</property>
+				<property>
+					<name>CPU Model</name>
+					<provider>1010</provider>
+					<info>1000</info>
+				</property>
+				<property>
+					<name>CPU Frequency</name>
+					<provider>1010</provider>
+					<info>1001</info>
+				</property>
+				<property>
+					<name>Number of Cores</name>
+					<provider>1010</provider>
+					<info>1002</info>
+				</property>
+				<property>
+					<name>CPU Hyperthreading</name>
+					<provider>1010</provider>
+					<info>1003</info>
+				</property>
+			</section>
+			<section name="network">
+				<property>
+					<name>Number of line cards</name>
+					<provider>1090</provider>
+					<info>1000</info>
+				</property>
+				<property>
+					<name>Line card 1 model</name>
+					<provider>1090</provider>
+					<info>10101</info>
+				</property>
+				<property>
+					<name>Line card 1 type</name>
+					<provider>1090</provider>
+					<info>10102</info>
+				</property>
+				<property>
+					<name>Line card 2 model</name>
+					<provider>1090</provider>
+					<info>10201</info>
+				</property>
+				<property>
+					<name>Line card 2 type</name>
+					<provider>1090</provider>
+					<info>10202</info>
+				</property>
+			</section>
+			<section name="disk">
+				<property>
+					<name>Number of disks</name>
+					<provider>1020</provider>
+					<info>1000</info>
+				</property>
+				<property>
+					<name>Disk 1 Model</name>
+					<provider>1020</provider>
+					<info>11000</info>
+				</property>
+				<property>
+					<name>Disk 1 Capacity</name>
+					<provider>1020</provider>
+					<info>11003</info>
+				</property>
+				<property>
+					<name>Disk 2 Model</name>
+					<provider>1020</provider>
+					<info>12000</info>
+				</property>
+				<property>
+					<name>Disk 2 Capacity</name>
+					<provider>1020</provider>
+					<info>12003</info>
+				</property>
+				<property>
+					<name>Total Disks size</name>
+					<provider>1020</provider>
+					<info>30000</info>
+				</property>
+			</section>
+			<section name="memory">
+				<property>
+					<name>Total Memory</name>
+					<provider>1000</provider>
+					<info>10000</info>
+				</property>
+				<property>
+					<name>Memory Slot 1 Size</name>
+					<provider>1000</provider>
+					<info>10102</info>
+				</property>
+				<property>
+					<name>Memory Slot 2 Size</name>
+					<provider>1000</provider>
+					<info>10202</info>
+				</property>
+				<property>
+					<name>Memory Slot 3 Size</name>
+					<provider>1000</provider>
+					<info>10302</info>
+				</property>
+				<property>
+					<name>Memory Slot 4 Size</name>
+					<provider>1000</provider>
+					<info>10402</info>
+				</property>
+				<property>
+					<name>Memory Slot 5 Size</name>
+					<provider>1000</provider>
+					<info>10502</info>
+				</property>
+				<property>
+					<name>Memory Slot 6 Size</name>
+					<provider>1000</provider>
+					<info>10602</info>
+				</property>
+				<property>
+					<name>Memory Slot 7 Size</name>
+					<provider>1000</provider>
+					<info>10702</info>
+				</property>
+				<property>
+					<name>Memory Slot 8 Size</name>
+					<provider>1000</provider>
+					<info>10802</info>
+				</property>
+				<property>
+					<name>Memory Slot 9 Size</name>
+					<provider>1000</provider>
+					<info>10902</info>
+				</property>
+				<property>
+					<name>Memory Slot 10 Size</name>
+					<provider>1000</provider>
+					<info>11002</info>
+				</property>
+				<property>
+					<name>Memory Slot 11 Size</name>
+					<provider>1000</provider>
+					<info>11102</info>
+				</property>
+				<property>
+					<name>Memory Slot 12 Size</name>
+					<provider>1000</provider>
+					<info>11202</info>
+				</property>
+			</section>
+			<section name="lom-info">
+				<property>
+					<name>LOM Status</name>
+					<provider>1140</provider>
+					<info>1000</info>
+				</property>
+				<property>
+					<name>LOM Firmware Revision</name>
+					<provider>1140</provider>
+					<info>1001</info>
+				</property>
+			</section>
+		</sections>
+	</template>
+	<template name="PA Series">
+		<sections>
+			<section name="system">
+				<property>
+					<name>Platform</name>
+					<provider>1000</provider>
+					<info>1006</info>
+				</property>
+				<property>
+					<name>Model</name>
+					<provider>1040</provider>
+					<info>1000</info>
+				</property>
+				<property>
+					<name>Serial Number</name>
+					<provider>1000</provider>
+					<info>1007</info>
+				</property>
+				<property>
+					<name>CPU Model</name>
+					<provider>1010</provider>
+					<info>1000</info>
+				</property>
+				<property>
+					<name>CPU Frequency</name>
+					<provider>1010</provider>
+					<info>1001</info>
+				</property>
+				<property>
+					<name>Number of Cores</name>
+					<provider>1010</provider>
+					<info>1002</info>
+				</property>
+				<property>
+					<name>CPU Hyperthreading</name>
+					<provider>1010</provider>
+					<info>1003</info>
+				</property>
+			</section>
+			<section name="disk">
+				<property>
+					<name>Number of disks</name>
+					<provider>1020</provider>
+					<info>1000</info>
+				</property>
+				<property>
+					<name>Disk 1 Model</name>
+					<provider>1020</provider>
+					<info>11000</info>
+				</property>
+				<property>
+					<name>Disk 1 Capacity</name>
+					<provider>1020</provider>
+					<info>11003</info>
+				</property>
+				<property>
+					<name>Disk 2 Model</name>
+					<provider>1020</provider>
+					<info>12000</info>
+				</property>
+				<property>
+					<name>Disk 2 Capacity</name>
+					<provider>1020</provider>
+					<info>12003</info>
+				</property>
+				<property>
+					<name>Total Disks size</name>
+					<provider>1020</provider>
+					<info>30000</info>
+				</property>
+			</section>
+			<section name="memory">
+				<property>
+					<name>Total Memory</name>
+					<provider>1000</provider>
+					<info>10000</info>
+				</property>
+				<property>
+					<name>Memory Slot 1 Size</name>
+					<provider>1000</provider>
+					<info>10102</info>
+				</property>
+				<property>
+					<name>Memory Slot 2 Size</name>
+					<provider>1000</provider>
+					<info>10202</info>
+				</property>
+				<property>
+					<name>Memory Slot 3 Size</name>
+					<provider>1000</provider>
+					<info>10302</info>
+				</property>
+				<property>
+					<name>Memory Slot 4 Size</name>
+					<provider>1000</provider>
+					<info>10402</info>
+				</property>
+				<property>
+					<name>Memory Slot 5 Size</name>
+					<provider>1000</provider>
+					<info>10502</info>
+				</property>
+				<property>
+					<name>Memory Slot 6 Size</name>
+					<provider>1000</provider>
+					<info>10602</info>
+				</property>
+				<property>
+					<name>Memory Slot 7 Size</name>
+					<provider>1000</provider>
+					<info>10702</info>
+				</property>
+				<property>
+					<name>Memory Slot 8 Size</name>
+					<provider>1000</provider>
+					<info>10802</info>
+				</property>
+				<property>
+					<name>Memory Slot 9 Size</name>
+					<provider>1000</provider>
+					<info>10902</info>
+				</property>
+				<property>
+					<name>Memory Slot 10 Size</name>
+					<provider>1000</provider>
+					<info>11002</info>
+				</property>
+				<property>
+					<name>Memory Slot 11 Size</name>
+					<provider>1000</provider>
+					<info>11102</info>
+				</property>
+				<property>
+					<name>Memory Slot 12 Size</name>
+					<provider>1000</provider>
+					<info>11202</info>
+				</property>
+				<property>
+					<name>Memory Slot 13 Size</name>
+					<provider>1000</provider>
+					<info>11102</info>
+				</property>
+				<property>
+					<name>Memory Slot 14 Size</name>
+					<provider>1000</provider>
+					<info>11202</info>
+				</property>
+				<property>
+					<name>Memory Slot 15 Size</name>
+					<provider>1000</provider>
+					<info>11102</info>
+				</property>
+				<property>
+					<name>Memory Slot 16 Size</name>
+					<provider>1000</provider>
+					<info>11202</info>
+				</property>
+			</section>
+			<section name="power-supply">
+				<property>
+					<name>Power supply 1 name</name>
+					<provider>1100</provider>
+					<info>10011</info>
+				</property>
+				<property>
+					<name>Power supply 1 status</name>
+					<provider>1100</provider>
+					<info>10012</info>
+				</property>
+				<property>
+					<name>Power supply 2 name</name>
+					<provider>1100</provider>
+					<info>10021</info>
+				</property>
+				<property>
+					<name>Power supply 2 status</name>
+					<provider>1100</provider>
+					<info>10022</info>
+				</property>
+			</section>
+			<section name="lom-info">
+				<property>
+					<name>LOM Status</name>
+					<provider>1140</provider>
+					<info>1000</info>
+				</property>
+				<property>
+					<name>LOM Firmware Revision</name>
+					<provider>1140</provider>
+					<info>1001</info>
+				</property>
+			</section>
+			<section name="network">
+				<property>
+					<name>Number of line cards</name>
+					<provider>1090</provider>
+					<info>1000</info>
+				</property>
+				<property>
+					<name>Line card 1 model</name>
+					<provider>1090</provider>
+					<info>10101</info>
+				</property>
+				<property>
+					<name>Line card 1 type</name>
+					<provider>1090</provider>
+					<info>10102</info>
+				</property>
+				<property>
+					<name>Line card 1 firmware</name>
+					<provider>1090</provider>
+					<info>10103</info>
+				</property>
+				<property>
+					<name>Line card 2 model</name>
+					<provider>1090</provider>
+					<info>10201</info>
+				</property>
+				<property>
+					<name>Line card 2 type</name>
+					<provider>1090</provider>
+					<info>10202</info>
+				</property>
+				<property>
+					<name>Line card 2 firmware</name>
+					<provider>1090</provider>
+					<info>10203</info>
+				</property>
+				<property>
+					<name>Line card 3 model</name>
+					<provider>1090</provider>
+					<info>10301</info>
+				</property>
+				<property>
+					<name>Line card 3 type</name>
+					<provider>1090</provider>
+					<info>10302</info>
+				</property>
+				<property>
+					<name>Line card 3 firmware</name>
+					<provider>1090</provider>
+					<info>10303</info>
+				</property>
+				<property>
+					<name>Line card 4 model</name>
+					<provider>1090</provider>
+					<info>10401</info>
+				</property>
+				<property>
+					<name>Line card 4 type</name>
+					<provider>1090</provider>
+					<info>10402</info>
+				</property>
+				<property>
+					<name>Line card 4 firmware</name>
+					<provider>1090</provider>
+					<info>10403</info>
+				</property>
+				<property>
+					<name>Line card 5 model</name>
+					<provider>1090</provider>
+					<info>10501</info>
+				</property>
+				<property>
+					<name>Line card 5 type</name>
+					<provider>1090</provider>
+					<info>10502</info>
+				</property>
+				<property>
+					<name>Line card 5 firmware</name>
+					<provider>1090</provider>
+					<info>10503</info>
+				</property>
+			</section>
+			<section name="ac">
+				<property>
+					<name>AC Present</name>
+					<provider>1031</provider>
+					<info>30000</info>
+				</property>
+				<property>
+					<name>AC Slot 1 Description</name>
+					<provider>1031</provider>
+					<info>31001</info>
+				</property>
+				<property>
+					<name>AC Slot 1 Serial Number</name>
+					<provider>1031</provider>
+					<info>31002</info>
+				</property>
+				<property>
+					<name>AC Slot 1 Memory</name>
+					<provider>1031</provider>
+					<info>31003</info>
+				</property>
+				<property>
+					<name>AC Slot 1 Chip Version</name>
+					<provider>1031</provider>
+					<info>31004</info>
+				</property>
+				<property>
+					<name>AC Slot 1 Part Number</name>
+					<provider>1031</provider>
+					<info>31005</info>
+				</property>
+				<property>
+					<name>AC Slot 1 Hardware Revision</name>
+					<provider>1031</provider>
+					<info>31006</info>
+				</property>
+				<property>
+					<name>AC Slot 1 EEPROM Revision</name>
+					<provider>1031</provider>
+					<info>31007</info>
+				</property>
+				<property>
+					<name>AC Slot 1 CPLD Version</name>
+					<provider>1031</provider>
+					<info>31008</info>
+				</property>
+				<property>
+					<name>AC Slot 1 Mode</name>
+					<provider>1031</provider>
+					<info>31009</info>
+				</property>
+				<property>
+					<name>AC Slot 2 Description</name>
+					<provider>1031</provider>
+					<info>32001</info>
+				</property>
+				<property>
+					<name>AC Slot 2 Serial Number</name>
+					<provider>1031</provider>
+					<info>32002</info>
+				</property>
+				<property>
+					<name>AC Slot 2 Memory</name>
+					<provider>1031</provider>
+					<info>32003</info>
+				</property>
+				<property>
+					<name>AC Slot 2 Chip Version</name>
+					<provider>1031</provider>
+					<info>32004</info>
+				</property>
+				<property>
+					<name>AC Slot 2 Part Number</name>
+					<provider>1031</provider>
+					<info>32005</info>
+				</property>
+				<property>
+					<name>AC Slot 2 Hardware Revision</name>
+					<provider>1031</provider>
+					<info>32006</info>
+				</property>
+				<property>
+					<name>AC Slot 2 EEPROM Revision</name>
+					<provider>1031</provider>
+					<info>32007</info>
+				</property>
+				<property>
+					<name>AC Slot 2 CPLD Version</name>
+					<provider>1031</provider>
+					<info>32008</info>
+				</property>
+				<property>
+					<name>AC Slot 2 Mode</name>
+					<provider>1031</provider>
+					<info>32009</info>
+				</property>
+				<property>
+					<name>AC Slot 3 Description</name>
+					<provider>1031</provider>
+					<info>33001</info>
+				</property>
+				<property>
+					<name>AC Slot 3 Serial Number</name>
+					<provider>1031</provider>
+					<info>33002</info>
+				</property>
+				<property>
+					<name>AC Slot 3 Memory</name>
+					<provider>1031</provider>
+					<info>33003</info>
+				</property>
+				<property>
+					<name>AC Slot 3 Chip Version</name>
+					<provider>1031</provider>
+					<info>33004</info>
+				</property>
+				<property>
+					<name>AC Slot 3 Part Number</name>
+					<provider>1031</provider>
+					<info>33005</info>
+				</property>
+				<property>
+					<name>AC Slot 3 Hardware Revision</name>
+					<provider>1031</provider>
+					<info>33006</info>
+				</property>
+				<property>
+					<name>AC Slot 3 EEPROM Revision</name>
+					<provider>1031</provider>
+					<info>33007</info>
+				</property>
+				<property>
+					<name>AC Slot 3 CPLD Version</name>
+					<provider>1031</provider>
+					<info>33008</info>
+				</property>
+				<property>
+					<name>AC Slot 3 Mode</name>
+					<provider>1031</provider>
+					<info>33009</info>
+				</property>
+				<property>
+					<name>AC Slot 4 Description</name>
+					<provider>1031</provider>
+					<info>34001</info>
+				</property>
+				<property>
+					<name>AC Slot 4 Serial Number</name>
+					<provider>1031</provider>
+					<info>34002</info>
+				</property>
+				<property>
+					<name>AC Slot 4 Memory</name>
+					<provider>1031</provider>
+					<info>34003</info>
+				</property>
+				<property>
+					<name>AC Slot 4 Chip Version</name>
+					<provider>1031</provider>
+					<info>34004</info>
+				</property>
+				<property>
+					<name>AC Slot 4 Part Number</name>
+					<provider>1031</provider>
+					<info>34005</info>
+				</property>
+				<property>
+					<name>AC Slot 4 Hardware Revision</name>
+					<provider>1031</provider>
+					<info>34006</info>
+				</property>
+				<property>
+					<name>AC Slot 4 EEPROM Revision</name>
+					<provider>1031</provider>
+					<info>34007</info>
+				</property>
+				<property>
+					<name>AC Slot 4 CPLD Version</name>
+					<provider>1031</provider>
+					<info>34008</info>
+				</property>
+				<property>
+					<name>AC Slot 4 Mode</name>
+					<provider>1031</provider>
+					<info>34009</info>
+				</property>
+				<property>
+					<name>AC Slot 5 Description</name>
+					<provider>1031</provider>
+					<info>35001</info>
+				</property>
+				<property>
+					<name>AC Slot 5 Serial Number</name>
+					<provider>1031</provider>
+					<info>35002</info>
+				</property>
+				<property>
+					<name>AC Slot 5 Memory</name>
+					<provider>1031</provider>
+					<info>35003</info>
+				</property>
+				<property>
+					<name>AC Slot 5 Chip Version</name>
+					<provider>1031</provider>
+					<info>35004</info>
+				</property>
+				<property>
+					<name>AC Slot 5 Part Number</name>
+					<provider>1031</provider>
+					<info>35005</info>
+				</property>
+				<property>
+					<name>AC Slot 5 Hardware Revision</name>
+					<provider>1031</provider>
+					<info>35006</info>
+				</property>
+				<property>
+					<name>AC Slot 5 EEPROM Revision</name>
+					<provider>1031</provider>
+					<info>35007</info>
+				</property>
+				<property>
+					<name>AC Slot 5 CPLD Version</name>
+					<provider>1031</provider>
+					<info>35008</info>
+				</property>
+				<property>
+					<name>AC Slot 5 Mode</name>
+					<provider>1031</provider>
+					<info>35009</info>
+				</property>
+			</section>
+		</sections>
+	</template>
+	<template name="PA noPS">
+		<sections>
+			<section name="system">
+				<property>
+					<name>Platform</name>
+					<provider>1000</provider>
+					<info>1006</info>
+				</property>
+				<property>
+					<name>Model</name>
+					<provider>1040</provider>
+					<info>1000</info>
+				</property>
+				<property>
+					<name>Serial Number</name>
+					<provider>1000</provider>
+					<info>1007</info>
+				</property>
+				<property>
+					<name>CPU Model</name>
+					<provider>1010</provider>
+					<info>1000</info>
+				</property>
+				<property>
+					<name>CPU Frequency</name>
+					<provider>1010</provider>
+					<info>1001</info>
+				</property>
+				<property>
+					<name>Number of Cores</name>
+					<provider>1010</provider>
+					<info>1002</info>
+				</property>
+				<property>
+					<name>CPU Hyperthreading</name>
+					<provider>1010</provider>
+					<info>1003</info>
+				</property>
+			</section>
+			<section name="disk">
+				<property>
+					<name>Number of disks</name>
+					<provider>1020</provider>
+					<info>1000</info>
+				</property>
+				<property>
+					<name>Disk 1 Model</name>
+					<provider>1020</provider>
+					<info>11000</info>
+				</property>
+				<property>
+					<name>Disk 1 Capacity</name>
+					<provider>1020</provider>
+					<info>11003</info>
+				</property>
+				<property>
+					<name>Disk 2 Model</name>
+					<provider>1020</provider>
+					<info>12000</info>
+				</property>
+				<property>
+					<name>Disk 2 Capacity</name>
+					<provider>1020</provider>
+					<info>12003</info>
+				</property>
+				<property>
+					<name>Total Disks size</name>
+					<provider>1020</provider>
+					<info>30000</info>
+				</property>
+			</section>
+			<section name="memory">
+				<property>
+					<name>Total Memory</name>
+					<provider>1000</provider>
+					<info>10000</info>
+				</property>
+				<property>
+					<name>Memory Slot 1 Size</name>
+					<provider>1000</provider>
+					<info>10102</info>
+				</property>
+				<property>
+					<name>Memory Slot 2 Size</name>
+					<provider>1000</provider>
+					<info>10202</info>
+				</property>
+				<property>
+					<name>Memory Slot 3 Size</name>
+					<provider>1000</provider>
+					<info>10302</info>
+				</property>
+				<property>
+					<name>Memory Slot 4 Size</name>
+					<provider>1000</provider>
+					<info>10402</info>
+				</property>
+			</section>
+			<section name="lom-info">
+				<property>
+					<name>LOM Status</name>
+					<provider>1140</provider>
+					<info>1000</info>
+				</property>
+				<property>
+					<name>LOM Firmware Revision</name>
+					<provider>1140</provider>
+					<info>1001</info>
+				</property>
+			</section>
+			<section name="network">
+				<property>
+					<name>Number of line cards</name>
+					<provider>1090</provider>
+					<info>1000</info>
+				</property>
+				<property>
+					<name>Line card 1 model</name>
+					<provider>1090</provider>
+					<info>10101</info>
+				</property>
+				<property>
+					<name>Line card 1 type</name>
+					<provider>1090</provider>
+					<info>10102</info>
+				</property>
+				<property>
+					<name>Line card 2 model</name>
+					<provider>1090</provider>
+					<info>10201</info>
+				</property>
+				<property>
+					<name>Line card 2 type</name>
+					<provider>1090</provider>
+					<info>10202</info>
+				</property>
+			</section>
+			<section name="ac">
+				<property>
+					<name>AC Present</name>
+					<provider>1031</provider>
+					<info>30000</info>
+				</property>
+				<property>
+					<name>AC Slot 1 Description</name>
+					<provider>1031</provider>
+					<info>31001</info>
+				</property>
+				<property>
+					<name>AC Slot 1 Serial Number</name>
+					<provider>1031</provider>
+					<info>31002</info>
+				</property>
+				<property>
+					<name>AC Slot 1 Memory</name>
+					<provider>1031</provider>
+					<info>31003</info>
+				</property>
+				<property>
+					<name>AC Slot 1 Chip Version</name>
+					<provider>1031</provider>
+					<info>31004</info>
+				</property>
+				<property>
+					<name>AC Slot 1 Part Number</name>
+					<provider>1031</provider>
+					<info>31005</info>
+				</property>
+				<property>
+					<name>AC Slot 1 Hardware Revision</name>
+					<provider>1031</provider>
+					<info>31006</info>
+				</property>
+				<property>
+					<name>AC Slot 1 EEPROM Revision</name>
+					<provider>1031</provider>
+					<info>31007</info>
+				</property>
+				<property>
+					<name>AC Slot 1 CPLD Version</name>
+					<provider>1031</provider>
+					<info>31008</info>
+				</property>
+				<property>
+					<name>AC Slot 1 Mode</name>
+					<provider>1031</provider>
+					<info>31009</info>
+				</property>				
+			</section>
+		</sections>
+	</template>
+	<template name="PA noLC noPS noLOM">
+		<sections>
+			<section name="system">
+				<property>
+					<name>Platform</name>
+					<provider>1000</provider>
+					<info>1006</info>
+				</property>
+				<property>
+					<name>Model</name>
+					<provider>1040</provider>
+					<info>1000</info>
+				</property>
+				<property>
+					<name>Serial Number</name>
+					<provider>1000</provider>
+					<info>1007</info>
+				</property>
+				<property>
+					<name>CPU Model</name>
+					<provider>1010</provider>
+					<info>1000</info>
+				</property>
+				<property>
+					<name>CPU Frequency</name>
+					<provider>1010</provider>
+					<info>1001</info>
+				</property>
+				<property>
+					<name>Number of Cores</name>
+					<provider>1010</provider>
+					<info>1002</info>
+				</property>
+				<property>
+					<name>CPU Hyperthreading</name>
+					<provider>1010</provider>
+					<info>1003</info>
+				</property>
+			</section>
+			<section name="disk">
+				<property>
+					<name>Disk Model</name>
+					<provider>1020</provider>
+					<info>11000</info>
+				</property>
+				<property>
+					<name>Disk Capacity</name>
+					<provider>1020</provider>
+					<info>11003</info>
+				</property>
+				<property>
+					<name>Total Disks size</name>
+					<provider>1020</provider>
+					<info>30000</info>
+				</property>
+			</section>
+			<section name="memory">
+				<property>
+					<name>Total Memory</name>
+					<provider>1000</provider>
+					<info>10000</info>
+				</property>
+				<property>
+					<name>Memory Slot 1 Size</name>
+					<provider>1000</provider>
+					<info>10102</info>
+				</property>
+				<property>
+					<name>Memory Slot 2 Size</name>
+					<provider>1000</provider>
+					<info>10202</info>
+				</property>
+				<property>
+					<name>Memory Slot 3 Size</name>
+					<provider>1000</provider>
+					<info>10302</info>
+				</property>
+				<property>
+					<name>Memory Slot 4 Size</name>
+					<provider>1000</provider>
+					<info>10402</info>
+				</property>
+				<property>
+					<name>Memory Slot 5 Size</name>
+					<provider>1000</provider>
+					<info>10502</info>
+				</property>
+				<property>
+					<name>Memory Slot 6 Size</name>
+					<provider>1000</provider>
+					<info>10602</info>
+				</property>
+				<property>
+					<name>Memory Slot 7 Size</name>
+					<provider>1000</provider>
+					<info>10702</info>
+				</property>
+				<property>
+					<name>Memory Slot 8 Size</name>
+					<provider>1000</provider>
+					<info>10802</info>
+				</property>
+			</section>
+		</sections>
+	</template>
+	<template name="SMO_ATCA_TEMPLATE">
+		<sections>
+			<section name="system">
+			</section>
+		</sections>
+	</template>
+	<template name="QNTM Series">
+		<sections>
+			<section name="system">
+				<property>
+					<name>Platform</name>
+					<provider>1000</provider>
+					<info>1006</info>
+				</property>
+				<property>
+					<name>Model</name>
+					<provider>1040</provider>
+					<info>1000</info>
+				</property>
+				<property>
+					<name>Serial Number</name>
+					<provider>1000</provider>
+					<info>1007</info>
+				</property>
+				<property>
+					<name>CPU Model</name>
+					<provider>1010</provider>
+					<info>1000</info>
+				</property>
+				<property>
+					<name>CPU Frequency</name>
+					<provider>1010</provider>
+					<info>1001</info>
+				</property>
+				<property>
+					<name>Number of Cores</name>
+					<provider>1010</provider>
+					<info>1002</info>
+				</property>
+				<property>
+					<name>CPU Hyperthreading</name>
+					<provider>1010</provider>
+					<info>1003</info>
+				</property>
+			</section>
+			<section name="disk">
+				<property>
+					<name>Number of disks</name>
+					<provider>1020</provider>
+					<info>1000</info>
+				</property>
+				<property>
+					<name>Disk 1 Model</name>
+					<provider>1020</provider>
+					<info>11000</info>
+				</property>
+				<property>
+					<name>Disk 1 Capacity</name>
+					<provider>1020</provider>
+					<info>11003</info>
+				</property>
+				<property>
+					<name>Disk 2 Model</name>
+					<provider>1020</provider>
+					<info>12000</info>
+				</property>
+				<property>
+					<name>Disk 2 Capacity</name>
+					<provider>1020</provider>
+					<info>12003</info>
+				</property>
+				<property>
+					<name>Total Disks size</name>
+					<provider>1020</provider>
+					<info>30000</info>
+				</property>
+			</section>
+			<section name="memory">
+				<property>
+					<name>Total Memory</name>
+					<provider>1000</provider>
+					<info>10000</info>
+				</property>
+				<property>
+					<name>Memory Slot 1 Size</name>
+					<provider>1000</provider>
+					<info>10102</info>
+				</property>
+				<property>
+					<name>Memory Slot 2 Size</name>
+					<provider>1000</provider>
+					<info>10202</info>
+				</property>
+				<property>
+					<name>Memory Slot 3 Size</name>
+					<provider>1000</provider>
+					<info>10302</info>
+				</property>
+				<property>
+					<name>Memory Slot 4 Size</name>
+					<provider>1000</provider>
+					<info>10402</info>
+				</property>
+				<property>
+					<name>Memory Slot 5 Size</name>
+					<provider>1000</provider>
+					<info>10502</info>
+				</property>
+				<property>
+					<name>Memory Slot 6 Size</name>
+					<provider>1000</provider>
+					<info>10602</info>
+				</property>
+				<property>
+					<name>Memory Slot 7 Size</name>
+					<provider>1000</provider>
+					<info>10702</info>
+				</property>
+				<property>
+					<name>Memory Slot 8 Size</name>
+					<provider>1000</provider>
+					<info>10802</info>
+				</property>
+				<property>
+					<name>Memory Slot 9 Size</name>
+					<provider>1000</provider>
+					<info>10902</info>
+				</property>
+				<property>
+					<name>Memory Slot 10 Size</name>
+					<provider>1000</provider>
+					<info>11002</info>
+				</property>
+				<property>
+					<name>Memory Slot 11 Size</name>
+					<provider>1000</provider>
+					<info>11102</info>
+				</property>
+				<property>
+					<name>Memory Slot 12 Size</name>
+					<provider>1000</provider>
+					<info>11202</info>
+				</property>
+				<property>
+						<name>Memory Slot 13 Size</name>
+						<provider>1000</provider>
+						<info>11302</info>
+				</property>
+				<property>
+						<name>Memory Slot 14 Size</name>
+						<provider>1000</provider>
+						<info>11402</info>
+				</property>
+				<property>
+						<name>Memory Slot 15 Size</name>
+						<provider>1000</provider>
+						<info>11502</info>
+				</property>
+				<property>
+						<name>Memory Slot 16 Size</name>
+						<provider>1000</provider>
+						<info>11602</info>
+				</property>
+				<property>
+						<name>Memory Slot 17 Size</name>
+						<provider>1000</provider>
+						<info>11702</info>
+				</property>
+				<property>
+						<name>Memory Slot 18 Size</name>
+						<provider>1000</provider>
+						<info>11802</info>
+				</property>
+				<property>
+						<name>Memory Slot 19 Size</name>
+						<provider>1000</provider>
+						<info>11902</info>
+				</property>
+				 <property>
+						<name>Memory Slot 20 Size</name>
+						<provider>1000</provider>
+						<info>12002</info>
+				</property>
+			</section>
+			<section name="power-supply">
+				<property>
+					<name>Power supply 1 name</name>
+					<provider>1100</provider>
+					<info>10011</info>
+				</property>
+				<property>
+					<name>Power supply 1 status</name>
+					<provider>1100</provider>
+					<info>10012</info>
+				</property>
+				<property>
+					<name>Power supply 2 name</name>
+					<provider>1100</provider>
+					<info>10021</info>
+				</property>
+				<property>
+					<name>Power supply 2 status</name>
+					<provider>1100</provider>
+					<info>10022</info>
+				</property>
+				<property>
+					<name>Power supply 3 name</name>
+					<provider>1100</provider>
+					<info>10031</info>
+				</property>
+				<property>
+					<name>Power supply 3 status</name>
+					<provider>1100</provider>
+					<info>10032</info>
+				</property>
+			</section>
+			<section name="lom-info">
+				<property>
+					<name>LOM Status</name>
+					<provider>1140</provider>
+					<info>1000</info>
+				</property>
+				<property>
+					<name>LOM Firmware Revision</name>
+					<provider>1140</provider>
+					<info>1001</info>
+				</property>
+			</section>
+			<section name="network">
+				<property>
+					<name>Number of line cards</name>
+					<provider>1090</provider>
+					<info>1000</info>
+				</property>
+				<property>
+					<name>Line card 1 model</name>
+					<provider>1090</provider>
+					<info>10101</info>
+				</property>
+				<property>
+					<name>Line card 1 type</name>
+					<provider>1090</provider>
+					<info>10102</info>
+				</property>
+				<property>
+					<name>Line card 1 firmware</name>
+					<provider>1090</provider>
+					<info>10103</info>
+				</property>
+				<property>
+					<name>Line card 2 model</name>
+					<provider>1090</provider>
+					<info>10201</info>
+				</property>
+				<property>
+					<name>Line card 2 type</name>
+					<provider>1090</provider>
+					<info>10202</info>
+				</property>
+				<property>
+					<name>Line card 2 firmware</name>
+					<provider>1090</provider>
+					<info>10203</info>
+				</property>
+				<property>
+					<name>Line card 3 model</name>
+					<provider>1090</provider>
+					<info>10301</info>
+				</property>
+				<property>
+					<name>Line card 3 type</name>
+					<provider>1090</provider>
+					<info>10302</info>
+				</property>
+				<property>
+					<name>Line card 3 firmware</name>
+					<provider>1090</provider>
+					<info>10303</info>
+				</property>
+				<property>
+					<name>Line card 4 model</name>
+					<provider>1090</provider>
+					<info>10401</info>
+				</property>
+				<property>
+					<name>Line card 4 type</name>
+					<provider>1090</provider>
+					<info>10402</info>
+				</property>
+				<property>
+					<name>Line card 4 firmware</name>
+					<provider>1090</provider>
+					<info>10403</info>
+				</property>
+				<property>
+					<name>Line card 5 model</name>
+					<provider>1090</provider>
+					<info>10501</info>
+				</property>
+				<property>
+					<name>Line card 5 type</name>
+					<provider>1090</provider>
+					<info>10502</info>
+				</property>
+				<property>
+					<name>Line card 5 firmware</name>
+					<provider>1090</provider>
+					<info>10503</info>
+				</property>
+				<property>
+					<name>Line card 6 model</name>
+					<provider>1090</provider>
+					<info>10601</info>
+				</property>
+				<property>
+					<name>Line card 6 type</name>
+					<provider>1090</provider>
+					<info>10602</info>
+				</property>
+				<property>
+					<name>Line card 6 firmware</name>
+					<provider>1090</provider>
+					<info>10603</info>
+				</property>
+				<property>
+					<name>Line card 7 model</name>
+					<provider>1090</provider>
+					<info>10701</info>
+				</property>
+				<property>
+					<name>Line card 7 type</name>
+					<provider>1090</provider>
+					<info>10702</info>
+				</property>
+				<property>
+					<name>Line card 7 firmware</name>
+					<provider>1090</provider>
+					<info>10703</info>
+				</property>
+				<property>
+					<name>Line card 8 model</name>
+					<provider>1090</provider>
+					<info>10801</info>
+				</property>
+				<property>
+					<name>Line card 8 type</name>
+					<provider>1090</provider>
+					<info>10802</info>
+				</property>
+				<property>
+					<name>Line card 8 firmware</name>
+					<provider>1090</provider>
+					<info>10803</info>
+				</property>
+			</section>
+			<section name="ac">
+				<property>
+					<name>AC Present</name>
+					<provider>1031</provider>
+					<info>30000</info>
+				</property>
+				<property>
+					<name>AC Slot 1 Description</name>
+					<provider>1031</provider>
+					<info>31001</info>
+				</property>
+				<property>
+					<name>AC Slot 1 Serial Number</name>
+					<provider>1031</provider>
+					<info>31002</info>
+				</property>
+				<property>
+					<name>AC Slot 1 Memory</name>
+					<provider>1031</provider>
+					<info>31003</info>
+				</property>
+				<property>
+					<name>AC Slot 1 Chip Version</name>
+					<provider>1031</provider>
+					<info>31004</info>
+				</property>
+				<property>
+					<name>AC Slot 1 Part Number</name>
+					<provider>1031</provider>
+					<info>31005</info>
+				</property>
+				<property>
+					<name>AC Slot 1 Hardware Revision</name>
+					<provider>1031</provider>
+					<info>31006</info>
+				</property>
+				<property>
+					<name>AC Slot 1 EEPROM Revision</name>
+					<provider>1031</provider>
+					<info>31007</info>
+				</property>
+				<property>
+					<name>AC Slot 1 CPLD Version</name>
+					<provider>1031</provider>
+					<info>31008</info>
+				</property>
+				<property>
+					<name>AC Slot 1 Mode</name>
+					<provider>1031</provider>
+					<info>31009</info>
+				</property>
+				<property>
+					<name>AC Slot 2 Description</name>
+					<provider>1031</provider>
+					<info>32001</info>
+				</property>
+				<property>
+					<name>AC Slot 2 Serial Number</name>
+					<provider>1031</provider>
+					<info>32002</info>
+				</property>
+				<property>
+					<name>AC Slot 2 Memory</name>
+					<provider>1031</provider>
+					<info>32003</info>
+				</property>
+				<property>
+					<name>AC Slot 2 Chip Version</name>
+					<provider>1031</provider>
+					<info>32004</info>
+				</property>
+				<property>
+					<name>AC Slot 2 Part Number</name>
+					<provider>1031</provider>
+					<info>32005</info>
+				</property>
+				<property>
+					<name>AC Slot 2 Hardware Revision</name>
+					<provider>1031</provider>
+					<info>32006</info>
+				</property>
+				<property>
+					<name>AC Slot 2 EEPROM Revision</name>
+					<provider>1031</provider>
+					<info>32007</info>
+				</property>
+				<property>
+					<name>AC Slot 2 CPLD Version</name>
+					<provider>1031</provider>
+					<info>32008</info>
+				</property>
+				<property>
+					<name>AC Slot 2 Mode</name>
+					<provider>1031</provider>
+					<info>32009</info>
+				</property>
+				<property>
+					<name>AC Slot 3 Description</name>
+					<provider>1031</provider>
+					<info>33001</info>
+				</property>
+				<property>
+					<name>AC Slot 3 Serial Number</name>
+					<provider>1031</provider>
+					<info>33002</info>
+				</property>
+				<property>
+					<name>AC Slot 3 Memory</name>
+					<provider>1031</provider>
+					<info>33003</info>
+				</property>
+				<property>
+					<name>AC Slot 3 Chip Version</name>
+					<provider>1031</provider>
+					<info>33004</info>
+				</property>
+				<property>
+					<name>AC Slot 3 Part Number</name>
+					<provider>1031</provider>
+					<info>33005</info>
+				</property>
+				<property>
+					<name>AC Slot 3 Hardware Revision</name>
+					<provider>1031</provider>
+					<info>33006</info>
+				</property>
+				<property>
+					<name>AC Slot 3 EEPROM Revision</name>
+					<provider>1031</provider>
+					<info>33007</info>
+				</property>
+				<property>
+					<name>AC Slot 3 CPLD Version</name>
+					<provider>1031</provider>
+					<info>33008</info>
+				</property>
+				<property>
+					<name>AC Slot 3 Mode</name>
+					<provider>1031</provider>
+					<info>33009</info>
+				</property>
+				<property>
+					<name>AC Slot 4 Description</name>
+					<provider>1031</provider>
+					<info>34001</info>
+				</property>
+				<property>
+					<name>AC Slot 4 Serial Number</name>
+					<provider>1031</provider>
+					<info>34002</info>
+				</property>
+				<property>
+					<name>AC Slot 4 Memory</name>
+					<provider>1031</provider>
+					<info>34003</info>
+				</property>
+				<property>
+					<name>AC Slot 4 Chip Version</name>
+					<provider>1031</provider>
+					<info>34004</info>
+				</property>
+				<property>
+					<name>AC Slot 4 Part Number</name>
+					<provider>1031</provider>
+					<info>34005</info>
+				</property>
+				<property>
+					<name>AC Slot 4 Hardware Revision</name>
+					<provider>1031</provider>
+					<info>34006</info>
+				</property>
+				<property>
+					<name>AC Slot 4 EEPROM Revision</name>
+					<provider>1031</provider>
+					<info>34007</info>
+				</property>
+				<property>
+					<name>AC Slot 4 CPLD Version</name>
+					<provider>1031</provider>
+					<info>34008</info>
+				</property>
+				<property>
+					<name>AC Slot 4 Mode</name>
+					<provider>1031</provider>
+					<info>34009</info>
+				</property>
+				<property>
+					<name>AC Slot 5 Description</name>
+					<provider>1031</provider>
+					<info>35001</info>
+				</property>
+				<property>
+					<name>AC Slot 5 Serial Number</name>
+					<provider>1031</provider>
+					<info>35002</info>
+				</property>
+				<property>
+					<name>AC Slot 5 Memory</name>
+					<provider>1031</provider>
+					<info>35003</info>
+				</property>
+				<property>
+					<name>AC Slot 5 Chip Version</name>
+					<provider>1031</provider>
+					<info>35004</info>
+				</property>
+				<property>
+					<name>AC Slot 5 Part Number</name>
+					<provider>1031</provider>
+					<info>35005</info>
+				</property>
+				<property>
+					<name>AC Slot 5 Hardware Revision</name>
+					<provider>1031</provider>
+					<info>35006</info>
+				</property>
+				<property>
+					<name>AC Slot 5 EEPROM Revision</name>
+					<provider>1031</provider>
+					<info>35007</info>
+				</property>
+				<property>
+					<name>AC Slot 5 CPLD Version</name>
+					<provider>1031</provider>
+					<info>35008</info>
+				</property>
+				<property>
+					<name>AC Slot 5 Mode</name>
+					<provider>1031</provider>
+					<info>35009</info>
+				</property>
+				<property>
+					<name>AC Slot 6 Description</name>
+					<provider>1031</provider>
+					<info>36001</info>
+				</property>
+				<property>
+					<name>AC Slot 6 Serial Number</name>
+					<provider>1031</provider>
+					<info>36002</info>
+				</property>
+				<property>
+					<name>AC Slot 6 Memory</name>
+					<provider>1031</provider>
+					<info>36003</info>
+				</property>
+				<property>
+					<name>AC Slot 6 Chip Version</name>
+					<provider>1031</provider>
+					<info>36004</info>
+				</property>
+				<property>
+					<name>AC Slot 6 Part Number</name>
+					<provider>1031</provider>
+					<info>36005</info>
+				</property>
+				<property>
+					<name>AC Slot 6 Hardware Revision</name>
+					<provider>1031</provider>
+					<info>36006</info>
+				</property>
+				<property>
+					<name>AC Slot 6 EEPROM Revision</name>
+					<provider>1031</provider>
+					<info>36007</info>
+				</property>
+				<property>
+					<name>AC Slot 6 CPLD Version</name>
+					<provider>1031</provider>
+					<info>36008</info>
+				</property>
+				<property>
+					<name>AC Slot 6 Mode</name>
+					<provider>1031</provider>
+					<info>36009</info>
+				</property>
+				<property>
+					<name>AC Slot 7 Description</name>
+					<provider>1031</provider>
+					<info>37001</info>
+				</property>
+				<property>
+					<name>AC Slot 7 Serial Number</name>
+					<provider>1031</provider>
+					<info>37002</info>
+				</property>
+				<property>
+					<name>AC Slot 7 Memory</name>
+					<provider>1031</provider>
+					<info>37003</info>
+				</property>
+				<property>
+					<name>AC Slot 7 Chip Version</name>
+					<provider>1031</provider>
+					<info>37004</info>
+				</property>
+				<property>
+					<name>AC Slot 7 Part Number</name>
+					<provider>1031</provider>
+					<info>37005</info>
+				</property>
+				<property>
+					<name>AC Slot 7 Hardware Revision</name>
+					<provider>1031</provider>
+					<info>37006</info>
+				</property>
+				<property>
+					<name>AC Slot 7 EEPROM Revision</name>
+					<provider>1031</provider>
+					<info>37007</info>
+				</property>
+				<property>
+					<name>AC Slot 7 CPLD Version</name>
+					<provider>1031</provider>
+					<info>37008</info>
+				</property>
+				<property>
+					<name>AC Slot 7 Mode</name>
+					<provider>1031</provider>
+					<info>37009</info>
+				</property>
+				<property>
+					<name>AC Slot 8 Description</name>
+					<provider>1031</provider>
+					<info>38001</info>
+				</property>
+				<property>
+					<name>AC Slot 8 Serial Number</name>
+					<provider>1031</provider>
+					<info>38002</info>
+				</property>
+				<property>
+					<name>AC Slot 8 Memory</name>
+					<provider>1031</provider>
+					<info>38003</info>
+				</property>
+				<property>
+					<name>AC Slot 8 Chip Version</name>
+					<provider>1031</provider>
+					<info>38004</info>
+				</property>
+				<property>
+					<name>AC Slot 8 Part Number</name>
+					<provider>1031</provider>
+					<info>38005</info>
+				</property>
+				<property>
+					<name>AC Slot 8 Hardware Revision</name>
+					<provider>1031</provider>
+					<info>38006</info>
+				</property>
+				<property>
+					<name>AC Slot 8 EEPROM Revision</name>
+					<provider>1031</provider>
+					<info>38007</info>
+				</property>
+				<property>
+					<name>AC Slot 8 CPLD Version</name>
+					<provider>1031</provider>
+					<info>38008</info>
+				</property>
+				<property>
+					<name>AC Slot 8 Mode</name>
+					<provider>1031</provider>
+					<info>38009</info>
+				</property>
+			</section>
+		</sections>
+	</template>
+	<template name="QNTM noLC noLOM">
+		<sections>
+			<section name="system">
+				<property>
+					<name>Platform</name>
+					<provider>1000</provider>
+					<info>1006</info>
+				</property>
+				<property>
+					<name>Model</name>
+					<provider>1040</provider>
+					<info>1000</info>
+				</property>
+				<property>
+					<name>Serial Number</name>
+					<provider>1000</provider>
+					<info>1007</info>
+				</property>
+				<property>
+					<name>CPU Model</name>
+					<provider>1010</provider>
+					<info>1000</info>
+				</property>
+				<property>
+					<name>CPU Frequency</name>
+					<provider>1010</provider>
+					<info>1001</info>
+				</property>
+				<property>
+					<name>Number of Cores</name>
+					<provider>1010</provider>
+					<info>1002</info>
+				</property>
+				<property>
+					<name>CPU Hyperthreading</name>
+					<provider>1010</provider>
+					<info>1003</info>
+				</property>
+			</section>
+			<section name="disk">
+				<property>
+					<name>Number of disks</name>
+					<provider>1020</provider>
+					<info>1000</info>
+				</property>
+				<property>
+					<name>Disk 1 Model</name>
+					<provider>1020</provider>
+					<info>11000</info>
+				</property>
+				<property>
+					<name>Disk 1 Capacity</name>
+					<provider>1020</provider>
+					<info>11003</info>
+				</property>
+				<property>
+					<name>Disk 2 Model</name>
+					<provider>1020</provider>
+					<info>12000</info>
+				</property>
+				<property>
+					<name>Disk 2 Capacity</name>
+					<provider>1020</provider>
+					<info>12003</info>
+				</property>
+				<property>
+					<name>Total Disks size</name>
+					<provider>1020</provider>
+					<info>30000</info>
+				</property>
+			</section>
+			<section name="memory">
+				<property>
+					<name>Total Memory</name>
+					<provider>1000</provider>
+					<info>10000</info>
+				</property>
+				<property>
+					<name>Memory Slot 1 Size</name>
+					<provider>1000</provider>
+					<info>10102</info>
+				</property>
+				<property>
+					<name>Memory Slot 2 Size</name>
+					<provider>1000</provider>
+					<info>10202</info>
+				</property>
+			</section>
+			<section name="power-supply">
+                                <property>
+                                        <name>Power supply 1 name</name>
+                                        <provider>1100</provider>
+                                        <info>10011</info>
+                                </property>
+                                <property>
+                                        <name>Power supply 1 status</name>
+                                        <provider>1100</provider>
+                                        <info>10012</info>
+                                </property>
+                                <property>
+                                        <name>Power supply 2 name</name>
+                                        <provider>1100</provider>
+                                        <info>10021</info>
+                                </property>
+                                <property>
+                                        <name>Power supply 2 status</name>
+                                        <provider>1100</provider>
+                                        <info>10022</info>
+                                </property>
+                        </section>
+		</sections>
+	</template>
+	<template name="Mellanox Switch">
+		<sections>
+			<section name="system">
+				<property>
+					<name>Platform</name>
+					<provider>1000</provider>
+					<info>1006</info>
+				</property>
+				<property>
+					<name>Model</name>
+					<provider>1040</provider>
+					<info>1000</info>
+				</property>
+				<property>
+					<name>Serial Number</name>
+					<provider>1000</provider>
+					<info>1007</info>
+				</property>
+				<property>
+					<name>CPU Model</name>
+					<provider>1010</provider>
+					<info>1000</info>
+				</property>
+				<property>
+					<name>CPU Frequency</name>
+					<provider>1010</provider>
+					<info>1001</info>
+				</property>
+				<property>
+					<name>Number of Cores</name>
+					<provider>1010</provider>
+					<info>1002</info>
+				</property>
+				<property>
+					<name>CPU Hyperthreading</name>
+					<provider>1010</provider>
+					<info>1003</info>
+				</property>
+			</section>
+			<section name="disk">
+				<property>
+					<name>Disk Model</name>
+					<provider>1020</provider>
+					<info>11000</info>
+				</property>
+				<property>
+					<name>Disk Capacity</name>
+					<provider>1020</provider>
+					<info>11003</info>
+				</property>
+				<property>
+					<name>Total Disks size</name>
+					<provider>1020</provider>
+					<info>30000</info>
+				</property>
+			</section>
+			<section name="memory">
+				<property>
+					<name>Total Memory</name>
+					<provider>1000</provider>
+					<info>10000</info>
+				</property>
+				<property>
+					<name>Memory Slot 1 Size</name>
+					<provider>1000</provider>
+					<info>10102</info>
+				</property>
+				<property>
+					<name>Memory Slot 2 Size</name>
+					<provider>1000</provider>
+					<info>10202</info>
+				</property>
+				<property>
+					<name>Memory Slot 3 Size</name>
+					<provider>1000</provider>
+					<info>10302</info>
+				</property>
+				<property>
+					<name>Memory Slot 4 Size</name>
+					<provider>1000</provider>
+					<info>10402</info>
+				</property>
+			</section>
+		</sections>
+	</template>
+	<template name="Open Server">
+		<sections>
+			<section name="system">
+				<property>
+					<name>Platform</name>
+					<provider>1000</provider>
+					<info>1006</info>
+				</property>
+				<property>
+					<name>CPU Model</name>
+					<provider>1010</provider>
+					<info>1000</info>
+				</property>
+				<property>
+					<name>CPU Frequency</name>
+					<provider>1010</provider>
+					<info>1001</info>
+				</property>
+				<property>
+					<name>Number of Cores</name>
+					<provider>1010</provider>
+					<info>1002</info>
+				</property>
+				<property>
+					<name>CPU Hyperthreading</name>
+					<provider>1010</provider>
+					<info>1003</info>
+				</property>
+			</section>
+		</sections>
+	</template>
+</templates>
