@@ -119,15 +119,19 @@
                    <h3>Cluster Builder</h3>
                    <p><strong>Description:</strong><br>
                       Use this page to build your checkpoint FW clusters.</p>
-                   <p><strong>Requirements:</strong><br>
-                      <ol class="text-start">
-                        <li>CPM name</li>
-                        <li>Domain name</li>
-						<li>CP ver#</li>
-                        <li>Cluster Name</li>
-                        <li>MGMT IP
-                        <li>Mask-Length</li>
-                      </ol>
+                   <p>
+  <strong>Requirements:</strong>
+  <button class="btn btn-outline-secondary btn-sm ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#req-cluster" aria-expanded="false" aria-controls="req-cluster">
+    Show/Hide
+  </button>
+  <div class="collapse mt-2" id="req-cluster">
+    <ol class="text-start">
+  <li>CPM name</li>
+  <li>Domain name</li>
+  <li>MGMT IP info</li>
+</ol>
+  </div>
+</p>
                    </p>
                    <div class="text-center">
                      <a href="https://leonardlow.github.io/web_dashboard/ClusterBuilder.html" class="btn btn-primary mt-3" target="_blank">Launch Tool</a>
@@ -142,10 +146,15 @@
                    <h3>GW Builder</h3>
                    <p><strong>Description:</strong><br>
                       Build gateway configuration for deployment.</p>
-                   <p><strong>Requirements:</strong><br>
-                      <ol class="text-start">
-                        <li>Ensure you've completed the following steps via console:
-                          <pre class="bg-light p-2 border rounded small">
+                   <p>
+  <strong>Requirements:</strong>
+  <button class="btn btn-outline-secondary btn-sm ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#req-gw" aria-expanded="false" aria-controls="req-gw">
+    Show/Hide
+  </button>
+  <div class="collapse mt-2" id="req-gw">
+    <ol class=\"text-start\">
+  <li>Ensure you've completed the following steps via console:
+    <pre class="bg-light p-2 border rounded small">
 set user admin shell /bin/bash
 set hostname &lt;hostname&gt;
 set ipv6-state enable
@@ -159,17 +168,19 @@ set static-route 10.240.0.0/12 nexthop gateway address &lt;gw&gt; on
 set static-route 10.248.0.0/13 nexthop gateway address &lt;gw&gt; on
 save config
 reboot</pre>
-                        </li>
-                        <li class="mt-2">GW Config info:
-                          <ul>
-                            <li>SNMP Location (including Rack/Row info)</li>
-                            <li>Interface Info (v4 IP, mask-length, v6 IP (if any), interface desc/comment)</li>
-                            <li>ipv6 - (optional)</li>
-                            <li>VLAN - (optional)</li>
-                            <li>Bonds - (optional)</li>
-                          </ul>
-                        </li>
-                      </ol>
+  </li>
+  <li>GW Config info:
+    <ul>
+      <li>SNMP Location (including Rack/Row info)</li>
+      <li>Interface Info (v4 IP, mask-length, v6 IP (if any), interface desc/comment)</li>
+      <li>ipv6 - (optional)</li>
+      <li>VLAN - (optional)</li>
+      <li>Bonds - (optional)</li>
+    </ul>
+  </li>
+</ol>
+  </div>
+</p>
                    </p>
                    <div class="text-center">
                      <a href="https://leonardlow.github.io/cpfw_tools/" class="btn btn-primary mt-3" target="_blank">Launch Tool</a>
@@ -191,6 +202,10 @@ reboot</pre>
                    <h3>Contact Leonard Low</h3>
                    <p>Email: <a href="mailto:leonard.lowjr@t-mobile.com">leonard.lowjr@t-mobile.com</a><br>
                       Phone: (555) phoneAfriend</p>
+                 </div>
+                 <div class="fixed-bottom bg-dark text-white py-2 px-4">
+                   <marquee behavior="scroll" direction="left">
+                     Team Members: <span style='color: #ff5722; font-weight: bold; text-shadow: 1px 1px 4px orange;'>Leonard Low</span> * Chad Blue * Chester Blue * Victor Clemente * Calvin Curtis * Roger Denton * Thor Goldsmith * Safwan Helmi * Karen Hooper * Bruce McCormack * Mike Nolan * Shvaitanshu Raina * Aishwarya Ramamurthy * Azeemahmed Shaikh * Steve Vohs *</marquee>
                  </div>`;
         break;
       case 'future':
@@ -201,7 +216,12 @@ reboot</pre>
                  </div>`;
         break;
       case 'home':
-        html = `<img src=\"images/shield_transparent.png\" alt=\"Shield Logo\" class=\"shield-logo\" id=\"main-logo\">`;
+        html = `<img src=\"images/shield_transparent.png\" alt=\"Shield Logo\" class=\"shield-logo\" id=\"main-logo\">
+                 <div class=\"fixed-bottom bg-dark text-white py-2 px-4\">
+                   <marquee behavior=\"scroll\" direction=\"left\">
+                     Team Members: Chad Blue * Chester Blue * Victor Clemente * Calvin Curtis * Roger Denton * Thor Goldsmith * Safwan Helmi * Karen Hooper * Leonard Low * Bruce McCormack * Mike Nolan * Shvaitanshu Raina * Aishwarya Ramamurthy * Azeemahmed Shaikh * Steve Vohs *
+                   </marquee>
+                 </div>`;
         break;
     }
 
@@ -213,6 +233,7 @@ reboot</pre>
   }
     
 </script>
+
 
 </body>
 </html>
