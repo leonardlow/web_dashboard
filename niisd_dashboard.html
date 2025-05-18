@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Org Tools Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+    .logo-img {
+      max-height: 140px;
+      margin-right: 15px;
+      cursor: pointer;
+    }
+    .version {
+      font-size: 0.9rem;
+      color: #6c757d;
+    }
+    .container {
+      background-color: #fff;
+      border-radius: 8px;
+      padding-top: 3rem;
+    }
+  </style>
+</head>
+<body class="bg-light">
+  <div class="container py-5">
+    <!-- Header with Logo and Version Info -->
+    <div class="text-center mb-3">
+      <div class="d-flex justify-content-center align-items-center mb-2">
+        <img src="images/shield_transparent.png" alt="Company Logo" class="logo-img">
+        <h1 class="m-0">Network Tools Dashboard</h1>
+      </div>
+      <p class="version">Version 1.0.0</p>
+      <p class="text-muted mb-5">Welcome! Choose a tool below to get started.</p>
+    </div>
+
+    <!-- Standalone Tools Section -->
+    <div class="row g-4 justify-content-center">
+      <div class="col-12">
+        <h4>Standalone Tools</h4>
+      </div>
+
+      <!-- Cluster Builder Card -->
+      <div class="col-md-5 mx-auto">
+        <div class="card h-100">
+          <a href="https://leonardlow.github.io/web_dashboard/ClusterBuilder.html" target="_blank" rel="noopener noreferrer">
+            <img src="images/clusterBuild.png" alt="Cluster Builder Logo" class="card-img-top" style="max-height: 180px; object-fit: contain;">
+          </a>
+          <div class="card-body">
+            <h5 class="card-title">Cluster Builder</h5>
+            <p class="card-text">Generate cluster commands for copy/paste into your corporate platform.</p>
+            
+          </div>
+        </div>
+      </div>
+
+      <!-- GW Builder Card -->
+      <div class="col-md-5 mx-auto">
+        <div class="card h-100">
+          <a href="https://leonardlow.github.io/cpfw_tools/" target="_blank" rel="noopener noreferrer">
+            <img src="images/gw_builder.png" alt="GW Builder Logo" class="card-img-top" style="max-height: 180px; object-fit: contain;">
+          </a>
+          <div class="card-body">
+            <h5 class="card-title">GW Builder</h5>
+            <p class="card-text">Build gateway configuration commands for deployment.</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Remote Tools Section -->
+    <div class="row g-4 justify-content-center mt-4">
+      <div class="col-12">
+        <h4>Remote Tools</h4>
+      </div>
+
+      <!-- CPFW Info Retrieval Card -->
+      <div class="col-md-5">
+        <div class="card h-100" data-bs-toggle="modal" data-bs-target="#restrictedModal" style="cursor: pointer;">
+          <img src="images/cpfw.png" alt="CPFW Logo" class="card-img-top" style="max-height: 180px; object-fit: contain;">
+          <div class="card-body">
+            <h5 class="card-title">CPFW Info Retrieval</h5>
+            <p class="card-text">Authenticate and run remote commands to collect firewall info.</p>
+            
+          </div>
+        </div>
+      </div>
+
+      <!-- Kchow Remote Deploy Card -->
+      <div class="col-md-5">
+        <div class="card h-100" data-bs-toggle="modal" data-bs-target="#restrictedModal" style="cursor: pointer;">
+          <img src="images/kchow.png" alt="GW Builder Logo" class="card-img-top" style="max-height: 180px; object-fit: contain;">
+          <div class="card-body">
+            <h5 class="card-title">Kchow Remote Deploy</h5>
+            <p class="card-text">Use SCP and SSH to send files and execute follow-up scripts.</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Future Tools Section -->
+    <div class="row g-4 justify-content-center mt-4">
+      <div class="col-12">
+        <h4>Future Tools</h4>
+      </div>
+      <div class="col-md-5">
+        <div class="card h-100 border-secondary">
+          <div class="card-body">
+            <h5 class="card-title">Coming Soon</h5>
+            <p class="card-text text-muted">More network automation and remote tools on the way.</p>
+            <button class="btn btn-outline-secondary" disabled>Unavailable</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- Modal HTML for Logo Preview -->
+<div class="modal fade" id="logoModal" tabindex="-1" aria-labelledby="logoModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="logoModalLabel">Full Logo Preview</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body text-center">
+        <img src="images/shield_transparent.png" alt="Full Logo" class="img-fluid">
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  const logoImg = document.querySelector('.logo-img');
+  logoImg.addEventListener('click', function (e) {
+    e.preventDefault();
+    const modal = new bootstrap.Modal(document.getElementById('logoModal'));
+    modal.show();
+  });
+</script>
+
+<!-- Contact Card / Business Info -->
+<footer class="text-center mt-5 mb-3">
+  <div class="d-flex justify-content-center align-items-start flex-wrap gap-3">
+    <div class="card shadow-sm" style="max-width: 400px; flex: 1 1 300px;">
+      <div class="card-body">
+        <h5 class="card-title mb-1">Contact</h5>
+        <p class="mb-1">Leonard Low</p>
+        <p class="mb-1">NIISD Firewall Jockey</p>
+        <p class="mb-1">Email: <a href="mailto:leonard.lowjr@t-mobile.com">leonard.lowjr@t-mobile.com</a></p>
+        <p class="mb-0">Phone: (555) phoneAfriend </p>
+      </div>
+    </div>
+    <div class="card shadow-sm d-flex align-items-center justify-content-center" style="max-width: 400px; flex: 1 1 300px; height: 100%;">
+      <div class="card-body text-center">
+        <img src="images/contact_qr.png" alt="QR Code" class="img-fluid" style="height: 100%; max-height: 220px; object-fit: contain;">
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- Restricted Access Modal -->
+<div class="modal fade" id="restrictedModal" tabindex="-1" aria-labelledby="restrictedModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="restrictedModalLabel">Restricted Access</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        This tool is currently restricted. Please contact <strong>Leonard</strong> for access or support.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
