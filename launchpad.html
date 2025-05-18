@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Network Tools Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+    .sidebar {
+      height: 100vh;
+      background-color: #343a40;
+      padding-top: 2rem;
+    }
+    .sidebar .nav-link {
+      color: #fff;
+      margin-bottom: 1rem;
+      transition: background-color 0.3s ease;
+    }
+    .sidebar .nav-link.active, .sidebar .nav-link:hover {
+      font-weight: bold;
+      color: #ffc107;
+      background-color: #495057;
+      border-radius: 5px;
+    }
+    .content-area {
+      transition: opacity 0.3s ease;
+    }
+    .content-area img {
+      max-width: 100%;
+      height: auto;
+    }
+    .shield-logo {
+      max-width: 250px;
+      margin: 2rem auto;
+      display: block;
+    }
+    @media (max-width: 767.98px) {
+      .sidebar {
+        height: auto;
+        padding: 1rem;
+      }
+      .nav.flex-column {
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+      .nav-link {
+        margin-right: 1rem;
+        margin-bottom: 0.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container-fluid">
+    <div class="row">
+      <nav class="col-md-2 d-none d-md-block sidebar">
+        <div class="nav flex-column">
+          <a class="nav-link" href="#" onclick="loadTool('home')">Home</a>
+          <a class="nav-link" href="#" onclick="loadTool('cluster')">Cluster Builder</a>
+          <a class="nav-link" href="#" onclick="loadTool('gw')">GW Builder</a>
+          <a class="nav-link" href="#" onclick="loadTool('cpfw')">CPFW Info</a>
+          <a class="nav-link" href="#" onclick="loadTool('kchow')">Kchow Remote</a>
+          <a class="nav-link" href="#" onclick="loadTool('future')">Future Tools</a>
+          <a class="nav-link" href="#" onclick="loadTool('contact')">Contact</a>
+        </div>
+      </nav>
+      <main class="col-md-10 ms-sm-auto px-md-4 content-area" id="main-content">
+        <img src="images/shield_transparent.png" alt="Shield Logo" class="shield-logo" id="main-logo">
+      </main>
+    </div>
+  </div>
+
+  <!-- Modal HTML for Restricted Access -->
+  <div class="modal fade" id="restrictedModal" tabindex="-1" aria-labelledby="restrictedModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="restrictedModalLabel">Restricted Access</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          This tool is currently restricted. Please contact <strong>Leonard</strong> for access or support.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  function loadTool(tool) {
+    const content = document.getElementById('main-content');
+    const logo = document.getElementById('main-logo');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    navLinks.forEach(link => link.classList.remove('active'));
+    document.querySelector(`.nav-link[onclick*="${tool}"]`)?.classList.add('active');
+
+    let html = '';
+    switch(tool) {
+      case 'cluster':
+        html = `<div class="text-start px-4">
+                   <div class="text-center">
+                     <img src="images/clusterBuild.png" alt="Cluster Builder" class="img-fluid mb-3" style="max-width: 300px;">
+                   </div>
+                   <h3>Cluster Builder</h3>
+                   <p><strong>Description:</strong><br>
+                      Use this page to build your checkpoint FW clusters.</p>
+                   <p><strong>Requirements:</strong><br>
+                      <ol class="text-start">
+                        <li>CPM name</li>
+                        <li>Domain name</li>
+						<li>CP ver#</li>
+                        <li>Cluster Name</li>
+                        <li>MGMT IP
+                        <li>Mask-Length</li>
+                      </ol>
+                   </p>
+                   <div class="text-center">
+                     <a href="https://leonardlow.github.io/web_dashboard/ClusterBuilder.html" class="btn btn-primary mt-3" target="_blank">Launch Tool</a>
+                   </div>
+                 </div>`;
+        break;
+      case 'gw':
+        html = `<div class="text-start px-4">
+                   <div class="text-center">
+                     <img src="images/gw_builder.png" alt="GW Builder" class="img-fluid mb-3" style="max-width: 300px;">
+                   </div>
+                   <h3>GW Builder</h3>
+                   <p><strong>Description:</strong><br>
+                      Build gateway configuration for deployment.</p>
+                   <p><strong>Requirements:</strong><br>
+                      <ol class="text-start">
+                        <li>Ensure you've completed the following steps via console:
+                          <pre class="bg-light p-2 border rounded small">
+set user admin shell /bin/bash
+set hostname &lt;hostname&gt;
+set ipv6-state enable
+set mdps interface Mgmt management on
+set mdps resource cpus 1
+set mdps mgmt resource ON
+set interface Mgmt ipv4-address &lt;address&gt; mask-length &lt;mask-length&gt;
+set static-route 5.0.0.0/8 nexthop gateway address &lt;gw&gt; on
+set static-route 10.236.0.0/14 nexthop gateway address &lt;gw&gt; on
+set static-route 10.240.0.0/12 nexthop gateway address &lt;gw&gt; on
+set static-route 10.248.0.0/13 nexthop gateway address &lt;gw&gt; on
+save config
+reboot</pre>
+                        </li>
+                        <li class="mt-2">GW Config info:
+                          <ul>
+                            <li>SNMP Location (including Rack/Row info)</li>
+                            <li>Interface Info (v4 IP, mask-length, v6 IP (if any), interface desc/comment)</li>
+                            <li>ipv6 - (optional)</li>
+                            <li>VLAN - (optional)</li>
+                            <li>Bonds - (optional)</li>
+                          </ul>
+                        </li>
+                      </ol>
+                   </p>
+                   <div class="text-center">
+                     <a href="https://leonardlow.github.io/cpfw_tools/" class="btn btn-primary mt-3" target="_blank">Launch Tool</a>
+                   </div>
+                 </div>`;
+        break;
+      case 'cpfw':
+      case 'kchow':
+        html = `<div class="text-center">
+                   <img src="images/${tool}.png" alt="${tool}" class="img-fluid mb-3" style="max-width: 300px;">
+                   <h3>${tool === 'cpfw' ? 'CPFW Info Retrieval' : 'Kchow Remote Deploy'}</h3>
+                   <p>${tool === 'cpfw' ? 'Authenticate and run remote commands to collect firewall info.' : 'Use SCP and SSH to send files and execute follow-up scripts.'}</p>
+                   <button class="btn btn-warning mt-3" data-bs-toggle="modal" data-bs-target="#restrictedModal">Restricted</button>
+                 </div>`;
+        break;
+      case 'contact':
+        html = `<div class="text-center">
+                   <img src="images/contact_qr.png" alt="Contact QR" class="img-fluid mb-3" style="max-width: 200px;">
+                   <h3>Contact Leonard Low</h3>
+                   <p>Email: <a href="mailto:leonard.lowjr@t-mobile.com">leonard.lowjr@t-mobile.com</a><br>
+                      Phone: (555) phoneAfriend</p>
+                 </div>`;
+        break;
+      case 'future':
+        html = `<div class="text-center">
+                   <img src="images/shaka.jpg" alt="Shaka" class="img-fluid mb-3" style="max-width: 300px;">
+                   <h3>Future Tools</h3>
+                   <p>More network automation and remote tools are on the way. Stay tuned!</p>
+                 </div>`;
+        break;
+      case 'home':
+        html = `<img src=\"images/shield_transparent.png\" alt=\"Shield Logo\" class=\"shield-logo\" id=\"main-logo\">`;
+        break;
+    }
+
+    content.style.opacity = 0;
+    setTimeout(() => {
+      content.innerHTML = html;
+      content.style.opacity = 1;
+    }, 150);
+  }
+    
+</script>
+
+</body>
+</html>
